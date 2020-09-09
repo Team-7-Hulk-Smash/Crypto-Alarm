@@ -119,7 +119,7 @@ var getHistory = function (coinName) {
 
 
 
-var symbolFetch = function () {
+var symbolFetch = function (coin) {
     var symbolQuery = `https://api.binance.com/api/v3/exchangeInfo`;
     fetch(symbolQuery).then(function (response) {
         if (response.ok) {
@@ -127,7 +127,7 @@ var symbolFetch = function () {
                 console.log(data);
                 console.log(coin);
                 if (coin.symbol === data.baseAsset + data.quoteAsset) {
-                    
+
                 }
             })
         }
