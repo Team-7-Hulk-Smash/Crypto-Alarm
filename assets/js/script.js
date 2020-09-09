@@ -1,7 +1,10 @@
-// var milliseconds = dateToday * 1000;
-//     // var dateObject = new date(milliseconds);
-//     // var dateToday = dateObject.toLocaleDateString('en-US');
-//     currentDate.textContent = dateToday
+var today = new Date();
+var date =  (today.getMonth()+1)+'/'+today.getDate() + '/' + today.getFullYear();
+var time = today.getHours() + ":" + today.getMinutes();
+var dateTime = date+' '+time;
+
+document.getElementById("date").textContent = dateTime;
+
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var coinInputEl = document.querySelector("#searchTerm");
@@ -12,7 +15,7 @@ var humidity = document.querySelector("#humidity");
 var windSpeed = document.querySelector("#wind");
 var uvIndex = document.querySelector("#uv");
 var currentPrice = document.querySelector("#price");
-var lat = "lat";
+
 var fiveDay = {
     price: "11/05/1955",
     icon: "elvis",
@@ -97,26 +100,27 @@ var getHistory = function (coinName) {
     }
 }
 
-// var burl = "https://api.binance.com";
+var burl = "https://api.binance.com";
 
-// var query = "/api/v3/avgPrice";
+var query = "/api/v3/exchangeInfo";
 
-// query += '?symbol=BTCUSDT';
+query += '?symbol=BTCUSDT';
 
-// var url = burl + query;
+var url = burl + query;
 
-// var ourRequest = new XMLHttpRequest();
+var ourRequest = new XMLHttpRequest();
 
-// ourRequest.open('GET', url, true);
+ourRequest.open('GET', url, true);
 
-// ourRequest.onload = function() {
-//     console.log(ourRequest.responseText);
+ourRequest.onload = function() {
+    console.log(ourRequest.responseText);
 
-// ourRequest.send();
+ourRequest.send();
+};
 
 // SEARCH API FOR CURRENT AND FIVE-DAY price DATA
 var coinSearch = function (coin) {
-    var apiUrl = "https://api.binance.com" + "/api/v3/avgPrice" + '?symbol=BTCUSDT';
+    var apiUrl = `https://api.binance.com` + `/api/v3/avgPrice` + `?symbol=${coin}`;
 
 
     fetch(apiUrl).then(function (response) {
@@ -147,13 +151,9 @@ var coinSearch = function (coin) {
 
 // DISPLAY CURRENT price DATA ON PAGE
 var displayPrice = function (data, coin) {
-    
 
-
-    coinDisplayName.textContent = coin;
-
-    
-    currentPrice.textContent = data.price;
+    coinDisplayName.textContent = coin; 
+    currentPrice.textContent = "$" + data.price;
 //     var tempRound = Math.round(data.main.temp);
 //     var windRound = Math.round(data.wind.speed);
 //     // GET ICON
