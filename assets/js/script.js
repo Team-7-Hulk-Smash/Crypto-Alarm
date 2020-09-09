@@ -1,7 +1,7 @@
 var today = new Date();
-var date =  (today.getMonth()+1)+'/'+today.getDate() + '/' + today.getFullYear();
+var date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
 var time = today.getHours() + ":" + today.getMinutes();
-var dateTime = date+' '+time;
+var dateTime = date + ' ' + time;
 
 document.getElementById("date").textContent = dateTime;
 
@@ -44,7 +44,7 @@ var formSubmitHandler = function (event) {
 
 
     // GET VALUE FROM INPUT ELEMENT
-    var coinName = coinInputEl.value.trim().charAt(0).toUpperCase() + coinInputEl.value.slice(1);
+    var coinName = coinInputEl.value.trim().toUpperCase();
 
     if (coinName) {
         coinSearch(coinName);
@@ -100,23 +100,42 @@ var getHistory = function (coinName) {
     }
 }
 
-var burl = "https://api.binance.com";
+// var burl = "https://api.binance.com";
 
-var query = "/api/v3/exchangeInfo";
+// var query = "/api/v3/exchangeInfo";
 
-query += '?symbol=BTCUSDT';
+// // query += '?symbol=BTCUSDT';
 
-var url = burl + query;
+// var url = burl + query;
 
-var ourRequest = new XMLHttpRequest();
+// var ourRequest = new XMLHttpRequest();
 
-ourRequest.open('GET', url, true);
+// ourRequest.open('GET', url, true);
 
-ourRequest.onload = function() {
-    console.log(ourRequest.responseText);
+// ourRequest.onload = function () {
+//     // console.log(ourRequest.responseText);
+// }
+// ourRequest.send();
 
-ourRequest.send();
-};
+
+
+var symbolFetch = function () {
+    var symbolQuery = `https://api.binance.com/api/v3/exchangeInfo`;
+    fetch(symbolQuery).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                console.log(coin);
+                if (coin.symbol === data.baseAsset + data.quoteAsset) {
+                    
+                }
+            })
+        }
+    })
+}
+
+
+
 
 // SEARCH API FOR CURRENT AND FIVE-DAY price DATA
 var coinSearch = function (coin) {
@@ -130,6 +149,7 @@ var coinSearch = function (coin) {
             response.json().then(function (data) {
                 console.log(data);
                 displayPrice(data, coin);
+                symbolFetch(coin)
 
                 // var apiFiveUrl = "https://api.openpricemap.org/data/2.5/forecast?q=" + coin + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
                 // fetch(apiFiveUrl).then(function (fiveResponse) {
@@ -152,25 +172,25 @@ var coinSearch = function (coin) {
 // DISPLAY CURRENT price DATA ON PAGE
 var displayPrice = function (data, coin) {
 
-    coinDisplayName.textContent = coin; 
+    coinDisplayName.textContent = coin;
     currentPrice.textContent = "$" + data.price;
-//     var tempRound = Math.round(data.main.temp);
-//     var windRound = Math.round(data.wind.speed);
-//     // GET ICON
-//     iconEl.setAttribute("src", "https://openpricemap.org/img/wn/" + data.price[0].icon + "@2x.png");
+    //     var tempRound = Math.round(data.main.temp);
+    //     var windRound = Math.round(data.wind.speed);
+    //     // GET ICON
+    //     iconEl.setAttribute("src", "https://openpricemap.org/img/wn/" + data.price[0].icon + "@2x.png");
 
-//     temp.textContent = "Temperature: " + tempRound + "℉";
-//     humidity.textContent = "Humidity: " + data.main.humidity + "%";
-//     windSpeed.textContent = "Wind Speed: " + windRound + "mph";
+    //     temp.textContent = "Temperature: " + tempRound + "℉";
+    //     humidity.textContent = "Humidity: " + data.main.humidity + "%";
+    //     windSpeed.textContent = "Wind Speed: " + windRound + "mph";
 
     // Convert UTC code to current price
-    
+
 };
 //     // Get UV Index 
 //     var lat = data.coord.lat
 //     var lon = data.coord.lon
 //     var uvUrl = "https://api.openpricemap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=c888bc87519e878c5cbb608278ea9713";
-    
+
 //     // Get 5-day data
 //     var fiveApi = `https://api.openpricemap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=c888bc87519e878c5cbb608278ea9713`;
 //     fetch(fiveApi).then(function(response) {
@@ -180,7 +200,7 @@ var displayPrice = function (data, coin) {
 
 //         }) 
 //     })
-      
+
 
 //     fetch(uvUrl).then(function (response) {
 //         response.json().then(function (data) {
@@ -207,7 +227,7 @@ var displayPrice = function (data, coin) {
 //     console.log(data);
 //     var fiveDayArr = [];
 //     for (var i = 1; i < 6; i++) {
-    
+
 //             var fiveDay = {
 //                 price: data.daily[i].dt,
 //                 icon: data.daily[i].price[0].icon,
@@ -226,7 +246,7 @@ var displayPrice = function (data, coin) {
 //             fiveDay.price = newprice;
 //             fiveDayArr.push(fiveDay);
 //         }
-    
+
 
 //     displayFiveDay(fiveDayArr);
 // };
@@ -236,7 +256,7 @@ var displayPrice = function (data, coin) {
 //     var fiveTitle = document.getElementById("fiveTitle");
 //     fiveTitle.setAttribute("class", "col-12 ml-1 pl-2");
 //     for (var i = 0; i < data.length; i++) {
-        
+
 //         var day = document.getElementById("day" + i);
 //         day.setAttribute('class', 'future bg-primary rounded text-white col-md m-1 w-100');
 //         day.innerHTML = '<p class="h4 text-center pt-3">' + data[i].price + '</p><img id="icon' + i + '"class="w-100" src="https://openpricemap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
@@ -247,6 +267,5 @@ var displayPrice = function (data, coin) {
 
 getHistory();
 
+
 searchFormEl.addEventListener("submit", formSubmitHandler);
-
-
