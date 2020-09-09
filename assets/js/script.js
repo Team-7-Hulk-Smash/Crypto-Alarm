@@ -1,9 +1,14 @@
+// DISPLAY CURRENT DATE IN HEADER
+var showTime = function () {
+    $("#currentDate").text(moment().format('MM DD YYYY'));
+    $("#time").text(moment().format('hh:mm a'));
+}
+setInterval(showTime, 1000);
+
 var today = new Date();
 var date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
 var time = today.getHours() + ":" + today.getMinutes();
 var dateTime = date + ' ' + time;
-
-document.getElementById("date").textContent = dateTime;
 
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
@@ -112,6 +117,8 @@ var coinSearch = function (pairName) {
                 console.log(data);
                 displayPrice(data, pairName);
                 symbolFetch(pairName)
+                setInterval(60000);
+
             })
         } else {
             alert("Coin not found. Try again!");
