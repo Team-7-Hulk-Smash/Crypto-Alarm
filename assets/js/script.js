@@ -3,7 +3,7 @@ var showTime = function () {
     $("#currentDate").text(moment().format('MM DD YYYY'));
     $("#time").text(moment().format('hh:mm a'));
 }
-setInterval(showTime, 1000);
+setInterval(showTime, 60000);
 
 var today = new Date();
 var date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
@@ -71,7 +71,6 @@ var storeHistory = function (pairName) {
         historyArr = [];
         historyArr.push(localStorage.getItem('Symbols'));
         newHistoryArr = historyArr[0].split(',');
-        console.log(newHistoryArr);
         if (newHistoryArr.includes(pairName)) {
             return false;
         } else {
@@ -117,7 +116,6 @@ var coinSearch = function (pairName) {
                 console.log(data);
                 displayPrice(data, pairName);
                 symbolFetch(pairName)
-                setInterval(60000);
 
             })
         } else {
@@ -126,6 +124,8 @@ var coinSearch = function (pairName) {
         }
     })
 };
+// setInterval(coinSearch, 1000); 
+
 // FETCH SYMBOL PAIR NAME DATA
 var symbolFetch = function (pairName) {
     var symbolQuery = `https://api.binance.com/api/v3/exchangeInfo`;
@@ -135,15 +135,33 @@ var symbolFetch = function (pairName) {
                 console.log(pairName);
                 console.log(data);
                 console.log(data.symbols);
+
                 for (var i = 0; i < data.symbols.length; i++) {
+                    var base = data.symbols[i].baseAsset;
+                    var quote = data.symbols[i].quoteAsset;
                     if (pairName === data.symbols[i].baseAsset + data.symbols[i].quoteAsset) {
-                        pairDisplayName.textContent = data.symbols[i].baseAsset + '/' + data.symbols[i].quoteAsset;
+                        pairDisplayName.textContent = base + '/' + quote;
+                        var baseLow = base.toLowerCase();
+                        iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/200`);
+
+                        // https://rest.coinapi.io/
+                        // /v1/exchanges/icons/{iconSize}
+                        // ?apikey=66EFA5BB-5B71-4555-B453-8A8B096C6BBD
                     }
                 }
             })
         }
     })
 }
+// var iconFetch = function () {
+//     var iconUrl = `https://rest.coinapi.io//v1/exchanges/icons/600?apikey=66EFA5BB-5B71-4555-B453-8A8B096C6BBD`;
+//     fetch(iconUrl).then(function (response) {
+//         response.json().then(function (data) {
+//             console.log(data);
+//         })
+//     })
+// }
+// iconFetch();
 
 // DISPLAY CURRENT price DATA ON PAGE
 var displayPrice = function (data, coin) {
@@ -154,14 +172,15 @@ var displayPrice = function (data, coin) {
 };
 
 getHistory();
+showTime();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
 
-// var burl = "https://api.binance.com";
+// var burl = "https://cryptoicons.org";
 
-// var query = "/api/v3/exchangeInfo";
+// var query = "/api/icon/eth/200";
 
-// // query += '?symbol=BTCUSDT';
+// // // query += '?symbol=BTCUSDT';
 
 // var url = burl + query;
 
