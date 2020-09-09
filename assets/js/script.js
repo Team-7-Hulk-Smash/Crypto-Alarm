@@ -27,17 +27,16 @@ var hxListSearch = function (index) {
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-    // GET VALUE FROM INPUT ELEMENT
-    // var pairName = coinInputEl.value.trim().toUpperCase();
+    // GET VALUE FROM INPUT ELEMENTS
     var baseName = coinInputEl.value.trim().toUpperCase();
     var quoteName = document.getElementById("quote").value;
     var pairName = baseName + quoteName;
 
-    if (pairName) {
+    if (baseName) {
         coinSearch(pairName);
         coinInputEl.value = "";
     } else {
-        alert("Please enter a pair name.");
+        alert("Please enter a coin name.");
     }
 };
 
@@ -72,7 +71,7 @@ var getHistory = function (pairName) {
         historyArr.push(localStorage.getItem('Symbols'));
         newHistoryArr = historyArr[0].split(',');
 
-
+// LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
             hxItemEl.textContent = newHistoryArr[i];
@@ -86,6 +85,8 @@ var getHistory = function (pairName) {
     }
 }
 
+var myVar = setInterval(coinSearch, 1000);
+
 // SEARCH API AND FETCH CURRENT PRICE DATA
 var coinSearch = function (pairName) {
     var apiUrl = `https://api.binance.com` + `/api/v3/avgPrice` + `?symbol=${pairName}`;
@@ -93,8 +94,9 @@ var coinSearch = function (pairName) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             storeHistory(pairName);
-            getHistory();
+            // getHistory();
             response.json().then(function (data) {
+                getHistory(data);
                 console.log(data);
                 displayPrice(data, pairName);
                 symbolFetch(pairName)
@@ -105,6 +107,14 @@ var coinSearch = function (pairName) {
             return false;
         }
     })
+};
+
+// DISPLAY CURRENT PRICE DATA ON PAGE
+var displayPrice = function (data, coin) {
+
+    // pairDisplayName.textContent = coin;
+    currentPrice.textContent = "$" + data.price;
+
 };
 // setInterval(coinSearch, 1000); 
 
@@ -125,33 +135,12 @@ var symbolFetch = function (pairName) {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
                         iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
-
-                        // https://rest.coinapi.io/
-                        // /v1/exchanges/icons/{iconSize}
-                        // ?apikey=66EFA5BB-5B71-4555-B453-8A8B096C6BBD
                     }
                 }
             })
         }
     })
 }
-// var iconFetch = function () {
-//     var iconUrl = `https://rest.coinapi.io//v1/exchanges/icons/600?apikey=66EFA5BB-5B71-4555-B453-8A8B096C6BBD`;
-//     fetch(iconUrl).then(function (response) {
-//         response.json().then(function (data) {
-//             console.log(data);
-//         })
-//     })
-// }
-// iconFetch();
-
-// DISPLAY CURRENT price DATA ON PAGE
-var displayPrice = function (data, coin) {
-
-    // pairDisplayName.textContent = coin;
-    currentPrice.textContent = "$" + data.price;
-
-};
 
 getHistory();
 showTime();
