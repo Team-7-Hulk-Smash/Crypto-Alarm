@@ -142,7 +142,7 @@ var symbolFetch = function (pairName) {
                     if (pairName === data.symbols[i].baseAsset + data.symbols[i].quoteAsset) {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
-                        iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/200`);
+                        iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
 
                         // https://rest.coinapi.io/
                         // /v1/exchanges/icons/{iconSize}
