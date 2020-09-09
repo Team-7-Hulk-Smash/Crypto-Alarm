@@ -50,7 +50,7 @@ var formSubmitHandler = function (event) {
         coinSearch(coinName);
         coinInputEl.value = "";
     } else {
-        alert("Please enter a coin name.");
+        alert("Please enter a pair name.");
     }
 };
 
