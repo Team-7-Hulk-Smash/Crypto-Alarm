@@ -5,41 +5,21 @@ var showTime = function () {
 }
 setInterval(showTime, 60000);
 
-var today = new Date();
-var date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
-var time = today.getHours() + ":" + today.getMinutes();
-var dateTime = date + ' ' + time;
-
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
-var coinInputEl = document.querySelector("#searchTerm");
+var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.querySelector("#icon");
-var temp = document.querySelector("#temp");
-var humidity = document.querySelector("#humidity");
-var windSpeed = document.querySelector("#wind");
-var uvIndex = document.querySelector("#uv");
 var currentPrice = document.querySelector("#price");
-
-var fiveDay = {
-    price: "11/05/1955",
-    icon: "elvis",
-    temp: "980",
-    humidity: "500"
-}
-var fiveDayArr = [];
 var listItemEl = document.querySelectorAll(".list-item");
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
 
-        // for (var i = 0; i < 8; i++) {
         if (coin.id == "hxItem" + index) {
             coinSearch(coin.textContent);
         }
-        // }
-
     })
 };
 
@@ -47,9 +27,11 @@ var hxListSearch = function (index) {
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-
     // GET VALUE FROM INPUT ELEMENT
-    var pairName = coinInputEl.value.trim().toUpperCase();
+    // var pairName = coinInputEl.value.trim().toUpperCase();
+    var baseName = coinInputEl.value.trim().toUpperCase();
+    var quoteName = document.getElementById("quote").value;
+    var pairName = baseName + quoteName;
 
     if (pairName) {
         coinSearch(pairName);
