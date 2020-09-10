@@ -1,6 +1,6 @@
 // DISPLAY CURRENT DATE IN HEADER
 var showTime = function () {
-    $("#currentDate").text(moment().format('MM DD YYYY'));
+    $("#currentDate").text(moment().format('MM/DD/YYYY'));
     $("#time").text(moment().format('hh:mm a'));
 }
 setInterval(showTime, 60000);
@@ -11,6 +11,9 @@ var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.querySelector("#icon");
 var currentPrice = document.querySelector("#price");
+var error404 = "Coin not found. Try again!"
+var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
+
 var listItemEl = document.querySelectorAll(".list-item");
 
 // MAKE SEARCH HISTORY CLICKABLE
@@ -32,14 +35,17 @@ var formSubmitHandler = function (event) {
     var quoteName = document.getElementById("quote").value;
     var pairName = baseName + quoteName;
 
+    // GET VALUE FROM INPUT ELEMENT
+    var baseName = coinInputEl.value.trim().toUpperCase();
+    
     if (baseName) {
         coinSearch(pairName);
         coinInputEl.value = "";
     } else {
-        alert("Please enter a coin name.");
-    }
+            modal.style.display = "block";
+            document.getElementById("errorMsg").innerHTML = error202
+        }
 };
-
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (pairName) {
     if (localStorage.getItem('Symbols') === null) {
@@ -101,9 +107,12 @@ var coinSearch = function (pairName) {
                 symbolFetch(pairName)
 
             })
-        } else {
-            alert("Coin not found. Try again!");
-            return false;
+        } 
+        else {
+    
+            modal.style.display = "block";
+            document.getElementById("errorMsg").innerHTML = error404;
+            console.log(data);
         }
     })
 };
@@ -152,19 +161,20 @@ showTime();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
 
-// var burl = "https://cryptoicons.org";
+// Get the modal
+var modal = document.getElementById("myModal");
 
-// var query = "/api/icon/eth/200";
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-// // // query += '?symbol=BTCUSDT';
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-// var url = burl + query;
-
-// var ourRequest = new XMLHttpRequest();
-
-// ourRequest.open('GET', url, true);
-
-// ourRequest.onload = function () {
-//     // console.log(ourRequest.responseText);
-// }
-// ourRequest.send();
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

@@ -16,127 +16,146 @@
     <h1 class="header text-center bg-dark text-light p-3">Crypto Alarm</h1>
     <h2 id="currentDate" class="bg-dark text-white text-center"></h2>
     <h3 id="time" class="text-center"></h3>
-  
 </header>
+
+<!-- testing to see if modal works -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="errorMsg"></p>
+    </div>
+</div>
+
 <main class="container-fluid row d-flex m-0">
 
-    <div id="search-wrapper" class="col-12 col-md-3 p-0">
+    <body>
+        <div id="search-wrapper" class="col-12 col-md-3 p-0">
 
-        <section class="col-12 p-0">
-            <form id="form-input" class="text-left">
-                <label for="base" class="form-label col-12">Enter Coin Abbreviation (ex: BTC):</label>
-                <input id="base" name="base" class="input col-8" type="text" autofocus="true">
-                <div>
-                    Exchange Unit:
-                    <select id="quote" name="quote">
-                      <option value="USDT">USDT</option>
-                      <option value="BTC">BTC</option>
-                      <option value="ETH">ETH</option>
-                    </select>
-                  </div>
-                <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
-                        class="oi oi-magnifying-glass"></span></button>
-            </form>
-        </section>
+            <section class="col-12 p-0">
+                <form id="form-input" class="text-left">
+                    <label for="base" class="form-label col-12">Enter Coin Abbreviation (ex: BTC):</label>
+                    <input id="base" name="base" class="input col-8" type="text" autofocus="true">
+                    <div>
+                        Exchange Unit:
+                        <select id="quote" name="quote">
+                            <option value="USDT">USDT</option>
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                        </select>
+                    </div>
+                    <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
+                            class="oi oi-magnifying-glass"></span></button>
+                </form>
+            </section>
 
-        <section id="searchHx" class="p-0 col-12 w-auto
+            <section id="searchHx" class="p-0 col-12 w-auto
             searchHx mt-3">
-            <ul id="searchList" class="searchList list-group">
-                <li id="hxItem0" onclick="hxListSearch(0)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem1" onclick="hxListSearch(1)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem2" onclick="hxListSearch(2)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem3" onclick="hxListSearch(3)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem4" onclick="hxListSearch(4)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem5" onclick="hxListSearch(5)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem6" onclick="hxListSearch(6)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                <li id="hxItem7" onclick="hxListSearch(7)"
-                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-            </ul>
-        </section>
+                <ul id="searchList" class="searchList list-group">
+                    <li id="hxItem0" onclick="hxListSearch(0)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem1" onclick="hxListSearch(1)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem2" onclick="hxListSearch(2)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem3" onclick="hxListSearch(3)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem4" onclick="hxListSearch(4)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem5" onclick="hxListSearch(5)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem6" onclick="hxListSearch(6)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem7" onclick="hxListSearch(7)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                </ul>
+            </section>
 
-    </div>
-
-    <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
-        <div class="row container">
-            <span class="w-auto mr-2"><img id="icon" class="w-100"></img></span>
-            <div class="w-auto">
-                <h1 id="pair" class="forecast-data"></h1>
-                <h3 id="price"></h3>
-            </div>
         </div>
 
-        <div class="row container mt-5">
-            <div class="data d-flex flex-column align-items-left">
-                <div id="temp" class="forecast-data pb-3"></div>
-                <div id="humidity" class="forecast-data pb-3"></div>
-                <div id="wind" class="forecast-data pb-3"></div>
-                <div id="uvEl"></div><span id="uv" class=""></span>
+        <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
+            <div class="row container">
+                <span class="w-auto mr-2"><img id="icon" class="w-100"></img></span>
+                <div class="w-auto">
+                    <h1 id="pair" class="forecast-data"></h1>
+                    <h3 id="price"></h3>
+                </div>
+
+                <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
+                    <div class="row container">
+                        <div class="w-auto">
+                            <h1 id="coin" class="forecast-data"></h1>
+                            <h3 id="price"></h3>
+                        </div>
+                        <span class="w-auto"><img id="icon" class=""></img></span>
+                    </div>
+
+                    <div class="row container mt-5">
+                        <div class="data d-flex flex-column align-items-left">
+                            <div id="temp" class="forecast-data pb-3"></div>
+                            <div id="humidity" class="forecast-data pb-3"></div>
+                            <div id="wind" class="forecast-data pb-3"></div>
+                            <div id="uvEl"></div><span id="uv" class=""></span>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="fiveDay" class="w-100 mt-2">
+                    <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
+
+                    <article class="row col-12 container w-auto m-0">
+                        <div class="row w-100">
+                            <div id="day0" class="">
+                                <p class="text-center pt-2"></p>
+                                <span id="icon0" class="col-6"></span>
+                                <p></p>
+                                <p></p>
+                            </div>
+
+
+                            <div id="day1" class="">
+                                <p class="text-center pt-2"></p>
+                                <span id="icon1" class="col-6"></span>
+                                <p></p>
+                                <p></p>
+                            </div>
+
+
+                            <div id="day2" class="">
+                                <p class="text-center pt-2"></p>
+                                <span id="icon2" class="col-6"></span>
+                                <p></p>
+                                <p></p>
+                            </div>
+
+
+                            <div id="day3" class="">
+                                <p class="text-center pt-2"></p>
+                                <span id="icon3" class="col-6"></span>
+                                <p></p>
+                                <p></p>
+                            </div>
+
+
+                            <div id="day4" class="">
+                                <p class="text-center pt-2"></p>
+                                <span id="icon4" class="col-6"></span>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </article>
+                </section>
             </div>
-        </div>
-
-    </section>
-
-    <section id="fiveDay" class="w-100 mt-2">
-        <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
-
-        <article class="row col-12 container w-auto m-0">
-            <div class="row w-100">
-                <div id="day0" class="">
-                    <p class="text-center pt-2"></p>
-                    <span id="icon0" class="col-6"></span>
-                    <p></p>
-                    <p></p>
-                </div>
-
-
-                <div id="day1" class="">
-                    <p class="text-center pt-2"></p>
-                    <span id="icon1" class="col-6"></span>
-                    <p></p>
-                    <p></p>
-                </div>
-
-
-                <div id="day2" class="">
-                    <p class="text-center pt-2"></p>
-                    <span id="icon2" class="col-6"></span>
-                    <p></p>
-                    <p></p>
-                </div>
-
-
-                <div id="day3" class="">
-                    <p class="text-center pt-2"></p>
-                    <span id="icon3" class="col-6"></span>
-                    <p></p>
-                    <p></p>
-                </div>
-
-
-                <div id="day4" class="">
-                    <p class="text-center pt-2"></p>
-                    <span id="icon4" class="col-6"></span>
-                    <p></p>
-                    <p></p>
-                </div>
-            </div>
-        </article>
-    </section>
-    </div>
 </main>
-
+</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
-integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
-crossorigin="anonymous"></script>
+    integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
+    crossorigin="anonymous"></script>
 <script src="./assets/js/script.js"></script>
 
 
