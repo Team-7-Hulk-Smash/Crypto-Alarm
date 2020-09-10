@@ -74,35 +74,26 @@
 
         </div>
 
-        <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
+        <section id="pairs-wrapper" class="border container col-12 col-md-8 p-0 mt-3">
             <div class="row container">
                 <span class="w-auto mr-2"><img id="icon" class="w-100"></img></span>
                 <div class="w-auto">
                     <h1 id="pair" class="forecast-data"></h1>
                     <h3 id="price"></h3>
                 </div>
+            </div>
 
-                <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
-                    <div class="row container">
-                        <div class="w-auto">
-                            <h1 id="coin" class="forecast-data"></h1>
-                            <h3 id="price"></h3>
-                        </div>
-                        <span class="w-auto"><img id="icon" class=""></img></span>
-                    </div>
+            <div class="row container mt-5">
+                <div class="data d-flex flex-column align-items-left">
+                    <div id="temp" class="forecast-data pb-3"></div>
+                    <div id="humidity" class="forecast-data pb-3"></div>
+                    <div id="wind" class="forecast-data pb-3"></div>
+                    <div id="uvEl"></div><span id="uv" class=""></span>
+                </div>
+            </div>
+        </section>
 
-                    <div class="row container mt-5">
-                        <div class="data d-flex flex-column align-items-left">
-                            <div id="temp" class="forecast-data pb-3"></div>
-                            <div id="humidity" class="forecast-data pb-3"></div>
-                            <div id="wind" class="forecast-data pb-3"></div>
-                            <div id="uvEl"></div><span id="uv" class=""></span>
-                        </div>
-                    </div>
-
-                </section>
-
-                <section id="fiveDay" class="w-100 mt-2">
+        <!-- <section id="fiveDay" class="w-100 mt-2">
                     <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
 
                     <article class="row col-12 container w-auto m-0">
@@ -147,8 +138,9 @@
                             </div>
                         </div>
                     </article>
-                </section>
-            </div>
+                </section> -->
+
+        </section>
 </main>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
