@@ -11,8 +11,9 @@ var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.querySelector("#icon");
 var currentPrice = document.querySelector("#price");
-var error404 = "Coin not found. Try again!"
-var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
+var error404 = "Coin not found. Try again!";
+var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin).";
+var container = document.querySelector("#response-container");
 
 var listItemEl = document.querySelectorAll(".list-item");
 
@@ -165,6 +166,12 @@ var priceDataFetch = function(pairName) {
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
+
+            (data.priceChangePercent > 0);
+            document.querySelector("#response-container");
+            var gifImg = document.createElement("img");
+            gifImg.setAttribute("src", "https://img.memecdn.com/Wall-Street-Bull-Financier-Bernard-Madoff_o_18162.jpg");
+            container.appendChild(gifImg);
         })
     })
 }
