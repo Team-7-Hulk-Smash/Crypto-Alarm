@@ -35,11 +35,8 @@ var formSubmitHandler = function (event) {
     var quoteName = document.getElementById("quote").value;
     var pairName = baseName + quoteName;
 
-    // GET VALUE FROM INPUT ELEMENT
-    var baseName = coinInputEl.value.trim().toUpperCase();
-
     if (baseName) {
-        avgPriceFetch(pairName);
+        startPriceFetch(pairName);
         coinInputEl.value = "";
     } else {
         modal.style.display = "block";
@@ -88,6 +85,20 @@ var getHistory = function (pairName) {
             }
         }
     }
+}
+
+var myTicker;
+// FETCH PRICE TICKER 
+var priceTickerFetch = function (pairName) {
+    var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
+    fetch(tickerUrl).then(function (response) {
+        response.json().then(function (data) {
+            clearInterval(myTicker);
+            // myTicker = setInterval(priceTickerFetch(pairName), 1000);
+            var tickerPrice = document.getElementById("priceTicker");
+            tickerPrice.textContent = "$" + data.price;
+        })
+    })
 }
 
 // SEARCH API AND FETCH START PRICE DATA
@@ -168,20 +179,6 @@ var priceChangeDataFetch = function (pairName) {
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
-        })
-    })
-}
-
-var myTicker;
-// FETCH PRICE TICKER 
-var priceTickerFetch = function (pairName) {
-    var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
-    fetch(tickerUrl).then(function (response) {
-        response.json().then(function (data) {
-            clearInterval(myTicker);
-            // myTicker = setInterval(priceTickerFetch(pairName), 1000);
-            var tickerPrice = document.getElementById("priceTicker");
-            tickerPrice.textContent = "$" + data.price;
         })
     })
 }
