@@ -179,16 +179,12 @@ var priceChangeDataFetch = function (pairName) {
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
-<<<<<<< HEAD
-
+            priceTickerFetch(pairName);
             (data.priceChangePercent > 0);
             document.querySelector("#response-container");
             var gifImg = document.createElement("img");
             gifImg.setAttribute("src", "https://img.memecdn.com/Wall-Street-Bull-Financier-Bernard-Madoff_o_18162.jpg");
             container.appendChild(gifImg);
-=======
-            priceTickerFetch(pairName);
->>>>>>> 05e19d8a499cd0d1c7a0d2ad71ba612f4ca4498a
         })
     })
 }
@@ -210,15 +206,12 @@ span.onclick = function () {
 }
 
 // When the user clicks anywhere outside of the modal, close it
-<<<<<<< HEAD
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-=======
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
->>>>>>> 05e19d8a499cd0d1c7a0d2ad71ba612f4ca4498a
-}
+}}
