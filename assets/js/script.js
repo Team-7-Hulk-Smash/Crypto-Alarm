@@ -13,8 +13,11 @@ var iconEl = document.querySelector("#icon");
 var currentPrice = document.querySelector("#price");
 var error404 = "Coin not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
-
 var listItemEl = document.querySelectorAll(".list-item");
+var startPrice;
+var tickerPrice;
+var percentChange = tickerPrice / startPrice * 100;
+console.log(percentChange);
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
@@ -95,8 +98,10 @@ var priceTickerFetch = function (pairName) {
         response.json().then(function (data) {
             clearInterval(myTicker);
             // myTicker = setInterval(priceTickerFetch(pairName), 1000);
-            var tickerPrice = document.getElementById("priceTicker");
-            tickerPrice.textContent = "$" + data.price;
+            tickerPrice = data.price;
+            console.log(tickerPrice);
+            priceTicker = document.getElementById("priceTicker");
+            priceTicker.textContent = "$" + data.price;
         })
     })
 }
@@ -110,9 +115,12 @@ var startPriceFetch = function (pairName) {
             storeHistory(pairName);
             response.json().then(function (data) {
                 getHistory(data);
+                startPrice = data.price;
                 currentPrice.textContent = "Start Price: $" + data.price;
                 symbolFetch(pairName)
-
+                console.log(tickerPrice);
+                console.log(startPrice);
+                console.log(percentChange);
             })
         } else {
 
