@@ -71,7 +71,7 @@ var getHistory = function (pairName) {
         historyArr.push(localStorage.getItem('Symbols'));
         newHistoryArr = historyArr[0].split(',');
 
-// LABEL SEARCH HISTORY TAGS WITH TEXT
+        // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
             hxItemEl.textContent = newHistoryArr[i];
@@ -94,11 +94,10 @@ var coinSearch = function (pairName) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             storeHistory(pairName);
-            // getHistory();
             response.json().then(function (data) {
                 getHistory(data);
                 console.log(data);
-                displayPrice(data, pairName);
+                currentPrice.textContent = "$" + data.price;
                 symbolFetch(pairName)
 
             })
@@ -108,15 +107,6 @@ var coinSearch = function (pairName) {
         }
     })
 };
-
-// DISPLAY CURRENT PRICE DATA ON PAGE
-var displayPrice = function (data, coin) {
-
-    // pairDisplayName.textContent = coin;
-    currentPrice.textContent = "$" + data.price;
-
-};
-// setInterval(coinSearch, 1000); 
 
 // FETCH SYMBOL PAIR NAME DATA
 var symbolFetch = function (pairName) {
@@ -128,6 +118,7 @@ var symbolFetch = function (pairName) {
                 console.log(data);
                 console.log(data.symbols);
 
+                // MAKE MAIN DISPLAY MORE LEGIBLE
                 for (var i = 0; i < data.symbols.length; i++) {
                     var base = data.symbols[i].baseAsset;
                     var quote = data.symbols[i].quoteAsset;
@@ -135,6 +126,20 @@ var symbolFetch = function (pairName) {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
                         iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
+
+                        if (quote === 'USDT') {
+                            console.log(currentPrice);
+                            console.log(currentPrice.textContent);
+                            usdPrice = currentPrice.textContent;
+                            var numPrice = parseFloat(usdPrice);
+                            console.log(usdPrice);
+                            // .Math.round(100 * currentPrice / 100);
+                            console.log(numPrice);
+                            console.log(typeof(numPrice));
+
+                            var roundPrice = Math.round(numPrice);
+                            console.log(roundPrice);
+                        }
                     }
                 }
             })
