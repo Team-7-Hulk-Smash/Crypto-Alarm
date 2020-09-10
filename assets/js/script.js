@@ -22,7 +22,7 @@ var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
-            avgPriceFetch(coin.textContent);
+            startPriceFetch(coin.textContent);
         }
     })
 };
@@ -36,22 +36,18 @@ var formSubmitHandler = function (event) {
     var quoteName = document.getElementById("quote").value;
     var pairName = baseName + quoteName;
 
-    // GET VALUE FROM INPUT ELEMENT
-    var baseName = coinInputEl.value.trim().toUpperCase();
-    
     if (baseName) {
-        avgPriceFetch(pairName);
+        startPriceFetch(pairName);
         coinInputEl.value = "";
     } else {
-            modal.style.display = "block";
-            document.getElementById("errorMsg").innerHTML = error202
-        }
+        modal.style.display = "block";
+        document.getElementById("errorMsg").innerHTML = error202
+    }
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (pairName) {
     if (localStorage.getItem('Symbols') === null) {
         historyArr.unshift(pairName);
-        console.log(pairName);
         localStorage.setItem('Symbols', historyArr);
         return false;
 
@@ -92,28 +88,38 @@ var getHistory = function (pairName) {
     }
 }
 
-var myVar = setInterval(avgPriceFetch, 1000);
+var myTicker;
+// FETCH PRICE TICKER 
+var priceTickerFetch = function (pairName) {
+    var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
+    fetch(tickerUrl).then(function (response) {
+        response.json().then(function (data) {
+            clearInterval(myTicker);
+            // myTicker = setInterval(priceTickerFetch(pairName), 1000);
+            var tickerPrice = document.getElementById("priceTicker");
+            tickerPrice.textContent = "$" + data.price;
+        })
+    })
+}
 
-// SEARCH API AND FETCH CURRENT PRICE DATA
-var avgPriceFetch = function (pairName) {
-    var apiUrl = `https://api.binance.com` + `/api/v3/avgPrice` + `?symbol=${pairName}`;
+// SEARCH API AND FETCH START PRICE DATA
+var startPriceFetch = function (pairName) {
+    var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             storeHistory(pairName);
             response.json().then(function (data) {
                 getHistory(data);
-                console.log(data);
-                currentPrice.textContent = "$" + data.price;
+                currentPrice.textContent = "Start Price: $" + data.price;
                 symbolFetch(pairName)
 
             })
-        } 
-        else {
-    
+        } else {
+
             modal.style.display = "block";
             document.getElementById("errorMsg").innerHTML = error404;
-            console.log(data);
+
         }
     })
 };
@@ -124,10 +130,17 @@ var symbolFetch = function (pairName) {
     fetch(symbolQuery).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(pairName);
-                console.log(data);
-                console.log(data.symbols);
 
+
+                // CONVERT UTC CODE TO CURRENT DATE
+                var milliseconds = data.serverTime;
+                var dateObject = new Date(milliseconds);
+                var options = {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'};
+                var timeStamp = dateObject.toLocaleDateString('en-US', options);
+                var startTime = document.getElementById("time-stamp");
+                startTime.textContent = "Start Time: " + timeStamp;
+                console.log(timeStamp);
+                
                 // MAKE MAIN DISPLAY MORE LEGIBLE
                 for (var i = 0; i < data.symbols.length; i++) {
                     var base = data.symbols[i].baseAsset;
@@ -145,33 +158,37 @@ var symbolFetch = function (pairName) {
                             console.log(usdPrice);
                             // .Math.round(100 * currentPrice / 100);
                             console.log(numPrice);
-                            console.log(typeof(numPrice));
+                            console.log(typeof (numPrice));
 
                             var roundPrice = Math.round(numPrice);
                             console.log(roundPrice);
                         }
-                    } 
+                    }
                 }
             })
-        } priceDataFetch(pairName);
+        }
+        priceChangeDataFetch(pairName);
     })
 }
-
-var priceDataFetch = function(pairName) {
+// FETCH PRICE CHANGE DATA
+var priceChangeDataFetch = function (pairName) {
     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
     fetch(dataUrl).then(function (response) {
         response.json().then(function (data) {
-            console.log(data);
             var priceChange = document.getElementById("priceChange");
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
+<<<<<<< HEAD
 
             (data.priceChangePercent > 0);
             document.querySelector("#response-container");
             var gifImg = document.createElement("img");
             gifImg.setAttribute("src", "https://img.memecdn.com/Wall-Street-Bull-Financier-Bernard-Madoff_o_18162.jpg");
             container.appendChild(gifImg);
+=======
+            priceTickerFetch(pairName);
+>>>>>>> 05e19d8a499cd0d1c7a0d2ad71ba612f4ca4498a
         })
     })
 }
@@ -188,13 +205,20 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span.onclick = function () {
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
+<<<<<<< HEAD
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+=======
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+>>>>>>> 05e19d8a499cd0d1c7a0d2ad71ba612f4ca4498a
 }
