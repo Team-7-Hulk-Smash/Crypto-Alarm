@@ -18,12 +18,12 @@ var currentPrice = document.querySelector("#price");
 var error404 = "Coin not found. Try again!"
 var error202 = "Please enter a pair name."
 
-var fiveDay = {
-    price: "11/05/1955",
-    icon: "elvis",
-    temp: "980",
-    humidity: "500"
-}
+// var fiveDay = {
+//     price: "11/05/1955",
+//     icon: "elvis",
+//     temp: "980",
+//     humidity: "500"
+// }
 var fiveDayArr = [];
 var listItemEl = document.querySelectorAll(".list-item");
 
@@ -127,12 +127,13 @@ var coinSearch = function (coin) {
 
 
     fetch(apiUrl).then(function (response) {
-        if (response.ok) {
+        if (response) {
             storeHistory(coin);
             getHistory();
             response.json().then(function (data) {
                 console.log(data);
                 displayPrice(data, coin);
+                console.log(response);
 
                 // var apiFiveUrl = "https://api.openpricemap.org/data/2.5/forecast?q=" + coin + "&units=imperial&appid=c888bc87519e878c5cbb608278ea9713";
                 // fetch(apiFiveUrl).then(function (fiveResponse) {
@@ -143,13 +144,14 @@ var coinSearch = function (coin) {
                 // })
 
             })
-        } else {
+        } 
+        else {
+        
             modal.style.display = "block";
-            document.getElementById("errorMsg").innerHTML = error404
+            document.getElementById("errorMsg").innerHTML = error404;
+            console.log(data);
         }
-
-    })
-
+        })
 };
 
 // DISPLAY CURRENT price DATA ON PAGE
