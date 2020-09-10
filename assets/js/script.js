@@ -15,6 +15,8 @@ var humidity = document.querySelector("#humidity");
 var windSpeed = document.querySelector("#wind");
 var uvIndex = document.querySelector("#uv");
 var currentPrice = document.querySelector("#price");
+var error404 = "Coin not found. Try again!"
+var error202 = "Please enter a pair name."
 
 var fiveDay = {
     price: "11/05/1955",
@@ -44,16 +46,17 @@ var formSubmitHandler = function (event) {
 
 
     // GET VALUE FROM INPUT ELEMENT
-    var coinName = coinInputEl.value.trim().charAt(0).toUpperCase() + coinInputEl.value.slice(1);
-
+    var coinName = coinInputEl.value.trim().toUpperCase();
+    
     if (coinName) {
         coinSearch(coinName);
         coinInputEl.value = "";
     } else {
-        alert("Please enter a pair name.");
-    }
+            modal.style.display = "block";
+            document.getElementById("errorMsg").innerHTML = error202
+        }
 };
-
+////[““]
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (coinName) {
     if (localStorage.getItem('Symbols') === null) {
@@ -141,8 +144,8 @@ var coinSearch = function (coin) {
 
             })
         } else {
-            alert("Coin not found. Try again!");
-            return false;
+            modal.style.display = "block";
+            document.getElementById("errorMsg").innerHTML = error404
         }
 
     })
@@ -249,4 +252,22 @@ getHistory();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
 
+// Get the modal
+var modal = document.getElementById("myModal");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
