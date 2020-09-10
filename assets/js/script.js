@@ -21,7 +21,7 @@ var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
-            coinSearch(coin.textContent);
+            avgPriceFetch(coin.textContent);
         }
     })
 };
@@ -39,7 +39,7 @@ var formSubmitHandler = function (event) {
     var baseName = coinInputEl.value.trim().toUpperCase();
     
     if (baseName) {
-        coinSearch(pairName);
+        avgPriceFetch(pairName);
         coinInputEl.value = "";
     } else {
             modal.style.display = "block";
@@ -91,10 +91,10 @@ var getHistory = function (pairName) {
     }
 }
 
-var myVar = setInterval(coinSearch, 1000);
+var myVar = setInterval(avgPriceFetch, 1000);
 
 // SEARCH API AND FETCH CURRENT PRICE DATA
-var coinSearch = function (pairName) {
+var avgPriceFetch = function (pairName) {
     var apiUrl = `https://api.binance.com` + `/api/v3/avgPrice` + `?symbol=${pairName}`;
 
     fetch(apiUrl).then(function (response) {
@@ -149,10 +149,23 @@ var symbolFetch = function (pairName) {
                             var roundPrice = Math.round(numPrice);
                             console.log(roundPrice);
                         }
-                    }
+                    } 
                 }
             })
-        }
+        } priceDataFetch(pairName);
+    })
+}
+
+var priceDataFetch = function(pairName) {
+    var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
+    fetch(dataUrl).then(function (response) {
+        response.json().then(function (data) {
+            console.log(data);
+            var priceChange = document.getElementById("priceChange");
+            priceChange.textContent = "24h Price Change: " + data.priceChange;
+            var priceChangePercent = document.getElementById("priceChangePercent");
+            priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
+        })
     })
 }
 
