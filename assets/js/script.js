@@ -21,7 +21,7 @@ var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
-            avgPriceFetch(coin.textContent);
+            startPriceFetch(coin.textContent);
         }
     })
 };
@@ -37,14 +37,14 @@ var formSubmitHandler = function (event) {
 
     // GET VALUE FROM INPUT ELEMENT
     var baseName = coinInputEl.value.trim().toUpperCase();
-    
+
     if (baseName) {
         avgPriceFetch(pairName);
         coinInputEl.value = "";
     } else {
-            modal.style.display = "block";
-            document.getElementById("errorMsg").innerHTML = error202
-        }
+        modal.style.display = "block";
+        document.getElementById("errorMsg").innerHTML = error202
+    }
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (pairName) {
@@ -90,11 +90,9 @@ var getHistory = function (pairName) {
     }
 }
 
-var myVar = setInterval(avgPriceFetch, 1000);
-
 // SEARCH API AND FETCH START PRICE DATA
-var avgPriceFetch = function (pairName) {
-    var apiUrl = `https://api.binance.com` + `/api/v3/avgPrice` + `?symbol=${pairName}`;
+var startPriceFetch = function (pairName) {
+    var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -105,12 +103,11 @@ var avgPriceFetch = function (pairName) {
                 symbolFetch(pairName)
 
             })
-        } 
-        else {
-    
+        } else {
+
             modal.style.display = "block";
             document.getElementById("errorMsg").innerHTML = error404;
-    
+
         }
     })
 };
@@ -121,9 +118,17 @@ var symbolFetch = function (pairName) {
     fetch(symbolQuery).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-               
+
+
+                // CONVERT UTC CODE TO CURRENT DATE
+                var milliseconds = data.serverTime;
+                var dateObject = new Date(milliseconds);
+                var options = {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'};
+                var timeStamp = dateObject.toLocaleDateString('en-US', options);
                 var startTime = document.getElementById("time-stamp");
-                startTime.textContent = "Start Time: (UTC): " + data.serverTime;
+                startTime.textContent = "Start Time: " + timeStamp;
+                console.log(timeStamp);
+                
                 // MAKE MAIN DISPLAY MORE LEGIBLE
                 for (var i = 0; i < data.symbols.length; i++) {
                     var base = data.symbols[i].baseAsset;
@@ -141,19 +146,20 @@ var symbolFetch = function (pairName) {
                             console.log(usdPrice);
                             // .Math.round(100 * currentPrice / 100);
                             console.log(numPrice);
-                            console.log(typeof(numPrice));
+                            console.log(typeof (numPrice));
 
                             var roundPrice = Math.round(numPrice);
                             console.log(roundPrice);
                         }
-                    } 
+                    }
                 }
             })
-        } priceChangeDataFetch(pairName);
+        }
+        priceChangeDataFetch(pairName);
     })
 }
 // FETCH PRICE CHANGE DATA
-var priceChangeDataFetch = function(pairName) {
+var priceChangeDataFetch = function (pairName) {
     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
     fetch(dataUrl).then(function (response) {
         response.json().then(function (data) {
@@ -163,15 +169,15 @@ var priceChangeDataFetch = function(pairName) {
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
         })
-    }) 
+    })
 }
 
 var myTicker;
 // FETCH PRICE TICKER 
-var priceTickerFetch = function(pairName) {
+var priceTickerFetch = function (pairName) {
     var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
     fetch(tickerUrl).then(function (response) {
-        response.json().then(function(data) {
+        response.json().then(function (data) {
             clearInterval(myTicker);
             // myTicker = setInterval(priceTickerFetch(pairName), 1000);
             var tickerPrice = document.getElementById("priceTicker");
@@ -192,13 +198,13 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span.onclick = function () {
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
