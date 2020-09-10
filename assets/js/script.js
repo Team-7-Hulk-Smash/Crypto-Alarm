@@ -98,7 +98,7 @@ var priceTickerFetch = function (pairName) {
         response.json().then(function (data) {
             clearInterval(myTicker);
             // myTicker = setInterval(priceTickerFetch(pairName), 1000);
-            tickerPrice = data.price;
+            // tickerPrice = data.price;
             console.log(tickerPrice);
             priceTicker = document.getElementById("priceTicker");
             priceTicker.textContent = "$" + data.price;
