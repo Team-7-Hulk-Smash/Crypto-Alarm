@@ -169,35 +169,9 @@ var priceChangeDataFetch = function () {
             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
 
-            if (data.priceChangePercent > 1) {
-                fetch(bullUrl)
-                    .then(function (response) {
-                        return response.json();
-                    })
-                    .then(function (response) {
-                        container.textContent = "";
-                        var gifImg = document.createElement("img");
-                        gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
-                        container.appendChild(gifImg);
-                    })
-            }
-
-            if (data.priceChangePercent < -1) {
-                fetch(bearUrl)
-                    .then(function (response) {
-                        return response.json();
-                    })
-                    .then(function (response) {
-                        console.log(response.data[0]);
-                        container.textContent = "";
-                        var gifImg = document.createElement("img");
-                        gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
-                        container.appendChild(gifImg);
-                    })
-            }
 
             clearInterval(myTicker);
-            myTicker = setInterval(priceTickerFetch, 1000);
+            myTicker = setInterval(priceTickerFetch, 10000);
 
         })
     })
@@ -235,10 +209,33 @@ var comparePrices = function () {
     var percentChangeEl = document.getElementById("percentChange");
     percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
 
-    if(percentChange > 0.001){
+    if (percentChange > 0.001) {
         console.log("THE PRICE IS RISING!");
+        fetch(bullUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                container.textContent = "";
+                var gifImg = document.createElement("img");
+                gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
+                container.appendChild(gifImg);
+            })
     } else if (percentChange < -0.001) {
         console.log("THE PRICE IS FALLING!")
+        fetch(bearUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                console.log(response.data[0]);
+                container.textContent = "";
+                var gifImg = document.createElement("img");
+                gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
+                container.appendChild(gifImg);
+            })
+        } else {
+        container.innerHTML = "";
     }
 };
 
