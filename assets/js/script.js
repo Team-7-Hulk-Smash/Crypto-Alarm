@@ -209,7 +209,7 @@ var priceTickerFetch = function () {
 var comparePrices = function () {
     console.log(startPrice);
     console.log(tickerPrice);
-    var percentChange = ((tickerPrice - startPrice) / startPrice * 100);
+    var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(2);
     console.log(percentChange);
     var percentChangeEl = document.getElementById("percentChange");
     percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
