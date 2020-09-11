@@ -96,7 +96,6 @@ var getHistory = function () {
     }
 }
 
-<<<<<<< HEAD
 var myTicker;
 // FETCH PRICE TICKER 
 var priceTickerFetch = function (pairName) {
@@ -115,8 +114,6 @@ var priceTickerFetch = function (pairName) {
     })
 }
 
-=======
->>>>>>> 7d84820c5e585b5e498202ea151d7c531d65cfd5
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
     var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
@@ -128,26 +125,14 @@ var startPriceFetch = function () {
                 getHistory(data);
                 startPrice = data.price;
                 currentPrice.textContent = "Start Price: $" + data.price;
-<<<<<<< HEAD
-                symbolFetch(pairName)
-                console.log(tickerPrice);
-                console.log(startPrice);
-                console.log(percentChange);
-            })
-        }
-    }).catch(function(error){
-        {
-            console.log(error)
-            modal.style.display = "block";
-            document.getElementById("errorMsg").innerHTML = error404;
-=======
                 symbolFetch()
             }).catch(function(error){
+                {
                 console.log(error);
                 modal.style.display = "block";
                 document.getElementById("errorMsg").innerHTML = error404;
+                }
             })           
->>>>>>> 7d84820c5e585b5e498202ea151d7c531d65cfd5
         }
     })
 };
