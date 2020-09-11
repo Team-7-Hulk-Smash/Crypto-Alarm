@@ -11,11 +11,14 @@ var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.querySelector("#icon");
 var currentPrice = document.querySelector("#price");
-var error404 = "Coin not found. Try again!";
-var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin).";
 var container = document.querySelector("#response-container");
-
+var error404 = "Coin not found. Try again!"
+var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 var listItemEl = document.querySelectorAll(".list-item");
+var startPrice;
+var tickerPrice;
+var percentChange = tickerPrice / startPrice * 100;
+console.log(percentChange);
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
@@ -95,9 +98,11 @@ var priceTickerFetch = function (pairName) {
     fetch(tickerUrl).then(function (response) {
         response.json().then(function (data) {
             clearInterval(myTicker);
-            // myTicker = setInterval(priceTickerFetch(pairName), 1000);
-            var tickerPrice = document.getElementById("priceTicker");
-            tickerPrice.textContent = "$" + data.price;
+            myTicker = setInterval(priceTickerFetch(pairName), 1000);
+            tickerPrice = data.price;
+            console.log(tickerPrice);
+            priceTicker = document.getElementById("priceTicker");
+            priceTicker.textContent = "$" + data.price;
         })
     })
 }
@@ -111,9 +116,12 @@ var startPriceFetch = function (pairName) {
             storeHistory(pairName);
             response.json().then(function (data) {
                 getHistory(data);
+                startPrice = data.price;
                 currentPrice.textContent = "Start Price: $" + data.price;
                 symbolFetch(pairName)
-
+                console.log(tickerPrice);
+                console.log(startPrice);
+                console.log(percentChange);
             })
         } else {
 
@@ -180,8 +188,10 @@ var priceChangeDataFetch = function (pairName) {
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
-            (data.priceChangePercent > 0);
+
+            (data.priceChangePercent > 2);
             document.querySelector("#response-container");
+            container.textContent = "";
             var gifImg = document.createElement("img");
             gifImg.setAttribute("src", "https://img.memecdn.com/Wall-Street-Bull-Financier-Bernard-Madoff_o_18162.jpg");
             container.appendChild(gifImg);
