@@ -232,6 +232,9 @@ var comparePrices = function () {
     console.log(tickerPrice);
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100);
     console.log(percentChange);
+    var percentChangeEl = document.getElementById("percentChange");
+    percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
+
     if(percentChange > 0.001){
         console.log("THE PRICE IS RISING!");
     } else if (percentChange < -0.001) {
