@@ -16,10 +16,6 @@ var error404 = "Coin not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 var listItemEl = document.querySelectorAll(".list-item");
 var pairName;
-var startPrice;
-var tickerPrice;
-var percentChange = tickerPrice / startPrice * 100;
-console.log(percentChange);
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
@@ -151,20 +147,7 @@ var symbolFetch = function () {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
                         iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
-
-                        if (quote === 'USDT') {
-                            console.log(currentPrice);
-                            console.log(currentPrice.textContent);
-                            usdPrice = currentPrice.textContent;
-                            var numPrice = parseFloat(usdPrice);
-                            console.log(usdPrice);
-                            // .Math.round(100 * currentPrice / 100);
-                            console.log(numPrice);
-                            console.log(typeof (numPrice));
-
-                            var roundPrice = Math.round(numPrice);
-                            console.log(roundPrice);
-                        }
+          
                     }
                 }
             })
@@ -224,7 +207,7 @@ var priceTickerFetch = function () {
     var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
     fetch(tickerUrl).then(function (response) {
         response.json().then(function (data) {
-
+            // DISPLAY DOLLAR SIGN AND ROUND PRICE
             var tickerPriceEl = document.getElementById("priceTicker");
             var tickerPrice = data.price;
             tickerPriceEl.textContent = tickerPrice;
@@ -236,8 +219,6 @@ var priceTickerFetch = function () {
                 roundTickerPrice = tickerPrice.toFixed(2);
                 tickerPriceEl.textContent = "$" + roundTickerPrice;
             }
-
-
         })
     })
 
