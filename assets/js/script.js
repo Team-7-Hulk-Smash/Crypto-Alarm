@@ -61,8 +61,8 @@ var storeHistory = function () {
     } else {
         historyArr = [];
         historyArr.push(localStorage.getItem('Symbols'));
-        newHistoryArr = historyArr[0].split(',');
-        if (newHistoryArr.includes(pairName)) {
+        historyArr = historyArr[0].split(',');
+        if (historyArr.includes(pairName)) {
             return false;
         } else {
             historyArr.unshift(pairName);
@@ -79,12 +79,12 @@ var getHistory = function () {
     } else {
         historyArr = [];
         historyArr.push(localStorage.getItem('Symbols'));
-        newHistoryArr = historyArr[0].split(',');
+        historyArr = historyArr[0].split(',');
 
         // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
-            hxItemEl.textContent = newHistoryArr[i];
+            hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
                 hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
