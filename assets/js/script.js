@@ -214,7 +214,7 @@ var comparePrices = function () {
     var percentChangeEl = document.getElementById("percentChange");
     percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
 
-    if (percentChange > 0.001) {
+    if (percentChange >= 0.01) {
         console.log("THE PRICE IS RISING!");
         fetch(bullUrl)
             .then(function (response) {
@@ -226,7 +226,7 @@ var comparePrices = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
             })
-    } else if (percentChange < -0.001) {
+    } else if (percentChange <= -0.01) {
         console.log("THE PRICE IS FALLING!")
         fetch(bearUrl)
             .then(function (response) {
