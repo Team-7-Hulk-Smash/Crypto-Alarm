@@ -207,7 +207,6 @@ var priceChangeDataFetch = function () {
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
-<<<<<<< HEAD
             priceTickerFetch(pairName);
 
             if (data.priceChangePercent > 1){
@@ -234,7 +233,6 @@ var priceChangeDataFetch = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
                     })}
-=======
             
             clearInterval(myTicker);
             myTicker = setInterval(priceTickerFetch, 1000);
@@ -252,7 +250,6 @@ var priceTickerFetch = function () {
         
             var tickerPrice = document.getElementById("priceTicker");
             tickerPrice.textContent = "$" + data.price;
->>>>>>> 7d84820c5e585b5e498202ea151d7c531d65cfd5
         })
     })
 }
