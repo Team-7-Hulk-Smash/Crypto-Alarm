@@ -15,7 +15,7 @@ var error404 = "Coin not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 
 var listItemEl = document.querySelectorAll(".list-item");
-
+var pairName;
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
@@ -33,10 +33,10 @@ var formSubmitHandler = function (event) {
     // GET VALUE FROM INPUT ELEMENTS
     var baseName = coinInputEl.value.trim().toUpperCase();
     var quoteName = document.getElementById("quote").value;
-    var pairName = baseName + quoteName;
+    pairName = baseName + quoteName;
 
     if (baseName) {
-        startPriceFetch(pairName);
+        startPriceFetch();
         coinInputEl.value = "";
     } else {
         modal.style.display = "block";
@@ -44,7 +44,7 @@ var formSubmitHandler = function (event) {
     }
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
-var storeHistory = function (pairName) {
+var storeHistory = function () {
     if (localStorage.getItem('Symbols') === null) {
         historyArr.unshift(pairName);
         localStorage.setItem('Symbols', historyArr);
@@ -64,7 +64,7 @@ var storeHistory = function (pairName) {
 };
 
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
-var getHistory = function (pairName) {
+var getHistory = function () {
     if (localStorage.getItem('Symbols') === null) {
         return false;
 
@@ -89,29 +89,30 @@ var getHistory = function (pairName) {
 
 var myTicker;
 // FETCH PRICE TICKER 
-var priceTickerFetch = function (pairName) {
+var priceTickerFetch = function () {
     var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
     fetch(tickerUrl).then(function (response) {
         response.json().then(function (data) {
-            clearInterval(myTicker);
+            // clearInterval(myTicker);
             // myTicker = setInterval(priceTickerFetch(pairName), 1000);
             var tickerPrice = document.getElementById("priceTicker");
             tickerPrice.textContent = "$" + data.price;
+            console.log(data);
         })
     })
 }
 
 // SEARCH API AND FETCH START PRICE DATA
-var startPriceFetch = function (pairName) {
+var startPriceFetch = function () {
     var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
-            storeHistory(pairName);
+            storeHistory();
             response.json().then(function (data) {
                 getHistory(data);
                 currentPrice.textContent = "Start Price: $" + data.price;
-                symbolFetch(pairName)
+                symbolFetch()
 
             })
         } else {
@@ -124,7 +125,7 @@ var startPriceFetch = function (pairName) {
 };
 
 // FETCH SYMBOL PAIR NAME DATA
-var symbolFetch = function (pairName) {
+var symbolFetch = function () {
     var symbolQuery = `https://api.binance.com/api/v3/exchangeInfo`;
     fetch(symbolQuery).then(function (response) {
         if (response.ok) {
@@ -166,11 +167,11 @@ var symbolFetch = function (pairName) {
                 }
             })
         }
-        priceChangeDataFetch(pairName);
+        priceChangeDataFetch();
     })
 }
 // FETCH PRICE CHANGE DATA
-var priceChangeDataFetch = function (pairName) {
+var priceChangeDataFetch = function () {
     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
     fetch(dataUrl).then(function (response) {
         response.json().then(function (data) {
@@ -178,7 +179,11 @@ var priceChangeDataFetch = function (pairName) {
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
-            priceTickerFetch(pairName);
+            // priceTickerFetch(pairName);
+            
+            clearInterval(myTicker);
+            myTicker = setInterval(priceTickerFetch, 1000);
+        
         })
     })
 }
