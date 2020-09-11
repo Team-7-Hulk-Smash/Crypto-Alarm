@@ -93,7 +93,7 @@ var getHistory = function () {
             }
         }
     }
-}
+};
 
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
@@ -156,7 +156,7 @@ var symbolFetch = function () {
         }
         priceChangeDataFetch();
     })
-}
+};
 // FETCH PRICE CHANGE DATA
 var priceChangeDataFetch = function () {
     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
@@ -201,7 +201,7 @@ var priceChangeDataFetch = function () {
 
         })
     })
-}
+};
 
 var myTicker;
 // FETCH PRICE TICKER 
@@ -225,13 +225,19 @@ var priceTickerFetch = function () {
         })
     })
 
-}
+};
 
 var comparePrices = function () {
     console.log(startPrice);
     console.log(tickerPrice);
-    
-}
+    var percentChange = ((tickerPrice - startPrice) / startPrice * 100);
+    console.log(percentChange);
+    if(percentChange > 0.001){
+        console.log("THE PRICE IS RISING!");
+    } else if (percentChange < -0.001) {
+        console.log("THE PRICE IS FALLING!")
+    }
+};
 
 getHistory();
 showTime();
