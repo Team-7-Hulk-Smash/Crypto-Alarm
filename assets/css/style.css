@@ -50,8 +50,8 @@
 .imgContainer {
   float: inline-end;
   z-index: -1;
-  bottom: 200px;
   position: absolute;
+  right: 60px;
 }
 
 .modal {
