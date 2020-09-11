@@ -64,10 +64,11 @@ var storeHistory = function () {
         historyArr = historyArr[0].split(',');
         if (historyArr.includes(pairName)) {
             return false;
-        } else {
+        } else if (historyArr.length = 8) {
+            historyArr.pop()
+        } 
             historyArr.unshift(pairName);
-            localStorage.setItem('Symbols', historyArr);
-        }
+            localStorage.setItem('Symbols', historyArr);     
     }
 };
 
@@ -120,7 +121,7 @@ var startPriceFetch = function () {
             document.getElementById("errorMsg").innerHTML = error404;
         }
     })
-    
+
 };
 
 // FETCH SYMBOL PAIR NAME DATA
