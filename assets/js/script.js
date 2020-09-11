@@ -25,7 +25,9 @@ var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
+            pairName = coin.textContent;
             startPriceFetch(coin.textContent);
+            console.log(coin.textContent);
         }
     })
 };
