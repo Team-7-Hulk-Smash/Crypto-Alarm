@@ -13,9 +13,13 @@ var iconEl = document.querySelector("#icon");
 var currentPrice = document.querySelector("#price");
 var error404 = "Coin not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
-
 var listItemEl = document.querySelectorAll(".list-item");
 var pairName;
+var startPrice;
+var tickerPrice;
+var percentChange = tickerPrice / startPrice * 100;
+console.log(percentChange);
+
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     listItemEl.forEach(function (coin) {
@@ -111,6 +115,7 @@ var startPriceFetch = function () {
             storeHistory();
             response.json().then(function (data) {
                 getHistory(data);
+                startPrice = data.price;
                 currentPrice.textContent = "Start Price: $" + data.price;
                 symbolFetch()
 
