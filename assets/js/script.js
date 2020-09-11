@@ -191,7 +191,7 @@ var priceChangeDataFetch = function (pairName) {
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
 
-            (data.priceChangePercent > 2);
+           (data.priceChangePercent > 0); 
             document.querySelector("#response-container");
             container.textContent = "";
             var gifImg = document.createElement("img");
