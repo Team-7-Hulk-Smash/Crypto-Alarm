@@ -11,6 +11,7 @@ var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.querySelector("#icon");
 var currentPrice = document.querySelector("#price");
+var container = document.querySelector("#response-container");
 var error404 = "Coin not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 var listItemEl = document.querySelectorAll(".list-item");
@@ -97,6 +98,8 @@ var priceTickerFetch = function (pairName) {
     fetch(tickerUrl).then(function (response) {
         response.json().then(function (data) {
             clearInterval(myTicker);
+            myTicker = setInterval(priceTickerFetch(pairName), 1000);
+            tickerPrice = data.price;
             // myTicker = setInterval(priceTickerFetch(pairName), 1000);
             // tickerPrice = data.price;
             console.log(tickerPrice);
@@ -187,6 +190,13 @@ var priceChangeDataFetch = function (pairName) {
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
+
+            (data.priceChangePercent > 0); 
+            document.querySelector("#response-container");
+            container.textContent = "";
+            var gifImg = document.createElement("img");
+            gifImg.setAttribute("src", "https://img.memecdn.com/Wall-Street-Bull-Financier-Bernard-Madoff_o_18162.jpg");
+            container.appendChild(gifImg);
         })
     })
 }
@@ -208,8 +218,12 @@ span.onclick = function () {
 }
 
 // When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+}}
