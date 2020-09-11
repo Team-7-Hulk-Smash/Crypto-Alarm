@@ -9,10 +9,11 @@ var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
-var iconEl = document.querySelector("#icon");
+var iconEl = document.getElementById("icon");
+var priceIcon = document.getElementById("icon2");
 var currentPrice = document.querySelector("#price");
 var container = document.querySelector("#response-container");
-var error404 = "Coin not found. Try again!"
+var error404 = "Coin pair not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 var listItemEl = document.querySelectorAll(".list-item");
 var pairName;
@@ -146,8 +147,9 @@ var symbolFetch = function () {
                     if (pairName === data.symbols[i].baseAsset + data.symbols[i].quoteAsset) {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
+                        var quoteLow = quote.toLowerCase();
                         iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
-          
+                        priceIcon.setAttribute("src", `https://cryptoicons.org/api/icon/${quoteLow}/25`);
                     }
                 }
             })
