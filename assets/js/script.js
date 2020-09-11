@@ -29,7 +29,7 @@ var hxListSearch = function (index) {
 
         if (coin.id == "hxItem" + index) {
             pairName = coin.textContent;
-            startPriceFetch(coin.textContent);
+            startPriceFetch();
             console.log(coin.textContent);
         }
     })
@@ -107,7 +107,7 @@ var startPriceFetch = function () {
                 getHistory(data);
                 startPrice = data.price;
                 currentPrice.textContent = "Start Price: $" + data.price;
-                symbolFetch(pairName)
+                symbolFetch()
                 console.log(tickerPrice);
                 console.log(startPrice);
                 console.log(percentChange);
@@ -142,7 +142,6 @@ var symbolFetch = function () {
                 var timeStamp = dateObject.toLocaleDateString('en-US', options);
                 var startTime = document.getElementById("time-stamp");
                 startTime.textContent = "Start Time: " + timeStamp;
-                console.log(timeStamp);
 
                 // MAKE MAIN DISPLAY MORE LEGIBLE
                 for (var i = 0; i < data.symbols.length; i++) {
@@ -226,10 +225,22 @@ var priceTickerFetch = function () {
     fetch(tickerUrl).then(function (response) {
         response.json().then(function (data) {
 
-            var tickerPrice = document.getElementById("priceTicker");
-            tickerPrice.textContent = "$" + data.price;
+            var tickerPriceEl = document.getElementById("priceTicker");
+            var tickerPrice = data.price;
+            tickerPriceEl.textContent = tickerPrice;
+            tickerPrice = parseFloat(tickerPrice);
+            if (pairName.includes('USDT')) {
+                tickerPriceEl.textContent = "$" + tickerPrice;
+            }
+            if (tickerPrice > 1) {
+                roundTickerPrice = tickerPrice.toFixed(2);
+                tickerPriceEl.textContent = "$" + roundTickerPrice;
+            }
+
+
         })
     })
+
 }
 getHistory();
 showTime();
