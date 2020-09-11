@@ -61,13 +61,14 @@ var storeHistory = function () {
     } else {
         historyArr = [];
         historyArr.push(localStorage.getItem('Symbols'));
-        newHistoryArr = historyArr[0].split(',');
-        if (newHistoryArr.includes(pairName)) {
+        historyArr = historyArr[0].split(',');
+        if (historyArr.includes(pairName)) {
             return false;
-        } else {
+        } else if (historyArr.length = 8) {
+            historyArr.pop()
+        } 
             historyArr.unshift(pairName);
-            localStorage.setItem('Symbols', historyArr);
-        }
+            localStorage.setItem('Symbols', historyArr);     
     }
 };
 
@@ -79,12 +80,12 @@ var getHistory = function () {
     } else {
         historyArr = [];
         historyArr.push(localStorage.getItem('Symbols'));
-        newHistoryArr = historyArr[0].split(',');
+        historyArr = historyArr[0].split(',');
 
         // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
-            hxItemEl.textContent = newHistoryArr[i];
+            hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
                 hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
@@ -101,9 +102,9 @@ var startPriceFetch = function () {
 
     fetch(apiUrl).then(function (response) {
         if (response) {
-            storeHistory();
+            storeHistory(pairName);
+            getHistory();
             response.json().then(function (data) {
-                getHistory(data);
                 startPrice = data.price;
                 startPrice = parseFloat(startPrice);
                 startPriceEl.textContent = "Start Price: $" + startPrice;
@@ -120,7 +121,7 @@ var startPriceFetch = function () {
             document.getElementById("errorMsg").innerHTML = error404;
         }
     })
-    
+
 };
 
 // FETCH SYMBOL PAIR NAME DATA
