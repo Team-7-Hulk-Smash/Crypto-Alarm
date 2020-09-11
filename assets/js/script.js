@@ -11,7 +11,9 @@ var coinInputEl = document.querySelector("#base");
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
-var currentPrice = document.querySelector("#price");
+var startPriceEl = document.querySelector("#startPrice");
+var startPrice;
+var tickerPrice;
 var container = document.querySelector("#response-container");
 var error404 = "Coin pair not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
@@ -103,11 +105,9 @@ var startPriceFetch = function () {
             response.json().then(function (data) {
                 getHistory(data);
                 startPrice = data.price;
-                currentPrice.textContent = "Start Price: $" + data.price;
+                startPrice = parseFloat(startPrice);
+                startPriceEl.textContent = "Start Price: $" + startPrice;
                 symbolFetch()
-                console.log(tickerPrice);
-                console.log(startPrice);
-                console.log(percentChange);
             })
         }
     }).catch(function (error) {
@@ -211,9 +211,10 @@ var priceTickerFetch = function () {
         response.json().then(function (data) {
             // DISPLAY DOLLAR SIGN AND ROUND PRICE
             var tickerPriceEl = document.getElementById("priceTicker");
-            var tickerPrice = data.price;
+            tickerPrice = data.price;
             tickerPriceEl.textContent = tickerPrice;
             tickerPrice = parseFloat(tickerPrice);
+            comparePrices();
             if (pairName.includes('USDT')) {
                 tickerPriceEl.textContent = "$" + tickerPrice;
             }
@@ -225,6 +226,13 @@ var priceTickerFetch = function () {
     })
 
 }
+
+var comparePrices = function () {
+    console.log(startPrice);
+    console.log(tickerPrice);
+    
+}
+
 getHistory();
 showTime();
 
