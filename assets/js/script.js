@@ -107,6 +107,9 @@ var startPriceFetch = function () {
                 startPrice = data.price;
                 startPrice = parseFloat(startPrice);
                 startPriceEl.textContent = "Start Price: $" + startPrice;
+                priceTickerFetch();
+                clearInterval(myTicker);
+                myTicker = setInterval(priceTickerFetch, 10000);
                 symbolFetch()
             })
         }
@@ -117,6 +120,7 @@ var startPriceFetch = function () {
             document.getElementById("errorMsg").innerHTML = error404;
         }
     })
+    
 };
 
 // FETCH SYMBOL PAIR NAME DATA
@@ -154,28 +158,29 @@ var symbolFetch = function () {
                 }
             })
         }
-        priceChangeDataFetch();
+
+        // priceChangeDataFetch();
     })
 };
 // FETCH PRICE CHANGE DATA
-var priceChangeDataFetch = function () {
-    var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
-    fetch(dataUrl).then(function (response) {
-        response.json().then(function (data) {
-            var priceChange = document.getElementById("priceChange");
-            console.log(data)
-            priceChange.textContent = "24h Price Change: " + data.priceChange;
-            var priceChangePercent = document.getElementById("priceChangePercent");
-            priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
-            priceTickerFetch(pairName);
+// var priceChangeDataFetch = function () {
+//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
+//     fetch(dataUrl).then(function (response) {
+//         response.json().then(function (data) {
+//             var priceChange = document.getElementById("priceChange");
+//             console.log(data)
+//             priceChange.textContent = "24h Price Change: " + data.priceChange;
+//             var priceChangePercent = document.getElementById("priceChangePercent");
+//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
+//             priceTickerFetch(pairName);
 
 
-            clearInterval(myTicker);
-            myTicker = setInterval(priceTickerFetch, 10000);
+//             clearInterval(myTicker);
+//             myTicker = setInterval(priceTickerFetch, 10000);
 
-        })
-    })
-};
+//         })
+//     })
+// };
 
 var myTicker;
 // FETCH PRICE TICKER 
@@ -234,7 +239,7 @@ var comparePrices = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
             })
-        } else {
+    } else {
         container.innerHTML = "";
     }
 };
