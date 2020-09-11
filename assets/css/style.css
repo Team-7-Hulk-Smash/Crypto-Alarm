@@ -45,6 +45,15 @@
         background-position: 0 50%;
     }
   /* The Modal (background) */
+  }
+
+.imgContainer {
+  float: inline-end;
+  z-index: -1;
+  bottom: 200px;
+  position: absolute;
+}
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

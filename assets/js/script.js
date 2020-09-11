@@ -127,11 +127,12 @@ var startPriceFetch = function (pairName) {
                 console.log(startPrice);
                 console.log(percentChange);
             })
-        } else {
-
+        }
+    }).catch(function(error){
+        {
+            console.log(error)
             modal.style.display = "block";
             document.getElementById("errorMsg").innerHTML = error404;
-
         }
     })
 };
