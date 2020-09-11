@@ -101,9 +101,9 @@ var startPriceFetch = function () {
 
     fetch(apiUrl).then(function (response) {
         if (response) {
-            storeHistory();
+            storeHistory(pairName);
+            getHistory();
             response.json().then(function (data) {
-                getHistory(data);
                 startPrice = data.price;
                 startPrice = parseFloat(startPrice);
                 startPriceEl.textContent = "Start Price: $" + startPrice;
