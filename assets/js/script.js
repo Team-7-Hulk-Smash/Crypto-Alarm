@@ -91,40 +91,23 @@ var getHistory = function () {
     }
 }
 
-var myTicker;
-// FETCH PRICE TICKER 
-var priceTickerFetch = function () {
-    var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
-    fetch(tickerUrl).then(function (response) {
-        response.json().then(function (data) {
-            // clearInterval(myTicker);
-            // myTicker = setInterval(priceTickerFetch(pairName), 1000);
-            var tickerPrice = document.getElementById("priceTicker");
-            tickerPrice.textContent = "$" + data.price;
-            console.log(data);
-        })
-    })
-}
-
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
     var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
 
     fetch(apiUrl).then(function (response) {
-        if (response.ok) {
+        if (response) {
             storeHistory();
             response.json().then(function (data) {
                 getHistory(data);
                 startPrice = data.price;
                 currentPrice.textContent = "Start Price: $" + data.price;
                 symbolFetch()
-
-            })
-        } else {
-
-            modal.style.display = "block";
-            document.getElementById("errorMsg").innerHTML = error404;
-
+            }).catch(function(error){
+                console.log(error);
+                modal.style.display = "block";
+                document.getElementById("errorMsg").innerHTML = error404;
+            })           
         }
     })
 };
@@ -136,8 +119,7 @@ var symbolFetch = function () {
         if (response.ok) {
             response.json().then(function (data) {
 
-
-                // CONVERT UTC CODE TO CURRENT DATE
+                // DISPLAY START TIME
                 var milliseconds = data.serverTime;
                 var dateObject = new Date(milliseconds);
                 var options = {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'};
@@ -184,11 +166,23 @@ var priceChangeDataFetch = function () {
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
-            // priceTickerFetch(pairName);
             
             clearInterval(myTicker);
             myTicker = setInterval(priceTickerFetch, 1000);
+       
+        })
+    })
+}
+
+var myTicker;
+// FETCH PRICE TICKER 
+var priceTickerFetch = function () {
+    var tickerUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
+    fetch(tickerUrl).then(function (response) {
+        response.json().then(function (data) {
         
+            var tickerPrice = document.getElementById("priceTicker");
+            tickerPrice.textContent = "$" + data.price;
         })
     })
 }
