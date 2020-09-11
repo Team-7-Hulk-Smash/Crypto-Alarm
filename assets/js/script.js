@@ -100,6 +100,8 @@ var priceTickerFetch = function (pairName) {
             clearInterval(myTicker);
             myTicker = setInterval(priceTickerFetch(pairName), 1000);
             tickerPrice = data.price;
+            // myTicker = setInterval(priceTickerFetch(pairName), 1000);
+            // tickerPrice = data.price;
             console.log(tickerPrice);
             priceTicker = document.getElementById("priceTicker");
             priceTicker.textContent = "$" + data.price;
