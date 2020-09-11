@@ -166,7 +166,7 @@ var priceChangeDataFetch = function () {
             console.log(data)
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
-            priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
+            priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
 
             if (data.priceChangePercent > 1) {
