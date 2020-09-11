@@ -19,6 +19,8 @@ var startPrice;
 var tickerPrice;
 var percentChange = tickerPrice / startPrice * 100;
 console.log(percentChange);
+var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
+var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
@@ -125,11 +127,12 @@ var startPriceFetch = function (pairName) {
                 console.log(startPrice);
                 console.log(percentChange);
             })
-        } else {
-
+        }
+    }).catch(function(error){
+        {
+            console.log(error)
             modal.style.display = "block";
             document.getElementById("errorMsg").innerHTML = error404;
-
         }
     })
 };
@@ -186,21 +189,39 @@ var priceChangeDataFetch = function (pairName) {
     fetch(dataUrl).then(function (response) {
         response.json().then(function (data) {
             var priceChange = document.getElementById("priceChange");
+            console.log(data)
             priceChange.textContent = "24h Price Change: " + data.priceChange;
             var priceChangePercent = document.getElementById("priceChangePercent");
             priceChangePercent.textContent = "24h Price Change Percentage " + data.priceChangePercent + "%";
             priceTickerFetch(pairName);
 
-            (data.priceChangePercent > 0); 
-            document.querySelector("#response-container");
-            container.textContent = "";
-            var gifImg = document.createElement("img");
-            gifImg.setAttribute("src", "https://img.memecdn.com/Wall-Street-Bull-Financier-Bernard-Madoff_o_18162.jpg");
-            container.appendChild(gifImg);
+            if (data.priceChangePercent > 1){
+                fetch( bullUrl )
+                .then(function (response) {
+                return response.json();
+                })
+                .then(function (response) {
+                container.textContent = "";
+                var gifImg = document.createElement("img");
+                gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
+                container.appendChild(gifImg);
+                })}
+
+            if (data.priceChangePercent < -1){
+                fetch( bearUrl )
+                .then(function (response) {
+                return response.json();
+                })
+                .then(function (response) {
+                console.log(response.data[0]); 
+                container.textContent = "";
+                var gifImg = document.createElement("img");
+                gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
+                container.appendChild(gifImg);
+                    })}
         })
     })
 }
-
 getHistory();
 showTime();
 

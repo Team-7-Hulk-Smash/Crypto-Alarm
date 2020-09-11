@@ -48,6 +48,13 @@ body {
         background-position: 0 50%;
     }
 }
+.imgContainer{
+  float: inline-end;
+  position: absolute;
+  z-index: -1;
+  flex-wrap: wrap;
+  right: 60px;
+}
 
 /* The Modal (background) */
 .modal {
