@@ -10,6 +10,7 @@ A web application that displays current cryptocurrency values in relation to oth
 * Moment.js
 * Binance API
 * Crypto Icons API
+* Giphy API
 
 ![Screenshot](assets/images/screenshot.png)
 
