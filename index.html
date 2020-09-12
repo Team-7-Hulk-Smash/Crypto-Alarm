@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
 
 
-<header class="bg-dark text-white">
+<header class="col s12">
     <h1 class="header text-center bg-dark text-light p-3">Crypto Alarm</h1>
     <h2 id="currentDate" class="bg-dark text-white text-center"></h2>
     <h3 id="time" class="text-center"></h3>
@@ -44,8 +42,9 @@
                             <option value="ETH">ETH</option>
                         </select>
                     </div>
-                    <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
-                            class="oi oi-magnifying-glass"></span></button>
+                    <button id="search-btn" type="submit" name="action" class="btn waves-effect waves-light">
+                        <i class="material-icons right">cloud</i>
+                    </button>
                 </form>
             </section>
 
@@ -72,7 +71,7 @@
             </section>
         </div>
 
-        <section id="pair-wrapper" class="container col-12 col-md-8 p-0 mt-3">
+        <section id="pair-wrapper" class="container col s6 offset-s6">
             <div class="row container">
                 <span class="w-auto mr-2"><img id="icon" class="w-100"></img></span>
                 <div class="w-auto">
@@ -132,7 +131,7 @@
     </main>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
     crossorigin="anonymous"></script>
