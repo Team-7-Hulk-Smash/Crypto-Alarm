@@ -12,6 +12,8 @@ var percentInput = 0.01;
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
+var historyIconEl;
+var hxQuoteIcon;
 var startPriceEl = document.querySelector("#startPrice");
 var startPrice;
 var tickerPrice;
@@ -19,6 +21,7 @@ var container = document.querySelector("#response-container");
 var error404 = "Coin pair not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 var listItemEl = document.querySelectorAll(".list-item");
+var baseLow;
 var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
@@ -54,7 +57,7 @@ var formSubmitHandler = function (event) {
         document.getElementById("errorMsg").innerHTML = error202
     }
 
-  
+
 
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
@@ -72,9 +75,9 @@ var storeHistory = function () {
             return false;
         } else if (historyArr.length = 8) {
             historyArr.pop()
-        } 
-            historyArr.unshift(pairName);
-            localStorage.setItem('Symbols', historyArr);     
+        }
+        historyArr.unshift(pairName);
+        localStorage.setItem('Symbols', historyArr);
     }
 };
 
@@ -97,10 +100,38 @@ var getHistory = function () {
                 hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
             } else {
                 hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
+                historyIconEl = document.getElementById("hxIcon" + i)
+                historyIconFetch(historyArr[i]);
+
             }
         }
     }
 };
+
+var historyIconFetch = function (pair) {
+    var url = `https://api.binance.com/api/v3/exchangeInfo`;
+    fetch(url).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                
+                for (var i = 0; i < data.symbols.length; i++) {
+                    
+                    var base = data.symbols[i].baseAsset;
+                    var quote = data.symbols[i].quoteAsset;
+                    if (pair === data.symbols[i].baseAsset + data.symbols[i].quoteAsset) {
+
+                        var baseLow = base.toLowerCase();
+                        // var quoteLow = quote.toLowerCase();
+                        historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/25`);
+                        // priceIcon.setAttribute("src", `https://cryptoicons.org/api/icon/${quoteLow}/25`);
+
+                    }
+                }
+            })
+
+        }
+    })
+}
 
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
@@ -161,6 +192,7 @@ var symbolFetch = function () {
                         var quoteLow = quote.toLowerCase();
                         iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
                         priceIcon.setAttribute("src", `https://cryptoicons.org/api/icon/${quoteLow}/25`);
+
                     }
                 }
             })
@@ -220,7 +252,7 @@ var comparePrices = function () {
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     var percentChangeEl = document.getElementById("percentChange");
     percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
-    
+
     console.log(percentInput);
 
     if (percentChange >= percentInput) {

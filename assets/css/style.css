@@ -16,10 +16,6 @@ p {
     font-size: 0.8rem;
 }
 
-.future {
-    font-size: 0.7rem;
-}
-
 .list-group-item:hover,
 .btn:hover {
     background-color: lightskyblue;
@@ -48,13 +44,13 @@ body {
         background-position: 0 50%;
     }
 } */
-.imgContainer{
-  float: inline-end;
-  position: absolute;
-  z-index: -1;
-  flex-wrap: wrap;
-  right: 60px;
-}
+/* .imgContainer {
+    /* float: inline-end; */
+    /* position: absolute; */
+    /* z-index: -1;
+    flex-wrap: wrap;
+    right: 60px; */
+} */
 
 /* The Modal (background) */
 .modal {
@@ -106,33 +102,39 @@ body {
 }
 
 
-    .input-field {
-        background-color: white;
-    }
-  /* label color */
-  .input-field label {
+.input-field {
+    background-color: white;
+}
+
+/* label color */
+/* .input-field label {
     color: #000;
-  }
-  /* label focus color */
-  .input-field input[type=text]:focus + label {
+} */
+
+/* label focus color */
+/* .input-field input[type=text]:focus+label {
     color: #000;
-  }
-  /* label underline focus color */
-  .input-field input[type=text]:focus {
+} */
+
+/* label underline focus color */
+/* .input-field input[type=text]:focus {
     border-bottom: 1px solid #E73C7E;
     box-shadow: 0 1px 0 0 #000;
-  }
-  /* valid color */
-  .input-field input[type=text].valid {
+} */
+
+/* valid color */
+/* .input-field input[type=text].valid {
     border-bottom: 1px solid #000;
     box-shadow: 0 1px 0 0 #000;
-  }
-  /* invalid color */
-  .input-field input[type=text].invalid {
+} */
+
+/* invalid color */
+/* .input-field input[type=text].invalid {
     border-bottom: 1px solid #000;
     box-shadow: 0 1px 0 0 #000;
-  }
-  /* icon prefix focus color */
-  .input-field .prefix.active {
+} */
+
+/* icon prefix focus color */
+/* .input-field .prefix.active {
     color: #000;
-  }
+} */

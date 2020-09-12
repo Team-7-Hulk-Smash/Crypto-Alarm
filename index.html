@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" /> -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
@@ -29,18 +29,18 @@
         </div>
     </div>
 
-    <main class="container">
+    <main class="">
 
         <div id="wrapper" class="row">
 
             <div class="col s3">
                 <section class="inputs">
                     <form id="form-input" class="">
-                        <div class="input-field row">
+                        <div class="input-field">
                             <label for="base" class="form-label">Enter Coin Abbreviation (ex: BTC):</label>
-                            <input id="base" name="base" class="input w-50" type="text" autofocus="true">
+                            <input id="base" name="base" class="input" type="text" autofocus="true">
                         </div>
-                        <div class="row">
+                        <div class="">
                             Exchange Unit:
                             <select id="quote" name="quote">
                                 <option value="USDT">USDT</option>
@@ -48,57 +48,69 @@
                                 <option value="ETH">ETH</option>
                             </select>
                         </div>
-                        <div class="input-field row">
+                        <div class="input-field">
                             <label for="change" class="form-label">Enter Percent Change Trigger Value: </label>
-                            <input id="change" name="change" class="input w-50" type="number"
-                                placeholder="Default: '0.01'" step="any" value="0.01">
+                            <input id="change" name="change" class="input" type="number" placeholder="Default: '0.01'"
+                                step="any" value="0.01">
                             <p>Value can be changed without resubmitting.</p>
                         </div>
 
-                        <div class="row">
-                            <button id="search-btn" type="submit" class="btn bg-primary text-white w-50"><span
-                                    class="oi oi-magnifying-glass"></span></button>
+                        <div class="">
+                            <button id="search-btn" class="btn waves-effect waves-light" type="submit"
+                                name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <!-- "oi oi-magnifying-glass" -->
                         </div>
                     </form>
                 </section>
 
                 <section id="searchHx" class="searchHx">
-                    <ul id="searchList" class="searchList list-group">
-                        <li id="hxItem0" onclick="hxListSearch(0)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem1" onclick="hxListSearch(1)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem2" onclick="hxListSearch(2)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem3" onclick="hxListSearch(3)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem4" onclick="hxListSearch(4)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem5" onclick="hxListSearch(5)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem6" onclick="hxListSearch(6)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                        <li id="hxItem7" onclick="hxListSearch(7)"
-                            class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <ul id="searchList" class="searchList list-group collection">
+                        <li class="black collection-item avatar"><img id="hxIcon0">
+                            <span class="title"></span><span id="hxItem0" onclick="hxListSearch(0)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon1"><span id="hxItem1" onclick="hxListSearch(1)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon2"><span id="hxItem2" onclick="hxListSearch(2)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon3"><span id="hxItem3" onclick="hxListSearch(3)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon4"><span id="hxItem4" onclick="hxListSearch(4)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon5"><span id="hxItem5" onclick="hxListSearch(5)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon6"><span id="hxItem6" onclick="hxListSearch(6)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
+                        <li class="black collection-item avatar"><img id="hxIcon7"><span id="hxItem7" onclick="hxListSearch(7)"
+                                class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></span>
+                        </li>
                     </ul>
                 </section>
 
             </div>
 
-            <section id="pair-wrapper" class="col s9">
+            <section id="pair-wrapper" class="col s6">
                 <div class="">
-                    <div class="row">
-                        <span class="w-auto mr-2">
-                            <img id="icon" class="w-100"></img>
+                    <div class="">
+                        <span class="">
+                            <img id="icon" class=""></img>
                         </span>
-                        <div class="w-auto">
+                        <div class="">
                             <h1 id="pair" class="price-data">BTC/USDT</h1>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <span class="w-auto mr-1 mt-1 ml-2">
-                            <img id="icon2" class="w-100"></img>
+                    <div class="">
+                        <span class="">
+                            <img id="icon2" class=""></img>
                         </span>
                         <div>
                             <h3 id="priceTicker">$10,000.0000000000</h3>
@@ -106,15 +118,18 @@
                     </div>
                 </div>
 
-                <div class="data-wrapper row">
+                <div class="data-wrapper">
                     <div class="data">
-                        <div id="startPrice" class="price-data pb-3">Start Price: $0.24187303</div>
-                        <div id="time-stamp" class="price-data pb-3">Start Time: 9/10/2020, 3:09 PM</div>
-                        <div id="percentChange" class="price-data pb-3">Percent Change: 0.00%</div>
+                        <div id="startPrice" class="price-data">Start Price: $0.24187303</div>
+                        <div id="time-stamp" class="price-data">Start Time: 9/10/2020, 3:09 PM</div>
+                        <div id="percentChange" class="price-data">Percent Change: 0.00%</div>
                     </div>
-                    <div id="response-container" class="imgContainer"></div>
                 </div>
             </section>
+
+            <div id="response-container" class="imgContainer col s3"></div>
+
+
         </div>
     </main>
 </body>
