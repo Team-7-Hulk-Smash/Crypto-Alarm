@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
 
 
-<header class="bg-dark text-white">
-    <h1 class="header text-center bg-dark text-light p-3">Crypto Alarm</h1>
-    <h2 id="currentDate" class="bg-dark text-white text-center"></h2>
-    <h3 id="time" class="text-center"></h3>
+<header class="black center">
+    <h1 class="header">Crypto Alarm</h1>
+    <h2 id="currentDate" class=""></h2>
+    <h3 id="time" class=""></h3>
 </header>
 
 <body>
@@ -31,15 +31,15 @@
             </div>
         </div>
 
-        <div id="search-wrapper" class="col-12 col-md-3 p-0">
+        <div id="search-wrapper" class="">
 
-            <section class="col-12 p-0">
-                <form id="form-input" class="text-left">
-                    <div>
+            <section class="">
+                <form id="form-input" class="col s3">
+                    <div class="input-field row s6">
                         <label for="base" class="form-label">Enter Coin Abbreviation (ex: BTC):</label>
                         <input id="base" name="base" class="input w-50" type="text" autofocus="true">
                     </div>
-                    <div class="mt-3">
+                    <div class="input-field row s6">
                         Exchange Unit:
                         <select id="quote" name="quote">
                             <option value="USDT">USDT</option>
@@ -47,7 +47,7 @@
                             <option value="ETH">ETH</option>
                         </select>
                     </div>
-                    <div class="mt-3">
+                    <div class="input-field row s16">
                         <label for="change" class="form-label">Enter Percent Change Trigger Value: </label>
                         <input id="change" name="change" class="input w-50" type="number" placeholder="Default: '0.01'"
                             step="any" value="0.01">
