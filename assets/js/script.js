@@ -8,6 +8,7 @@ setInterval(showTime, 60000);
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var coinInputEl = document.querySelector("#base");
+var percentInput = 0.01;
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
@@ -21,6 +22,8 @@ var listItemEl = document.querySelectorAll(".list-item");
 var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
+
+
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
@@ -50,6 +53,9 @@ var formSubmitHandler = function (event) {
         modal.style.display = "block";
         document.getElementById("errorMsg").innerHTML = error202
     }
+
+  
+
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function () {
@@ -210,12 +216,14 @@ var priceTickerFetch = function () {
 var comparePrices = function () {
     console.log(startPrice);
     console.log(tickerPrice);
-    var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(2);
-    console.log(percentChange);
+    percentInput = document.getElementById("change").value;
+    var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     var percentChangeEl = document.getElementById("percentChange");
     percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
+    
+    console.log(percentInput);
 
-    if (percentChange >= 0.01) {
+    if (percentChange >= percentInput) {
         console.log("THE PRICE IS RISING!");
         fetch(bullUrl)
             .then(function (response) {
@@ -227,7 +235,7 @@ var comparePrices = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
             })
-    } else if (percentChange <= -0.01) {
+    } else if (percentChange <= -percentInput) {
         console.log("THE PRICE IS FALLING!")
         fetch(bearUrl)
             .then(function (response) {
