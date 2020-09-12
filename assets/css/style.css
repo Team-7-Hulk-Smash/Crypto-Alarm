@@ -105,6 +105,10 @@ body {
     cursor: pointer;
 }
 
+
+    .input-field {
+        background-color: white;
+    }
   /* label color */
   .input-field label {
     color: #000;
