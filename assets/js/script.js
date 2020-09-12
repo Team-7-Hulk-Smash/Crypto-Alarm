@@ -109,29 +109,31 @@ var getHistory = function () {
 };
 
 var historyIconFetch = function (pair) {
-    var url = `https://api.binance.com/api/v3/exchangeInfo`;
-    fetch(url).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                
-                for (var i = 0; i < data.symbols.length; i++) {
-                    
-                    var base = data.symbols[i].baseAsset;
-                    var quote = data.symbols[i].quoteAsset;
-                    if (pair === data.symbols[i].baseAsset + data.symbols[i].quoteAsset) {
+    console.log(pair.length);
+    console.log(pair);
+    var baseArr = [];
 
-                        var baseLow = base.toLowerCase();
-                        // var quoteLow = quote.toLowerCase();
-                        historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/25`);
-                        // priceIcon.setAttribute("src", `https://cryptoicons.org/api/icon/${quoteLow}/25`);
+    if (pair.includes("USDT")) {
+        baseArr = pair.split("USDT");
 
-                    }
-                }
-            })
+    } else if (pair.length === 7) {
+        var cut = pair.charAt(4);
+        baseArr = pair.split(cut, 1);
+        
+    } else if (pair.length === 6) {
+        var cut = pair.charAt(3);
+        baseArr = pair.split(cut, 1);
+    }
 
-        }
-    })
+    var base = baseArr[0];
+    console.log(baseArr);
+    console.log(base);
+    base = base.toLowerCase();
+    console.log(base);
+    historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/25`);
+
 }
+
 
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
