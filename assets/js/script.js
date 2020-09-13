@@ -192,8 +192,8 @@ var symbolFetch = function () {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
                         var quoteLow = quote.toLowerCase();
-                        iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
-                        priceIcon.setAttribute("src", `https://cryptoicons.org/api/icon/${quoteLow}/25`);
+                        iconEl.setAttribute("src", `https://static.coincap.io/assets/icons/${baseLow}@2x.png`);
+                        priceIcon.setAttribute("src", `https://static.coincap.io/assets/icons/${quoteLow}@2x.png`);
 
                     }
                 }
