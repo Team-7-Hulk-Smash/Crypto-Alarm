@@ -12,6 +12,7 @@ var percentInput = 0.01;
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
+var historyIconEl;
 var startPriceEl = document.querySelector("#startPrice");
 var startPrice;
 var tickerPrice;
@@ -97,11 +98,39 @@ var getHistory = function () {
                 hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
             } else {
                 hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
+                historyIconEl = document.getElementById("hxIcon" + i)
+                historyIconFetch(historyArr[i]);
+
             }
         }
     }
 };
 
+var historyIconFetch = function (pair) {
+    console.log(pair.length);
+    console.log(pair);
+    var baseArr = [];
+
+    if (pair.includes("USDT")) {
+        baseArr = pair.split("USDT");
+
+    } else if (pair.length === 7) {
+        var cut = pair.charAt(4);
+        baseArr = pair.split(cut, 1);
+        
+    } else if (pair.length === 6) {
+        var cut = pair.charAt(3);
+        baseArr = pair.split(cut, 1);
+    }
+
+    var base = baseArr[0];
+    console.log(baseArr);
+    console.log(base);
+    base = base.toLowerCase();
+    console.log(base);
+    historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/25`);
+
+}
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
     var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
