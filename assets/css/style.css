@@ -16,9 +16,22 @@ p {
     font-size: 0.8rem;
 }
 
-.list-group-item:hover,
+/* .searchHx, .searchList, .list {
+    background-color: black;
+} */
+.searchHx{
+    
+    width: auto;
+    font-size: 1.2rem;
+    
+}
+
+
+
+.slot:hover,
 .btn:hover {
-    background-color: lightskyblue;
+    background: lightskyblue;
+    cursor: pointer;
 }
 
 body {

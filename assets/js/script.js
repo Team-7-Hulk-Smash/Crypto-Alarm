@@ -13,6 +13,7 @@ var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
 var historyIconEl;
+var hxIconEl2;
 var hxQuoteIcon;
 var startPriceEl = document.querySelector("#startPrice");
 var startPrice;
@@ -100,7 +101,8 @@ var getHistory = function () {
                 hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
             } else {
                 hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
-                historyIconEl = document.getElementById("hxIcon" + i)
+                historyIconEl = document.getElementById("hxIcon" + i);
+                hxIconEl2 = document.getElementById("hxSubIcon" + i);
                 historyIconFetch(historyArr[i]);
 
             }
@@ -112,25 +114,28 @@ var historyIconFetch = function (pair) {
     console.log(pair.length);
     console.log(pair);
     var baseArr = [];
+    var quote;
 
     if (pair.includes("USDT")) {
         baseArr = pair.split("USDT");
+        quote = "usdt";
 
     } else if (pair.length === 7) {
         var cut = pair.charAt(4);
         baseArr = pair.split(cut, 1);
+        quote = pair.slice(4,7);
         
     } else if (pair.length === 6) {
         var cut = pair.charAt(3);
         baseArr = pair.split(cut, 1);
+        quote = pair.slice(3,6);
     }
 
     var base = baseArr[0];
-    console.log(baseArr);
-    console.log(base);
+    quote = quote.toLowerCase();
     base = base.toLowerCase();
-    console.log(base);
     historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/25`);
+    hxIconEl2.setAttribute("src",`https://cryptoicons.org/api/icon/${quote}/25`)
 
 }
 
