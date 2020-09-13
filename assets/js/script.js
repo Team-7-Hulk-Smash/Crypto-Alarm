@@ -12,6 +12,7 @@ var percentInput = 0.01;
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
+var hxItemEl;
 var historyIconEl;
 var hxIconEl2;
 var hxQuoteIcon;
@@ -31,12 +32,13 @@ var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQ
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
+    localStorage.setItem('Symbols', historyArr);
+    console.log(historyArr);
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
-            pairName = coin.textContent;
-            startPriceFetch();
-            console.log(coin.textContent);
+            pairName = historyArr[index];
+            startPriceFetch();          
         }
     })
 };
@@ -98,15 +100,15 @@ var getHistory = function () {
             hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
-                hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
+                hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
-                hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
+                hxItemEl.setAttribute("class", "searchTerm list-item");
                 historyIconEl = document.getElementById("hxIcon" + i);
                 hxIconEl2 = document.getElementById("hxSubIcon" + i);
                 historyIconFetch(historyArr[i]);
-
+                hxItemEl.textContent = " ";
             }
-        }
+        } 
     }
 };
 
@@ -123,19 +125,20 @@ var historyIconFetch = function (pair) {
     } else if (pair.length === 7) {
         var cut = pair.charAt(4);
         baseArr = pair.split(cut, 1);
-        quote = pair.slice(4,7);
-        
+        quote = pair.slice(4, 7);
+
     } else if (pair.length === 6) {
         var cut = pair.charAt(3);
         baseArr = pair.split(cut, 1);
-        quote = pair.slice(3,6);
+        quote = pair.slice(3, 6);
     }
 
     var base = baseArr[0];
     quote = quote.toLowerCase();
     base = base.toLowerCase();
-    historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/25`);
-    hxIconEl2.setAttribute("src",`https://cryptoicons.org/api/icon/${quote}/25`)
+    
+    historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
+    hxIconEl2.setAttribute("src", `https://cryptoicons.org/api/icon/${quote}/50`)
 
 }
 
