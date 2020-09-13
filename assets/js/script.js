@@ -279,6 +279,7 @@ window.onclick = function (event) {
             modal.style.display = "none";
         }
     }
+<<<<<<< HEAD
 }
 
   // drag and drop
@@ -307,3 +308,6 @@ $("#remove-coins").on("click", function() {
     localStorage.getItem('Symbols');
   });
   console.log(localStorage)
+=======
+}
+>>>>>>> 4a64413e0863fb74920b868f7109a252191c23a2
