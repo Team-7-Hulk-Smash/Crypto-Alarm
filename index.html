@@ -34,9 +34,11 @@
 
             <section class="col-12 p-0">
                 <form id="form-input" class="text-left">
-                    <label for="base" class="form-label col-12">Enter Coin Abbreviation (ex: BTC):</label>
-                    <input id="base" name="base" class="input col-8" type="text" autofocus="true">
                     <div>
+                        <label for="base" class="form-label">Enter Coin Abbreviation (ex: BTC):</label>
+                        <input id="base" name="base" class="input w-50" type="text" autofocus="true">
+                    </div>
+                    <div class="mt-3">
                         Exchange Unit:
                         <select id="quote" name="quote">
                             <option value="USDT">USDT</option>
@@ -44,8 +46,15 @@
                             <option value="ETH">ETH</option>
                         </select>
                     </div>
-                    <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
-                            class="oi oi-magnifying-glass"></span></button>
+                    <div class="mt-3">
+                        <label for="change" class="form-label">Enter Percent Change Trigger Value: </label>
+                        <input id="change" name="change" class="input w-50" type="number" placeholder="Default: '0.01'" step="any" value="0.01">
+                        <p>Value can be changed without resubmitting.</p>
+                    </div>
+
+                    <div class="mt-3">
+                        <button id="search-btn" type="submit" class="btn bg-primary text-white w-50"><span class="oi oi-magnifying-glass"></span></button>
+                    </div>
                 </form>
             </section>
 
@@ -69,77 +78,46 @@
                     <li id="hxItem7" onclick="hxListSearch(7)"
                         class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                 </ul>
+                <button id="remove-coins" class="btn btn-block btn-danger">Delete All Coins
+                </button>
             </section>
         </div>
 
         <section id="pair-wrapper" class="container col-12 col-md-8 p-0 mt-3">
-            <div class="row container">
-                <span class="w-auto mr-2"><img id="icon" class="w-100"></img></span>
-                <div class="w-auto">
-                    <h1 id="pair" class="price-data">BTC/USDT</h1>
-                    <h3 id="priceTicker">$10,000.0000000000</h3>
+            <div class="container">
+                <div class="row">
+                    <span class="w-auto mr-2">
+                        <img id="icon" class="w-100"></img>
+                    </span>
+                    <div class="w-auto">
+                        <h1 id="pair" class="price-data">BTC/USDT</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <span class="w-auto mr-1 mt-1 ml-2">
+                        <img id="icon2" class="w-100"></img>
+                    </span>
+                    <div>
+                        <h3 id="priceTicker">$10,000.0000000000</h3>
+                    </div>
                 </div>
             </div>
 
             <div class="data-wrapper row container mt-5">
                 <div class="data d-flex flex-column align-items-left">
-                    <div id="time-stamp" class="price-data pb-3"></div>
-                    <div id="priceChange" class="price-data pb-3">24h Price Change: </div>
-                    <div id="priceChangePercent" class="price-data pb-3">24h Price Change Percentage :</div>
-                    <div id="priceTicker"></div>
+                    <div id="startPrice" class="price-data pb-3">Start Price: $0.24187303</div>
                     <div id="time-stamp" class="price-data pb-3">Start Time: 9/10/2020, 3:09 PM</div>
-                    <div id="price" class="price-data pb-3">Start Price: $0.24187303</div>
+                    <div id="percentChange" class="price-data pb-3">Percent Change: 0.00%</div>
+                    <!-- <div id="priceChange" class="price-data pb-3">24h Price Change:  0.00000530 </div>
+                    <div id="priceChangePercent" class="price-data pb-3">24h Percent Change: 0.136%</div> -->
+                
+
+
                 </div>
                 <div id="response-container" class="imgContainer"></div>
             </div>
         </section>
-
-        <!-- <section id="fiveDay" class="w-100 mt-2">
-                    <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
-
-                    <article class="row col-12 container w-auto m-0">
-                        <div class="row w-100">
-                            <div id="day0" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon0" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-
-
-                            <div id="day1" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon1" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-
-
-                            <div id="day2" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon2" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-
-
-                            <div id="day3" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon3" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-
-
-                            <div id="day4" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon4" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-                        </div>
-                    </article>
-                </section> -->
 
     </main>
 </body>
@@ -148,6 +126,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 <script src="./assets/js/script.js"></script>
 
 
