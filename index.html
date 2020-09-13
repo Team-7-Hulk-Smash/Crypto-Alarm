@@ -37,27 +37,28 @@
             <section id="search" class="col s3">
                 <div class="inputs">
                     <form id="form-input" class="">
-                        <div class="input-field">
-                            <label for="base" class="form-label">Enter Coin Abbreviation (ex: BTC):</label>
-                            <input id="base" name="base" class="input" type="text" autofocus="true">
-                        </div>
                         <div class="">
-                            Exchange Unit:
-                            <select id="quote" name="quote">
+                            <label for="base" class="form-label white-text">Enter Coin Abbreviation (ex: BTC):</label>
+                            <input id="base" name="base" class="input white" type="text" autofocus="true">
+                        </div>
+                        <div class="input-field col s12 black-text">
+                            <select id="quote" name="quote" class="black-text">
+                                <option value="" disabled selected>Exchange Unit:</option>
                                 <option value="USDT">USDT</option>
                                 <option value="BTC">BTC</option>
                                 <option value="ETH">ETH</option>
                             </select>
-                        </div>
-                        <div class="input-field">
-                            <label for="change" class="form-label">Enter Percent Change Trigger Value: </label>
-                            <input id="change" name="change" class="input" type="number" placeholder="Default: '0.01'"
-                                step="any" value="0.01">
-                            <p>Value can be changed without resubmitting.</p>
+                            <label class="white-text">Choose Exchange Unit</label>
                         </div>
 
                         <div class="">
-                            <button id="search-btn" class="btn waves-effect waves-light" type="submit"
+                            <label for="change" class="form-label white-text">Enter Percent Change Trigger Value: </label>
+                            <input id="change" name="change" class="input white" type="number" placeholder="Default: '0.01'"
+                                step="any" value="0.01">
+                        </div>
+
+                        <div class="">
+                            <button id="search-btn" class="btn pulse waves-effect waves-light" type="submit"
                                 name="action">Search
                                 <i class="material-icons right">search</i>
                             </button>
@@ -138,6 +139,12 @@
 
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, );
+  });
+    </script>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
