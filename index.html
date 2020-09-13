@@ -5,19 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
 
 
-<header class="col s12">
+<header class="center-align flow-text">
     <h1 class="header text-center bg-dark text-light p-3">Crypto Alarm</h1>
-    <h2 id="currentDate" class="bg-dark text-white text-center"></h2>
-    <h3 id="time" class="text-center"></h3>
+    <h5 id="currentDate" class="bg-dark text-white text-center"></h5>
+    <h6 id="time" class="text-center"></h6>
 </header>
 
+<div class="divider"></div>
+
 <body>
-    <main class="container-fluid row d-flex m-0">
+    <main class="container-fluid flow-text">
         <!-- testing to see if modal works -->
         <div id="myModal" class="modal">
 
@@ -28,28 +31,39 @@
             </div>
         </div>
 
-        <div id="search-wrapper" class="col-12 col-md-3 p-0">
+        <div class="section"></div>
 
-            <section class="col-12 p-0">
-                <form id="form-input" class="text-left">
-                    <label for="base" class="form-label col-12">Enter Coin Abbreviation (ex: BTC):</label>
-                    <input id="base" name="base" class="input col-8" type="text" autofocus="true">
+        <div id="search-wrapper" class="form-s container flow-text">
+
+            <section class="flow-text left">
+                <form id="form-input" class="left">
                     <div>
+                        <label for="base" class="form-label">Enter Coin Abbreviation (ex: BTC):</label>
+                        <input id="base" name="base" class="input w-50" type="text" autofocus="true">
+                    </div>
+                    <div class="input col s12">
                         Exchange Unit:
-                        <select id="quote" name="quote">
+                        <select id="quote" name="quote" class="input-field">
                             <option value="USDT">USDT</option>
                             <option value="BTC">BTC</option>
                             <option value="ETH">ETH</option>
                         </select>
                     </div>
-                    <button id="search-btn" type="submit" name="action" class="btn waves-effect waves-light">
-                        <i class="material-icons right">cloud</i>
-                    </button>
+                    <div class="mt-3">
+                        <label for="change" class="form-label">Enter Percent Change Trigger Value: </label>
+                    <input id="change" name="change" class="input w-50" type="number" placeholder="Default: '0.01'" step="any" value="0.01">
+                    <p>Value can be changed without resubmitting.</p>
+                    </div>
+
+                    <div class="">
+                        <button id="search-btn" type="submit" class="btn-floating pulse waves-effect waves-light">
+                        <i class="material-icons right">search</i></button>
+                    </div>
                 </form>
             </section>
 
-            <section id="searchHx" class="p-0 col-12 w-auto
-            searchHx mt-3">
+            <section id="searchHx" class="search-wrapper
+            searchHx">
                 <ul id="searchList" class="searchList list-group">
                     <li id="hxItem0" onclick="hxListSearch(0)"
                         class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
@@ -71,25 +85,43 @@
             </section>
         </div>
 
-        <section id="pair-wrapper" class="container col s6 offset-s6">
-            <div class="row container">
-                <span class="w-auto mr-2"><img id="icon" class="w-100"></img></span>
-                <div class="w-auto">
-                    <h1 id="pair" class="price-data">BTC/USDT</h1>
-                    <h3 id="priceTicker">$10,000.0000000000</h3>
+     
+        <section id="pair-wrapper" class="col s6 offset-s6 right flow-text">
+            <div class="">
+                <div class="">
+                    <span class="">
+                        <img id="icon" class=""></img>
+                    </span>
+                    <div class="">
+                        <h1 id="pair" class="center price-data">BTC/USDT</h1>
+                    </div>
+                </div>
+
+                <div class="">
+                    <span class="">
+                        <img id="icon2" class=""></img>
+                    </span>
+                    <div class="flow-text">
+                        <h3 id="priceTicker">$10,000.0000000000</h3>
+                    </div>
                 </div>
             </div>
 
-            <div class="data-wrapper row container mt-5">
-                <div class="data d-flex flex-column align-items-left">
-                    <div id="time-stamp" class="price-data pb-3">Start Time: 9/10/2020, 3:09 PM</div>
-                    <div id="price" class="price-data pb-3">Start Price: $0.24187303</div>
-                    <div id="priceChange" class="price-data pb-3">24h Price Change: 1.00153056</div>
-                    <div id="priceChangePercent" class="price-data pb-3">24h Price Change Percentage: -2.0000005426%</div>
+            <div class="right">
+                <div class="">
+                    <div id="startPrice" class="price-data">Start Price: $0.24187303</div>
+                    <div id="time-stamp" class="price-data">Start Time: 9/10/2020, 3:09 PM</div>
+                    <div id="percentChange" class="price-data">Percent Change: 0.00%</div>
+                    <!-- <div id="priceChange" class="price-data pb-3">24h Price Change:  0.00000530 </div>
+                    <div id="priceChangePercent" class="price-data pb-3">24h Percent Change: 0.136%</div> -->
+                
+
+
                 </div>
+                <div id="response-container" class="imgContainer"></div>
             </div>
         </section>
-
+    
         <!-- <section id="fiveDay" class="w-100 mt-2">
                     <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
                     <article class="row col-12 container w-auto m-0">
