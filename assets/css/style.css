@@ -137,6 +137,11 @@ body {
   top: 20px;
 }
 
+.form-label {
+  font-size: 20px;
+}
+
+
 /* label color */
 /* .input-field label {
   color: #000;

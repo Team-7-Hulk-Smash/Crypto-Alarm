@@ -26,18 +26,21 @@
         <div id="wrapper" class="row">
             <section id="search" class="col s3">
                 <div class="inputs">
-                    <form id="form-input" class="">
+                    <form id="form-input" class="col black">
                         <div class="">
                             <label for="base" class="form-label white-text">Enter Coin Abbreviation (ex: BTC):</label>
                             <input id="base" name="base" class="input white center" type="text" autofocus="true">
                         </div>
+                        
+                        <label class="unit form-label white-text">Choose Exchange Unit:</label>
                         <div class="input-field col s12 black-text">
+                
                             <select id="quote" name="quote" class="black-text">
                                 <option value="USDT">USDT</option>
                                 <option value="BTC">BTC</option>
                                 <option value="ETH">ETH</option>
-                            </select>
-                            <label class="white-text">Choose Exchange Unit:</label>
+                            </select> 
+
                         </div>
 
                         <div class="">
@@ -97,7 +100,7 @@
                      </div>
                 </div>
             </section>
-            <section id="pair-wrapper" class="col s7">
+            <section id="pair-wrapper" class="col s5">
                 <div class="col s12 flow-text">
                     <div class="row">
                         <span class="col s3 ">
