@@ -149,6 +149,15 @@ body {
   margin:10px;
 }
 
+.data-wrapper {
+  margin-top: 125px;
+
+}
+
+#pair-wrapper {
+  height: 68.5vh
+}
+
 /* label color */
 /* .input-field label {
   color: #000;
