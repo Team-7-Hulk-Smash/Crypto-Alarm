@@ -1,152 +1,161 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
+.header{
+  margin-top: 0%;
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
 body {
-    background-color: var(--primary);
-    margin: 0;
-    padding: 0;
-    font-family: "IBM Plex Sans", sans-serif;
-    color: var(--dark);
-    line-height: 1.5;
-    font-size: 1rem;
+  background-color: var(--primary);
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--dark);
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
 p {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 /* .searchHx, .searchList, .list {
-    background-color: black;
+  background-color: black;
 } */
 .searchHx{
-    
-    width: auto;
-    font-size: 1.2rem;
-    
+  width: auto;
+  font-size: 1.2rem;
+  
 }
-
 
 
 .slot:hover,
 .btn:hover {
-    background: lightskyblue;
-    cursor: pointer;
+  background: lightskyblue;
+  cursor: pointer;
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    color: #fff;
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-    background-size: 400% 400%;
-    position: relative;
-    animation: change 10s ease-in-out infinite;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  position: relative;
+  animation: change 10s ease-in-out infinite;
 }
 
 @keyframes change {
-    0% {
-        background-position: 0 50%;
-    }
+  0% {
+      background-position: 0 50%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+      background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0 50%;
-    }
+  100% {
+      background-position: 0 50%;
+  }
 } 
-/* .imgContainer {
-    /* float: inline-end; */
-    /* position: absolute; */
-    /* z-index: -1;
-    flex-wrap: wrap;
-    right: 60px;
-} */
+.imgContainer {
+  position: relative;
+  z-index: -1;
+  flex-wrap: wrap;
+  top: -250px;
+}
 
 /* The Modal (background) */
 .modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    /* background-color: rgb(0, 0, 0); */
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    color: black;
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
+  color: black;
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .input-field {
-    background-color: white;
+  background-color: white;
+}
+
+.currency {
+  font-size: 50px;
 }
 
 /* label color */
 /* .input-field label {
-    color: #000;
+  color: #000;
 } */
 
 /* label focus color */
 /* .input-field input[type=text]:focus+label {
-    color: #000;
+  color: #000;
 } */
 
 /* label underline focus color */
 /* .input-field input[type=text]:focus {
-    border-bottom: 1px solid #E73C7E;
-    box-shadow: 0 1px 0 0 #000;
+  border-bottom: 1px solid #E73C7E;
+  box-shadow: 0 1px 0 0 #000;
 } */
 
 /* valid color */
 /* .input-field input[type=text].valid {
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
 } */
 
 /* invalid color */
 /* .input-field input[type=text].invalid {
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
 } */
 
 /* icon prefix focus color */
 /* .input-field .prefix.active {
-    color: #000;
+  color: #000;
 } */

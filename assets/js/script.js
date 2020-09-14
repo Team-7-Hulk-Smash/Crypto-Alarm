@@ -4,7 +4,6 @@ var showTime = function () {
     $("#time").text(moment().format('hh:mm a'));
 }
 setInterval(showTime, 60000);
-
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var coinInputEl = document.querySelector("#base");
@@ -13,7 +12,7 @@ var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
 var hxItemEl;
-var historyIconEl;
+var hxIconEl;
 var hxIconEl2;
 var hxQuoteIcon;
 var startPriceEl = document.querySelector("#startPrice");
@@ -28,8 +27,6 @@ var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
-
-
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     localStorage.setItem('Symbols', historyArr);
@@ -38,7 +35,7 @@ var hxListSearch = function (index) {
 
         if (coin.id == "hxItem" + index) {
             pairName = historyArr[index];
-            startPriceFetch();          
+            startPriceFetch();
         }
     })
 };
@@ -59,7 +56,6 @@ var formSubmitHandler = function (event) {
         modal.style.display = "block";
         document.getElementById("errorMsg").innerHTML = error202
     }
-
 
 
 };
@@ -103,7 +99,7 @@ var getHistory = function () {
                 hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
                 hxItemEl.setAttribute("class", "searchTerm list-item");
-                historyIconEl = document.getElementById("hxIcon" + i);
+                hxIconEl = document.getElementById("hxIcon" + i);
                 hxIconEl2 = document.getElementById("hxSubIcon" + i);
                 historyIconFetch(historyArr[i]);
                 hxItemEl.textContent = " ";
@@ -136,8 +132,8 @@ var historyIconFetch = function (pair) {
     var base = baseArr[0];
     quote = quote.toLowerCase();
     base = base.toLowerCase();
-    
-    historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
+
+    hxIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
     hxIconEl2.setAttribute("src", `https://cryptoicons.org/api/icon/${quote}/50`)
 
 }
@@ -321,3 +317,37 @@ window.onclick = function (event) {
         }
     }
 }
+
+// drag and drop
+$(".searchHx .list-group").sortable({
+    connectWith: $(".searchHx .list-group"),
+    scroll: false,
+    tolerance: "pointer",
+    helper: "clone",
+    activate: function (event) {
+        console.log("activate", this);
+    },
+    deactivate: function (event) {
+        console.log("decativate", this);
+    },
+    over: function (event) {
+        console.log("over", this);
+    },
+    out: function (event) {
+        console.log("out", this);
+    },
+})
+
+// DELETE SEARCH HISTORY
+$("#remove-coins").on("click", function () {
+    localStorage.clear('Symbols');
+    historyArr = [];
+
+        for (var i = 0; i < 8; i++) {
+            hxIconEl = document.getElementById("hxIcon" + i);
+            hxIconEl2 = document.getElementById("hxSubIcon" + i);
+            hxIconEl.setAttribute("src", ``);
+            hxIconEl2.setAttribute("src", ``);
+    };
+});
+console.log(localStorage);

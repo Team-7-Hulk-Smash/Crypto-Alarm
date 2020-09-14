@@ -1,6 +1,6 @@
+  
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +9,21 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
-
-
-<header class="black center">
+<header class="header black center flow-text">
     <h1 class="header">Crypto Alarm</h1>
-    <h2 id="currentDate" class=""></h2>
-    <h3 id="time" class=""></h3>
+    <h4 id="currentDate"></h4>
+    <h5 id="time"></h5>
 </header>
-
 <body>
     <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <p id="errorMsg"></p>
         </div>
     </div>
-
     <main class="">
-
         <div id="wrapper" class="row">
-
             <section id="search" class="col s3">
                 <div class="inputs">
                     <form id="form-input" class="">
@@ -55,93 +48,89 @@
                         </div>
 
                         <div class="center">
-                            <button id="search-btn" class=" btn pulse waves-effect waves-light" type="submit"
-                                name="action">Search
+                            <button id="search-btn" class="btn pulse waves-effect waves-light" type="submit"
+                                name="action">search
                                 <i class="material-icons right">search</i>
                             </button>
-                            <!-- "oi oi-magnifying-glass" -->
                         </div>
                     </form>
                 </div>
 
                 <div id="searchHx" class="searchHx">
-                    <ul id="searchList" class="black searchList  collection col s12">
+                    <ul id="searchList" class="black searchList collection col s12 flow-text">
                         
-                        <li onclick="hxListSearch(0)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon0"><img id="hxSubIcon0" src="" alt="">
+                        <li onclick="hxListSearch(0)" class="slot black collection-item valign-wrapper"><img id="hxIcon0" class= "responsive-img center"><img id="hxSubIcon0" class= "responsive-img center">
                             <span id="hxItem0"  class="searchTerm list-item"></span>
                         </li>
 
-                        <li onclick="hxListSearch(1)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon1"><img id="hxSubIcon1" src="" alt="">
-                            <span id="hxItem1"  class="searchTerm list-item"></span>
+                        <li onclick="hxListSearch(1)" class="slot black collection-item valign-wrapper"><img id="hxIcon1" class= "responsive-img center"><img id="hxSubIcon1" class= "responsive-img center">
+                            <span id="hxItem1"  class="searchTerm list-item text-align:center;"></span>
                         </li>
 
-                        <li onclick="hxListSearch(2)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon2"><img id="hxSubIcon2" src="" alt="">
+                        <li onclick="hxListSearch(2)" class="slot black collection-item valign-wrapper"><img id="hxIcon2" class= "responsive-img center"><img id="hxSubIcon2" class= "responsive-img center">
                             <span id="hxItem2"  class="searchTerm list-item"></span>
                         </li>
 
-                        <li onclick="hxListSearch(3)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon3"><img id="hxSubIcon3" src="" alt="">
+                        <li onclick="hxListSearch(3)" class="slot black collection-item valign-wrapper"><img id="hxIcon3" class= "responsive-img center"><img id="hxSubIcon3" class= "responsive-img center">
                             <span id="hxItem3"  class="searchTerm list-item"></span>
                         </li>
 
-                        <li onclick="hxListSearch(4)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon4"><img id="hxSubIcon4" src="" alt="">
+                        <li onclick="hxListSearch(4)" class="slot black collection-item valign-wrapper"><img id="hxIcon4" class= "responsive-img center"><img id="hxSubIcon4" class= "responsive-img center">
                             <span id="hxItem4"  class="searchTerm list-item"></span>
                         </li>
 
-                        <li onclick="hxListSearch(5)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon5"><img id="hxSubIcon5" src="" alt="">
+                        <li onclick="hxListSearch(5)" class="slot black collection-item valign-wrapper"><img id="hxIcon5" class= "responsive-img center"><img id="hxSubIcon5" class= "responsive-img center">
                             <span id="hxItem5"  class="searchTerm list-item"></span>
                         </li>
 
-                        <li onclick="hxListSearch(6)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon6"><img id="hxSubIcon6" src="" alt="">
+                        <li onclick="hxListSearch(6)" class="slot black collection-item valign-wrapper"><img id="hxIcon6" class= "responsive-img center"><img id="hxSubIcon6" class= "responsive-img center">
                             <span id="hxItem6"  class="searchTerm list-item"></span>
                         </li>
 
-                        <li onclick="hxListSearch(7)" class="slot black collection-item avatar valign-wrapper"><img id="hxIcon7"><img id="hxSubIcon7" src="" alt="">
+                        <li onclick="hxListSearch(7)" class="slot black collection-item valign-wrapper"><img id="hxIcon7" class= "responsive-img center"><img id="hxSubIcon7" class= "responsive-img center">
                             <span id="hxItem7"  class="searchTerm list-item"></span>
                         </li>
                     </ul>
+                    <div class="center">
+                    <button id="remove-coins" class="btn waves-effect waves-light">Delete
+                    </button>
+                     </div>
                 </div>
-
             </section>
-
             <section id="pair-wrapper" class="col s6">
-
-                <div class="col s12">
+                <div class="col s12 flow-text">
                     <div class="row">
-                        <span class="col s2 ">
-                            <img id="icon" class=""></img>
+                        <span class="col s3 ">
+                            <img id="icon" class="right responsive-img"></img>
                         </span>
-                        <div class="col s10">
-                            <h1 id="pair" class="price-data">BTC/USDT</h1>
+                        <div class="col s9">
+                            <h1 id="pair" class="currency price-data flow-text">BTC/USDT</h1>
                         </div>
                     </div>
-
                     <div class="row">
-                        <span class="col s2">
-                            <img id="icon2" class=""></img>
+                        <span class="col s3">
+                            <img id="icon2" class="right flow-text responsive-img"></img>
                         </span>
-                        <div class="col s10">
-                            <h3 id="priceTicker">$10,000.00</h3>
+                        <div class="col s9">
+                            <h3 id="priceTicker" class="">$10,000.00</h3>
                         </div>
-                    </div>
-                </div>
-
-                <div class="data-wrapper col s12">
-                    <div class="row">
-                        <div class="col s2"></div>
-                        <div class="data col s10">
-                            <div id="startPrice" class="col s12 price-data">Start Price: $0.24187303</div>
-                            <div id="time-stamp" class="col s12 price-data">Start Time: 9/10/2020, 3:09 PM</div>
-                            <div id="percentChange" class="col s12 price-data">Percent Change: 0.00%</div>
+                        <div class="data-wrapper col s12">
+                            <div class="row">
+                                <div class="col s3"></div>
+                                <div class="data col s9">
+                                    <div id="startPrice" class="col s12 price-data">Start Price: $0.24187303</div>
+                                    <div id="time-stamp" class="col s12 price-data">Start Time: 9/10/2020, 3:09 PM</div>
+                                    <div id="percentChange" class="col s12 price-data">Percent Change: 0.00%</div>
+                                
+                                <section id="response-container" class="imgContainer responsive-img col s2 offset-s10 right"></section>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <section id="response-container" class="imgContainer col s3"></section>
-
-
-        </div>
-    </main>
+            </div>
+        </main>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('select');
@@ -154,8 +143,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/js/script.js"></script>
 
 
 </html>
+
