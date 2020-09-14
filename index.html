@@ -26,18 +26,21 @@
         <div id="wrapper" class="row">
             <section id="search" class="col s3">
                 <div class="inputs">
-                    <form id="form-input" class="">
+                    <form id="form-input" class="black col s7 ">
                         <div class="">
                             <label for="base" class="form-label white-text">Enter Coin Abbreviation (ex: BTC):</label>
                             <input id="base" name="base" class="input white center" type="text" autofocus="true">
                         </div>
+                        
+                        <label class="unit form-label white-text">Choose Exchange Unit:</label>
                         <div class="input-field col s12 black-text">
+                
                             <select id="quote" name="quote" class="black-text">
                                 <option value="USDT">USDT</option>
                                 <option value="BTC">BTC</option>
                                 <option value="ETH">ETH</option>
-                            </select>
-                            <label class="white-text">Choose Exchange Unit</label>
+                            </select> 
+
                         </div>
 
                         <div class="">
@@ -57,7 +60,7 @@
                 </div>
 
                 <div id="searchHx" class="searchHx">
-                    <ul id="searchList" class="black searchList collection col s12 flow-text">
+                    <ul id="searchList" class="black searchList collection col s7 flow-text">
                         
                         <li onclick="hxListSearch(0)" class="slot black collection-item valign-wrapper"><img id="hxIcon0" class= "responsive-img center"><img id="hxSubIcon0" class= "responsive-img center">
                             <span id="hxItem0"  class="searchTerm list-item"></span>
@@ -90,17 +93,18 @@
                         <li onclick="hxListSearch(7)" class="slot black collection-item valign-wrapper"><img id="hxIcon7" class= "responsive-img center"><img id="hxSubIcon7" class= "responsive-img center">
                             <span id="hxItem7"  class="searchTerm list-item"></span>
                         </li>
+                        <div class="center">
+                            <button id="remove-coins" class="btn waves-effect waves-light">Delete<i class="material-icons right">delete</i>
+                            </button>
+                             </div>
                     </ul>
-                    <div class="center">
-                    <button id="remove-coins" class="btn waves-effect waves-light">Delete
-                    </button>
-                     </div>
+                 
                 </div>
             </section>
-            <section id="pair-wrapper" class="col s6">
+            <section id="pair-wrapper" class="col s5">
                 <div class="col s12 flow-text">
                     <div class="row">
-                        <span class="col s3 ">
+                        <span class="col s3">
                             <img id="icon" class="right responsive-img"></img>
                         </span>
                         <div class="col s9">
@@ -118,9 +122,9 @@
                             <div class="row">
                                 <div class="col s3"></div>
                                 <div class="data col s9">
-                                    <div id="startPrice" class="col s12 price-data">Start Price: $0.24187303</div>
-                                    <div id="time-stamp" class="col s12 price-data">Start Time: 9/10/2020, 3:09 PM</div>
-                                    <div id="percentChange" class="col s12 price-data">Percent Change: 0.00%</div>
+                                    <div id="startPrice" class="col s10 price-data">Start Price: $0.24187303</div>
+                                    <div id="time-stamp" class="col s10 price-data">Start Time: 9/10/2020, 3:09 PM</div>
+                                    <div id="percentChange" class="col s10 price-data">Percent Change: 0.00%</div>
                                 
                                 <section id="response-container" class="imgContainer responsive-img col s2 offset-s10 right"></section>
                                 </div>
