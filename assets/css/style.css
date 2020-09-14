@@ -66,13 +66,10 @@ body {
   }
 } 
 .imgContainer {
-  float: inline-end;
-  position: absolut;
+  position: relative;
   z-index: -1;
   flex-wrap: wrap;
-  right: ;
-  bottom: ;
-  padding: 15px;
+  top: -250px;
 }
 
 /* The Modal (background) */
@@ -126,7 +123,9 @@ body {
   background-color: white;
 }
 
-
+.currency {
+  font-size: 50px;
+}
 
 /* label color */
 /* .input-field label {
