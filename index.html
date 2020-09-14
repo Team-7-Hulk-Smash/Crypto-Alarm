@@ -1,172 +1,153 @@
+  
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
-
-
-<header class="center-align flow-text">
-    <h1 class="header text-center bg-dark text-light p-3">Crypto Alarm</h1>
-    <h5 id="currentDate" class="bg-dark text-white text-center"></h5>
-    <h6 id="time" class="text-center"></h6>
+<header class="header black center flow-text">
+    <h1 class="header">Crypto Alarm</h1>
+    <h4 id="currentDate"></h4>
+    <h5 id="time"></h5>
 </header>
-
-<div class="divider"></div>
-
 <body>
-    <main class="container-fluid flow-text">
-        <!-- testing to see if modal works -->
-        <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p id="errorMsg"></p>
-            </div>
-        </div>
-    <div class="row">
-        <div id="search-wrapper" class="form-s col s6 container flow-text">
-
-            <section class="flow-text left">
-                <form id="form-input" class="left">
-                    <div>
-                        <label for="base" class="form-label">Enter Coin Abbreviation (ex: BTC):</label>
-                        <input id="base" name="base" class="input w-50" type="text" autofocus="true">
-                    </div>
-                    <div class="input col s12">
-                        Exchange Unit:
-                        <select id="quote" name="quote" class="input-field">
-                            <option value="USDT">USDT</option>
-                            <option value="BTC">BTC</option>
-                            <option value="ETH">ETH</option>
-                        </select>
-                    </div>
-                
-                    <div class="mt-3">
-                        <label for="change" class="form-label">Enter Percent Change Trigger Value: </label>
-                    <input id="change" name="change" class="input w-50" type="number" placeholder="Default: '0.01'" step="any" value="0.01">
-                    <p>Value can be changed without resubmitting.</p>
-                    </div>
-
-                    <div class="">
-                        <button id="search-btn" type="submit" class="btn-floating pulse waves-effect waves-light">
-                        <i class="material-icons">search</i></button>
-                    </div>
-                </form>
-            </section>
-
-            <section id="searchHx" class="search-wrapper
-            searchHx">
-                <ul id="searchList" class="searchList list-group">
-                    <li id="hxItem0" onclick="hxListSearch(0)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem1" onclick="hxListSearch(1)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem2" onclick="hxListSearch(2)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem3" onclick="hxListSearch(3)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem4" onclick="hxListSearch(4)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem5" onclick="hxListSearch(5)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem6" onclick="hxListSearch(6)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                    <li id="hxItem7" onclick="hxListSearch(7)"
-                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
-                </ul>
-            </section>
-        </div>
-
-        <div class="col s6">
-        <section id="pair-wrapper" class="left flow-text">
-            <div class="">
-                <div class="">
-                    <span class="">
-                        <img id="icon" class="left"></img>
-                    </span>
-                    <div class="">
-                        <h1 id="pair" class="center price-data">BTC/USDT</h1>
-                    </div>
-                </div>
-
-                <div class="">
-                    <span class="">
-                        <img id="icon2" class="left"></img>
-                    </span>
-                    <div class="flow-text">
-                        <h3 id="priceTicker">$10,000.0000000000</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="right">
-                <div class="">
-                    <div id="startPrice" class="price-data">Start Price: $0.24187303</div>
-                    <div id="time-stamp" class="price-data">Start Time: 9/10/2020, 3:09 PM</div>
-                    <div id="percentChange" class="price-data">Percent Change: 0.00%</div>
-                    <!-- <div id="priceChange" class="price-data pb-3">24h Price Change:  0.00000530 </div>
-                    <div id="priceChangePercent" class="price-data pb-3">24h Percent Change: 0.136%</div> -->
-                
-
-
-                </div>
-                <div id="response-container" class="imgContainer"></div>
-            </div>
-        </section>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="errorMsg"></p>
         </div>
     </div>
-        <!-- <section id="fiveDay" class="w-100 mt-2">
-                    <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
-                    <article class="row col-12 container w-auto m-0">
-                        <div class="row w-100">
-                            <div id="day0" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon0" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-                            <div id="day1" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon1" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-                            <div id="day2" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon2" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-                            <div id="day3" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon3" class="col-6"></span>
-                                <p></p>
-                                <p></p>
-                            </div>
-                            <div id="day4" class="">
-                                <p class="text-center pt-2"></p>
-                                <span id="icon4" class="col-6"></span>
-                                <p></p>
-                                <p></p>
+    <main class="">
+        <div id="wrapper" class="row">
+            <section id="search" class="col s3">
+                <div class="inputs">
+                    <form id="form-input" class="">
+                        <div class="">
+                            <label for="base" class="form-label white-text">Enter Coin Abbreviation (ex: BTC):</label>
+                            <input id="base" name="base" class="input white center" type="text" autofocus="true">
+                        </div>
+                        <div class="input-field col s12 black-text">
+                            <select id="quote" name="quote" class="black-text">
+                                <option value="USDT">USDT</option>
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                            </select>
+                            <label class="white-text">Choose Exchange Unit</label>
+                        </div>
+
+                        <div class="">
+                            <label for="change" class="form-label white-text">Enter Percent Change Trigger Value:
+                            </label>
+                            <input id="change" name="change" class="input white center" type="number"
+                                placeholder="Default: '0.01'" step="any" value="0.01">
+                        </div>
+
+                        <div class="center">
+                            <button id="search-btn" class="btn pulse waves-effect waves-light" type="submit"
+                                name="action">search
+                                <i class="material-icons right">search</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="searchHx" class="searchHx">
+                    <ul id="searchList" class="black searchList collection col s12 flow-text">
+                        
+                        <li onclick="hxListSearch(0)" class="slot black collection-item valign-wrapper"><img id="hxIcon0" class= "responsive-img center"><img id="hxSubIcon0" class= "responsive-img center">
+                            <span id="hxItem0"  class="searchTerm list-item"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(1)" class="slot black collection-item valign-wrapper"><img id="hxIcon1" class= "responsive-img center"><img id="hxSubIcon1" class= "responsive-img center">
+                            <span id="hxItem1"  class="searchTerm list-item text-align:center;"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(2)" class="slot black collection-item valign-wrapper"><img id="hxIcon2" class= "responsive-img center"><img id="hxSubIcon2" class= "responsive-img center">
+                            <span id="hxItem2"  class="searchTerm list-item"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(3)" class="slot black collection-item valign-wrapper"><img id="hxIcon3" class= "responsive-img center"><img id="hxSubIcon3" class= "responsive-img center">
+                            <span id="hxItem3"  class="searchTerm list-item"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(4)" class="slot black collection-item valign-wrapper"><img id="hxIcon4" class= "responsive-img center"><img id="hxSubIcon4" class= "responsive-img center">
+                            <span id="hxItem4"  class="searchTerm list-item"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(5)" class="slot black collection-item valign-wrapper"><img id="hxIcon5" class= "responsive-img center"><img id="hxSubIcon5" class= "responsive-img center">
+                            <span id="hxItem5"  class="searchTerm list-item"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(6)" class="slot black collection-item valign-wrapper"><img id="hxIcon6" class= "responsive-img center"><img id="hxSubIcon6" class= "responsive-img center">
+                            <span id="hxItem6"  class="searchTerm list-item"></span>
+                        </li>
+
+                        <li onclick="hxListSearch(7)" class="slot black collection-item valign-wrapper"><img id="hxIcon7" class= "responsive-img center"><img id="hxSubIcon7" class= "responsive-img center">
+                            <span id="hxItem7"  class="searchTerm list-item"></span>
+                        </li>
+                    </ul>
+                    <div class="center">
+                    <button id="remove-coins" class="btn waves-effect waves-light">Delete
+                    </button>
+                     </div>
+                </div>
+            </section>
+            <section id="pair-wrapper" class="col s6">
+                <div class="col s12 flow-text">
+                    <div class="row">
+                        <span class="col s3 ">
+                            <img id="icon" class="right responsive-img"></img>
+                        </span>
+                        <div class="col s9">
+                            <h1 id="pair" class="currency price-data flow-text">BTC/USDT</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="col s3">
+                            <img id="icon2" class="right flow-text responsive-img"></img>
+                        </span>
+                        <div class="col s9">
+                            <h3 id="priceTicker" class="">$10,000.00</h3>
+                        </div>
+                        <div class="data-wrapper col s12">
+                            <div class="row">
+                                <div class="col s3"></div>
+                                <div class="data col s9">
+                                    <div id="startPrice" class="col s12 price-data">Start Price: $0.24187303</div>
+                                    <div id="time-stamp" class="col s12 price-data">Start Time: 9/10/2020, 3:09 PM</div>
+                                    <div id="percentChange" class="col s12 price-data">Percent Change: 0.00%</div>
+                                
+                                <section id="response-container" class="imgContainer responsive-img col s2 offset-s10 right"></section>
+                                </div>
                             </div>
                         </div>
-                    </article>
-                </section> -->
-
-    </main>
+                    </div>
+                </div>
+            </section>
+            </div>
+        </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, );
+        });
+    </script>
 </body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/js/script.js"></script>
 
 
