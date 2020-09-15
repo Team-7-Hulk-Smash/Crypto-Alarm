@@ -69,7 +69,7 @@ body {
   position: relative;
   flex-wrap: wrap;
   top: -513px;
-  margin-right: 340px
+  margin-right: 340px;
 }
 
 /* The Modal (background) */
@@ -129,12 +129,12 @@ body {
 
 #icon {
   position: relative;
-  top: 35px;
+  top: 40px;
 }
 
 #icon2 {
   position: relative;
-  top: -20px;
+  top: -13px;
 }
 
 .form-label {
