@@ -156,6 +156,9 @@ body {
 
 #pair-wrapper {
   height: 35.2vh;
+  border: 1px solid #e0e0e0;
+  opacity: 25%;
+  color: white;
 }
 
 .main-data {
@@ -171,6 +174,14 @@ a {
   color: black;
   font-size: 25px;
 }
+
+#form-input{
+  border: 1px solid #e0e0e0;
+}
+header{
+  border-bottom: 2px solid #e0e0e0;
+}
+
 
 /* label color */
 /* .input-field label {
