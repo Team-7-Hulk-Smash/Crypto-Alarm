@@ -12,10 +12,6 @@ header {
   width: 100%;
 }
 
-#form-input{
-  border: 1px solid #e0e0e0;
-}
-
 .row{
   margin: 0%;
 }
@@ -44,13 +40,6 @@ p {
 /* .searchHx, .searchList, .list {
   background-color: black;
 } */
-
-.searchHx{
-  width: auto;
-  font-size: 1.2rem;
-  
-}
-
 
 .slot:hover,
 .btn:hover {
@@ -146,7 +135,7 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
+/* search form */
 .input-field {
   background-color: white;
 }
@@ -165,6 +154,11 @@ body {
   top: -20px;
 }
 
+.searchHx{
+  width: auto;
+  font-size: 1.2rem;
+}
+
 .form-label {
   font-size: 15px;
 }
@@ -177,6 +171,10 @@ body {
   margin:10px;
 }
 
+#form-input{
+  border: 1px solid #e0e0e0;
+}
+/* main info display */
 .data-wrapper {
   margin-top: 0px;
     margin-right: 20px;
@@ -208,12 +206,6 @@ a {
   font-size: 25px;
 }
 
-#form-input{
-  border: 1px solid #e0e0e0;
-}
-header{
-  border-bottom: 2px solid #e0e0e0;
-}
 
 
 /* label color */
