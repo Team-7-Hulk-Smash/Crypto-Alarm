@@ -78,11 +78,10 @@ body {
       background-position: 0 50%;
   }
 } 
-#imgContainer {
+.imgContainer {
   position: relative;
   flex-wrap: wrap;
-  top: -513px;
-  margin-right: 340px;
+  top: 65px;
 }
 
 /* The Modal (background) */
