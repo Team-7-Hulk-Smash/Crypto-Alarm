@@ -12,7 +12,7 @@ var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
 var hxItemEl;
-var historyIconEl;
+var hxIconEl;
 var hxIconEl2;
 var hxQuoteIcon;
 var startPriceEl = document.querySelector("#startPrice");
@@ -35,7 +35,7 @@ var hxListSearch = function (index) {
 
         if (coin.id == "hxItem" + index) {
             pairName = historyArr[index];
-            startPriceFetch();          
+            startPriceFetch();
         }
     })
 };
@@ -99,7 +99,7 @@ var getHistory = function () {
                 hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
                 hxItemEl.setAttribute("class", "searchTerm list-item");
-                historyIconEl = document.getElementById("hxIcon" + i);
+                hxIconEl = document.getElementById("hxIcon" + i);
                 hxIconEl2 = document.getElementById("hxSubIcon" + i);
                 historyIconFetch(historyArr[i]);
                 hxItemEl.textContent = " ";
@@ -132,8 +132,8 @@ var historyIconFetch = function (pair) {
     var base = baseArr[0];
     quote = quote.toLowerCase();
     base = base.toLowerCase();
-    
-    historyIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
+
+    hxIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
     hxIconEl2.setAttribute("src", `https://cryptoicons.org/api/icon/${quote}/50`)
 
 }
@@ -318,29 +318,36 @@ window.onclick = function (event) {
     }
 }
 
-  // drag and drop
+// drag and drop
 $(".searchHx .list-group").sortable({
     connectWith: $(".searchHx .list-group"),
     scroll: false,
     tolerance: "pointer",
     helper: "clone",
-    activate: function(event){
-      console.log("activate", this);
+    activate: function (event) {
+        console.log("activate", this);
     },
-    deactivate: function(event){
-      console.log("decativate", this);
+    deactivate: function (event) {
+        console.log("decativate", this);
     },
-    over: function(event){
-      console.log("over", this);
+    over: function (event) {
+        console.log("over", this);
     },
-    out: function(event){
-      console.log("out", this);
+    out: function (event) {
+        console.log("out", this);
     },
 })
 
-  // remove all tasks
-$("#remove-coins").on("click", function() {
+// DELETE SEARCH HISTORY
+$("#remove-coins").on("click", function () {
     localStorage.clear('Symbols');
-    localStorage.getItem('Symbols');
-  });
-  console.log(localStorage)
+    historyArr = [];
+
+        for (var i = 0; i < 8; i++) {
+            hxIconEl = document.getElementById("hxIcon" + i);
+            hxIconEl2 = document.getElementById("hxSubIcon" + i);
+            hxIconEl.setAttribute("src", ``);
+            hxIconEl2.setAttribute("src", ``);
+    };
+});
+console.log(localStorage);
