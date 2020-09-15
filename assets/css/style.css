@@ -4,10 +4,12 @@
 
 header {
   border: 2px solid #e0e0e0;
+  width: 100%;
 }
 
 .header{
   margin-top: 0%;
+  width: 100%;
 }
 
 #form-input{
