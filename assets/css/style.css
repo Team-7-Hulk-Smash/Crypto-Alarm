@@ -134,7 +134,7 @@ body {
 
 #icon2 {
   position: relative;
-  top: 20px;
+  top: -40px;
 }
 
 .form-label {
@@ -150,12 +150,21 @@ body {
 }
 
 .data-wrapper {
-  margin-top: 125px;
+  margin-top: 50px;
 
 }
 
 #pair-wrapper {
-  height: 68.5vh
+  height: 35.2vh;
+  display: flex;
+}
+
+.main-data {
+  margin-top: -20px;
+}
+
+.main-data2 {
+  margin-top: -60px
 }
 
 /* label color */

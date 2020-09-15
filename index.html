@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
-<header class="header black center flow-text">
-    <h1 class="header">Crypto Alarm</h1>
-    <h4 id="currentDate"></h4>
-    <h5 id="time"></h5>
+<header class="header black flow-text text-left row">
+    <h1 class="header text-left col s12">Crypto Alarm</h1>
+    <div class="col s12">
+        <span id="currentDate" class="text-left"></span>
+        <span id="time" class="text-left"></span>
+    </div>
 </header>
+<br>
 <body>
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -34,13 +37,11 @@
                         
                         <label class="unit form-label white-text">Choose Exchange Unit:</label>
                         <div class="input-field col s12 black-text">
-                
                             <select id="quote" name="quote" class="black-text">
                                 <option value="USDT">USDT</option>
                                 <option value="BTC">BTC</option>
                                 <option value="ETH">ETH</option>
                             </select> 
-
                         </div>
 
                         <div class="">
@@ -102,8 +103,8 @@
                 </div>
             </section>
             <section id="pair-wrapper" class="black flow-text col s5">
-                <div class="col s12 flow-text">
-                    <div class="row">
+                <div class="col s12">
+                    <div class="main-data row">
                         <span class="col s3">
                             <img id="icon" class="right responsive-img"></img>
                         </span>
@@ -111,11 +112,11 @@
                             <h1 id="pair" class="currency price-data flow-text">BTC/USDT</h1>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="pairContainer2  row">
                         <span class="col s3">
-                            <img id="icon2" class="right flow-text responsive-img"></img>
+                            <img id="icon2" class="right responsive-img"></img>
                         </span>
-                        <div class="col s9">
+                        <div class="main-data2 col s9">
                             <h3 id="priceTicker" class="">$10,000.00</h3>
                         </div>
                         <div class="data-wrapper col s12">
