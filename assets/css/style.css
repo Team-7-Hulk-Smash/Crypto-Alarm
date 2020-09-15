@@ -1,28 +1,29 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 header {
-  border: 2px solid #e0e0e0;
-  width: 100%;
+    border: 2px solid #e0e0e0;
+    width: 100%;
 }
 
-.header{
-  margin-top: 0%;
-  width: 100%;
+.header {
+    margin-top: 0%;
+    width: 100%;
 }
 
-.row{
-  margin: 0%;
+.row {
+    margin: 0%;
 }
 
 /* Hx ICONS */
 img.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+/* 
 body {
   background-color: var(--primary);
   margin: 0;
@@ -31,10 +32,11 @@ body {
   color: var(--dark);
   line-height: 1.5;
   font-size: 1rem;
-}
+  overflow-x: hidden;
+} */
 
 p {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 /* .searchHx, .searchList, .list {
@@ -43,140 +45,149 @@ p {
 
 .slot:hover,
 .btn:hover {
-  background: lightskyblue;
-  cursor: pointer;
+    background: lightskyblue;
+    cursor: pointer;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
-  color: #fff;
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-  background-size: 400% 400%;
-  position: relative;
-  animation: change 10s ease-in-out infinite;
+    font-family: "IBM Plex Sans", sans-serif;
+    line-height: 1.5;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    color: #fff;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
+    overflow-x: hidden;
 }
 
 @keyframes change {
-  0% {
-      background-position: 0 50%;
-  }
+    0% {
+        background-position: 0 50%;
+    }
 
-  50% {
-      background-position: 100% 50%;
-  }
+    50% {
+        background-position: 100% 50%;
+    }
 
-  100% {
-      background-position: 0 50%;
-  }
-} 
+    100% {
+        background-position: 0 50%;
+    }
+}
+
 .imgContainer {
-  /* position: relative; */
-  /* flex-wrap: wrap; */
-  /* top: 65px; */
-  height: auto;
-  width: 100%;
+    /* position: relative; */
+    /* flex-wrap: wrap; */
+    /* top: 65px; */
+    height: auto;
+    width: 100%;
 }
 
 @media only screen and (max-width: 1024px) {
-  .imgContainer {
-    width: 100%;
-    /* left: -75px !important; */
-    position: relative;
-    flex-wrap: wrap;
-    top: 175px;
-    height: auto;
-  }
+    .imgContainer {
+        width: 100%;
+        /* left: -75px !important; */
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
 }
 
 /* The Modal (background) */
 .modal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  color: black;
-  background-color: #fefefe;
-  margin: 15% auto;
-  /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  /* Could be more or less, depending on screen size */
+    color: black;
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 /* search form */
 .input-field {
-  background-color: white;
+    background-color: white;
 }
 
 .currency {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 #icon {
-  position: relative;
-  top: 35px;
+    position: relative;
+    top: 35px;
 }
 
 #icon2 {
-  position: relative;
-  top: -20px;
+    position: relative;
+    top: -20px;
 }
 
-.searchHx{
-  width: auto;
-  font-size: 1.2rem;
+.searchHx {
+    width: auto;
+    font-size: 1.2rem;
 }
 
 .form-label {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 #search-btn {
-  margin: 10px;
+    margin: 10px;
 }
 
 #remove-coins {
-  margin:10px;
+    margin: 10px;
 }
 
-#form-input{
-  border: 1px solid #e0e0e0;
+#form-input {
+    border: 1px solid #e0e0e0;
 }
+
 /* main info display */
 .data-wrapper {
-  margin-top: 0px;
+    margin-top: 0px;
     margin-right: 20px;
     width: 100%;
 }
@@ -187,23 +198,23 @@ body {
 }
 
 #pair-wrapper {
-  height: 35.4vh;
-  border: 1px solid #e0e0e0;
-  color: white;
+    height: 35.4vh;
+    border: 1px solid #e0e0e0;
+    color: white;
 }
 
 .main-data {
-  margin-top: -20px;
-  ;
+    margin-top: -20px;
+    ;
 }
 
 .main-data2 {
-  margin-top: -40px
+    margin-top: -40px
 }
 
 a {
-  color: white;
-  font-size: 25px;
+    color: white;
+    font-size: 25px;
 }
 
 
