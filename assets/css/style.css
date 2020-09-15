@@ -67,9 +67,9 @@ body {
 } 
 .imgContainer {
   position: relative;
-  z-index: -1;
   flex-wrap: wrap;
-  top: -220px;
+  top: -513px;
+  margin-right: 340px
 }
 
 /* The Modal (background) */
@@ -134,7 +134,7 @@ body {
 
 #icon2 {
   position: relative;
-  top: 20px;
+  top: -20px;
 }
 
 .form-label {
@@ -148,6 +148,41 @@ body {
 #remove-coins {
   margin:10px;
 }
+
+.data-wrapper {
+  margin-top: 60px;
+
+}
+
+#pair-wrapper {
+  height: 35.4vh;
+  border: 1px solid #e0e0e0;
+  color: white;
+}
+
+.main-data {
+  margin-top: -20px;
+  ;
+}
+
+.main-data2 {
+  margin-top: -40px
+}
+
+a {
+  
+
+  color: white;
+  font-size: 25px;
+}
+
+#form-input{
+  border: 1px solid #e0e0e0;
+}
+header{
+  border-bottom: 2px solid #e0e0e0;
+}
+
 
 /* label color */
 /* .input-field label {
