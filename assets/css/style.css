@@ -150,13 +150,12 @@ body {
 }
 
 .data-wrapper {
-  margin-top: 50px;
+  margin-top: 75px;
 
 }
 
 #pair-wrapper {
   height: 35.2vh;
-  display: flex;
 }
 
 .main-data {
