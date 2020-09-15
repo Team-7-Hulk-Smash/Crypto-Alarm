@@ -82,6 +82,19 @@ body {
   position: relative;
   flex-wrap: wrap;
   top: 65px;
+  height: auto;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .imgContainer {
+    width: 100%;
+    left: -75px !important;
+    position: relative;
+    flex-wrap: wrap;
+    top: 175px;
+    height: auto;
+  }
 }
 
 /* The Modal (background) */
