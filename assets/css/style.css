@@ -77,17 +77,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .imgContainer {
-    width: 100%;
-    left: -75px !important;
-    position: relative;
-    flex-wrap: wrap;
-    top: 175px;
-    height: auto;
-  }
-}
-
 @media only screen and (max-width: 1024px) {
   .imgContainer {
     width: 100%;
