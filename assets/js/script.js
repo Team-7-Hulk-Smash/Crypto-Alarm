@@ -263,6 +263,7 @@ var comparePrices = function () {
                 container.textContent = "";
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
+                gifImg.setAttribute("class", "responsive-img");
                 container.appendChild(gifImg);
             })
     } else if (percentChange <= -percentInput) {
