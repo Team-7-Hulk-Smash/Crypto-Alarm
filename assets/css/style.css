@@ -67,9 +67,9 @@ body {
 } 
 .imgContainer {
   position: relative;
-  z-index: -1;
   flex-wrap: wrap;
-  top: -240px;
+  top: -515px;
+  margin-right: 340px
 }
 
 /* The Modal (background) */
@@ -155,14 +155,14 @@ body {
 }
 
 #pair-wrapper {
-  height: 35.2vh;
+  height: 35.4vh;
   border: 1px solid #e0e0e0;
-  opacity: 25%;
   color: white;
 }
 
 .main-data {
   margin-top: -20px;
+  ;
 }
 
 .main-data2 {
@@ -170,8 +170,9 @@ body {
 }
 
 a {
-  padding: 167px;
-  color: black;
+  
+
+  color: white;
   font-size: 25px;
 }
 
