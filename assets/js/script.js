@@ -11,6 +11,7 @@ var percentInput = 0.01;
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
+var collectionItem;
 var hxItemEl;
 var hxIconEl;
 var hxIconEl2;
@@ -82,7 +83,10 @@ var storeHistory = function () {
 
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function () {
+    var searchBox = document.getElementById("searchHx");
+    var deleteBtn = document.getElementById("deleteBtn");
     if (localStorage.getItem('Symbols') === null) {
+        searchBox.setAttribute("class", "hide black searchList collection col s7 flow-text");
         return false;
 
     } else {
@@ -92,12 +96,20 @@ var getHistory = function () {
 
         // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
-            var hxItemEl = document.querySelector("#hxItem" + i);
+            var hxItemEl = document.querySelector("#hxItem" + i)
+            ;
+            var collectionItem = document.getElementById("liEl" + i);
             hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
+                
+                collectionItem.setAttribute("class", "hide slot black collection-item valign-wrapper");
                 hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
+                
+                searchBox.setAttribute("class", "searchHx");
+                deleteBtn.setAttribute("class", "delete-btn center");
+                collectionItem.setAttribute("class", "slot black collection-item valign-wrapper");
                 hxItemEl.setAttribute("class", "searchTerm list-item");
                 hxIconEl = document.getElementById("hxIcon" + i);
                 hxIconEl2 = document.getElementById("hxSubIcon" + i);
@@ -206,25 +218,6 @@ var symbolFetch = function () {
         // priceChangeDataFetch();
     })
 };
-// FETCH PRICE CHANGE DATA
-// var priceChangeDataFetch = function () {
-//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
-//     fetch(dataUrl).then(function (response) {
-//         response.json().then(function (data) {
-//             var priceChange = document.getElementById("priceChange");
-//             console.log(data)
-//             priceChange.textContent = "24h Price Change: " + data.priceChange;
-//             var priceChangePercent = document.getElementById("priceChangePercent");
-//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
-//             priceTickerFetch(pairName);
-
-
-//             clearInterval(myTicker);
-//             myTicker = setInterval(priceTickerFetch, 10000);
-
-//         })
-//     })
-// };
 
 var myTicker;
 // FETCH PRICE TICKER 
@@ -342,12 +335,39 @@ $(".searchHx .list-group").sortable({
 $("#remove-coins").on("click", function () {
     localStorage.clear('Symbols');
     historyArr = [];
+    var deleteButton = document.getElementById("deleteBtn");
+    deleteButton.setAttribute("class", "hide");
+    var searchContainer = document.getElementById("searchHx")
+    ;
+    searchContainer.setAttribute("class", "hide searchHx");
 
         for (var i = 0; i < 8; i++) {
+            var sideBar = document.getElementById("liEl" + i);
+            
             hxIconEl = document.getElementById("hxIcon" + i);
             hxIconEl2 = document.getElementById("hxSubIcon" + i);
+            sideBar.setAttribute("class", "hide slot black collection-item valign-wrapper");
             hxIconEl.setAttribute("src", ``);
             hxIconEl2.setAttribute("src", ``);
     };
 });
-console.log(localStorage);
+
+// FETCH PRICE CHANGE DATA
+// var priceChangeDataFetch = function () {
+//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
+//     fetch(dataUrl).then(function (response) {
+//         response.json().then(function (data) {
+//             var priceChange = document.getElementById("priceChange");
+//             console.log(data)
+//             priceChange.textContent = "24h Price Change: " + data.priceChange;
+//             var priceChangePercent = document.getElementById("priceChangePercent");
+//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
+//             priceTickerFetch(pairName);
+
+
+//             clearInterval(myTicker);
+//             myTicker = setInterval(priceTickerFetch, 10000);
+
+//         })
+//     })
+// };
