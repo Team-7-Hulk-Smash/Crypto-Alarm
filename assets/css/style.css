@@ -4,10 +4,12 @@
 
 header {
   border: 2px solid #e0e0e0;
+  width: 100%;
 }
 
 .header{
   margin-top: 0%;
+  width: 100%;
 }
 
 .row{
@@ -20,16 +22,6 @@ img.center {
   margin-left: auto;
   margin-right: auto;
   }
-
-body {
-  background-color: var(--primary);
-  margin: 0;
-  padding: 0;
-  font-family: "IBM Plex Sans", sans-serif;
-  color: var(--dark);
-  line-height: 1.5;
-  font-size: 1rem;
-}
 
 p {
   font-size: 0.8rem;
@@ -74,6 +66,26 @@ body {
   /* top: 65px; */
   height: auto;
   width: 100%;
+}
+
+@media only screen and (max-width: 375px) {
+  #pair{
+    font-size: 35px !important;
+  }
+  #priceTicker{
+    font-size: 35px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .imgContainer {
+    width: 100%;
+    left: -75px !important;
+    position: relative;
+    flex-wrap: wrap;
+    top: 175px;
+    height: auto;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
