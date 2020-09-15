@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
-<header class="header black center flow-text">
-    <h1 class="header">Crypto Alarm</h1>
-    <h4 id="currentDate"></h4>
-    <h5 id="time"></h5>
+<header class="header black flow-text text-left row">
+    <h1 class="header text-left col s12">Crypto Alarm</h1>
+    <div class="col s12">
+        <span id="currentDate" class="text-left"></span>
+        <span id="time" class="text-left"></span>
+    </div>
 </header>
 <br></br>
 <body>
@@ -25,7 +27,7 @@
     </div>
     <main class="">
         <div id="wrapper" class="row">
-            <section id="search" class="col s3">
+            <section id="search" class="col s3 m3 l3">
                 <div class="inputs">
                     <form id="form-input" class="black col s7">
                         <div class="">
@@ -43,7 +45,7 @@
                             </select>
                         </div>
 
-                        <div class="">
+                        <div>
                             <label for="change" class="form-label white-text">Enter Percent Change Trigger Value:
                             </label>
                             <input id="change" name="change" class="input white center" type="number"
@@ -102,7 +104,7 @@
                  
                 </div>
             </section>
-            <section id="pair-wrapper" class="col s6">
+            <section id="pair-wrapper" class="black col s5">
                 <div class="col s12 flow-text">
                     <div class="row">
                         <span class="col s3">
@@ -147,10 +149,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/js/script.js"></script>
 
