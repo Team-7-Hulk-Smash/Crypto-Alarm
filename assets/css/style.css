@@ -166,6 +166,11 @@ body {
   margin-top: -60px
 }
 
+a {
+  color: black;
+  font-size: 25px;
+}
+
 /* label color */
 /* .input-field label {
   color: #000;
