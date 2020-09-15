@@ -83,8 +83,10 @@ var storeHistory = function () {
 
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function () {
+    var searchBox = document.getElementById("searchHx");
     var deleteBtn = document.getElementById("deleteBtn");
     if (localStorage.getItem('Symbols') === null) {
+        searchBox.setAttribute("class", "hide black searchList collection col s7 flow-text");
         return false;
 
     } else {
@@ -100,10 +102,12 @@ var getHistory = function () {
             hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
+                
                 collectionItem.setAttribute("class", "hide slot black collection-item valign-wrapper");
                 hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
                 
+                searchBox.setAttribute("class", "searchHx");
                 deleteBtn.setAttribute("class", "delete-btn center");
                 collectionItem.setAttribute("class", "slot black collection-item valign-wrapper");
                 hxItemEl.setAttribute("class", "searchTerm list-item");
@@ -333,6 +337,9 @@ $("#remove-coins").on("click", function () {
     historyArr = [];
     var deleteButton = document.getElementById("deleteBtn");
     deleteButton.setAttribute("class", "hide");
+    var searchContainer = document.getElementById("searchHx")
+    ;
+    searchContainer.setAttribute("class", "hide searchHx");
 
         for (var i = 0; i < 8; i++) {
             var sideBar = document.getElementById("liEl" + i);
