@@ -260,7 +260,7 @@ var comparePrices = function () {
                 return response.json();
             })
             .then(function (response) {
-                container.textContent = "This coin is BULLISH since you started tracking.";
+                container.textContent = "BULLISH!";
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
@@ -273,7 +273,7 @@ var comparePrices = function () {
             })
             .then(function (response) {
                 console.log(response.data[0]);
-                container.textContent = "This coin is BEARISH since you started tracking.";
+                container.textContent = "BEARISH!";
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
