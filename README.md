@@ -18,6 +18,6 @@ A web application that displays current cryptocurrency values in relation to oth
 https://team-7-hulk-smash.github.io/The-A-Project/
 
 ## Contribution
-Made with heroic aggression by Team Hulk
+Made with heroic resolve by Team Hulk
 
 ### ©️2020 Team Hulk
