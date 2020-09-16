@@ -2,30 +2,47 @@
     box-sizing: border-box;
 }
 
-body {
-    /* background-color: var(--primary); */
-    margin: 0;
-    padding: 0;
-    font-family: "IBM Plex Sans", sans-serif;
-    /* color: var(--dark); */
-    line-height: 1.5;
-    font-size: 1rem;
+header {
+    border: 2px solid #e0e0e0;
+    width: 100%;
+}
+
+.header {
+    margin-top: 0%;
+    width: 100%;
+}
+
+.row {
+    margin: 0%;
+}
+
+/* Hx ICONS */
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p {
     font-size: 0.8rem;
 }
 
-.future {
-    font-size: 0.7rem;
-}
+/* .searchHx, .searchList, .list {
+  background-color: black;
+} */
 
-.list-group-item:hover,
+.slot:hover,
 .btn:hover {
-    background-color: lightskyblue;
+    background: lightskyblue;
+    cursor: pointer;
 }
 
 body {
+    font-family: "IBM Plex Sans", sans-serif;
+    line-height: 1.5;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100vh;
     color: #fff;
@@ -33,6 +50,7 @@ body {
     background-size: 400% 400%;
     position: relative;
     animation: change 10s ease-in-out infinite;
+    overflow-x: hidden;
 }
 
 @keyframes change {
@@ -48,12 +66,55 @@ body {
         background-position: 0 50%;
     }
 }
-.imgContainer{
-  float: inline-end;
-  position: absolute;
-  z-index: -1;
-  flex-wrap: wrap;
-  right: 60px;
+
+.imgContainer {
+    /* position: relative; */
+    /* flex-wrap: wrap; */
+    /* top: 65px; */
+    height: auto;
+    width: 100%;
+    margin-top: 28px;
+}
+
+@media only screen and (max-width: 375px) {
+  .imgContainer{
+    width: 100%;
+    margin-top: -25px !important;
+    left: -50px !important;
+    position: relative;
+    flex-wrap: wrap;
+    top: 175px;
+    height: auto;
+  }
+  #pair{
+    font-size: 35px !important;
+  }
+  #priceTicker{
+    font-size: 35px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .imgContainer {
+      width: 100%;
+      margin-top: -25px !important;
+      left: -50px !important;
+      position: relative;
+      flex-wrap: wrap;
+      top: 175px;
+      height: auto;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+    .imgContainer {
+        width: 100%;
+        /* left: -75px !important; */
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
 }
 
 /* The Modal (background) */
@@ -71,8 +132,6 @@ body {
     height: 100%;
     /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
-    /* background-color: rgb(0, 0, 0); */
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/ opacity */
@@ -104,3 +163,110 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* search form */
+.input-field {
+    background-color: white;
+}
+
+.currency {
+    font-size: 50px;
+}
+
+#icon {
+    position: relative;
+    top: 35px;
+}
+
+#icon2 {
+    position: relative;
+    top: -20px;
+}
+
+.searchHx {
+    width: auto;
+    font-size: 1.2rem;
+}
+
+.form-label {
+    font-size: 15px;
+}
+
+#search-btn {
+    margin: 10px;
+}
+
+#remove-coins {
+    margin: 10px;
+}
+
+#form-input {
+    border: 1px solid #e0e0e0;
+}
+
+/* main info display */
+.data-wrapper {
+    margin-top: 0px;
+    margin-right: 20px;
+    width: 100%;
+}
+
+.sub-data {
+    padding: 0;
+    width: auto;
+}
+
+#pair-wrapper {
+    height: 35.4vh;
+    border: 1px solid #e0e0e0;
+    color: white;
+}
+
+.main-data {
+    margin-top: -20px;
+    ;
+}
+
+.main-data2 {
+    margin-top: -40px
+}
+
+a {
+    color: white;
+    font-size: 25px;
+}
+
+
+
+/* label color */
+/* .input-field label {
+  color: #000;
+} */
+
+/* label focus color */
+/* .input-field input[type=text]:focus+label {
+  color: #000;
+} */
+
+/* label underline focus color */
+/* .input-field input[type=text]:focus {
+  border-bottom: 1px solid #E73C7E;
+  box-shadow: 0 1px 0 0 #000;
+} */
+
+/* valid color */
+/* .input-field input[type=text].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+} */
+
+/* invalid color */
+/* .input-field input[type=text].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+} */
+
+/* icon prefix focus color */
+/* .input-field .prefix.active {
+  color: #000;
+} */

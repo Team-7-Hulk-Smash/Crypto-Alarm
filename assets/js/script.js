@@ -4,7 +4,6 @@ var showTime = function () {
     $("#time").text(moment().format('hh:mm a'));
 }
 setInterval(showTime, 60000);
-
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var coinInputEl = document.querySelector("#base");
@@ -12,6 +11,11 @@ var percentInput = 0.01;
 var pairDisplayName = document.querySelector("#pair");
 var iconEl = document.getElementById("icon");
 var priceIcon = document.getElementById("icon2");
+var collectionItem;
+var hxItemEl;
+var hxIconEl;
+var hxIconEl2;
+var hxQuoteIcon;
 var startPriceEl = document.querySelector("#startPrice");
 var startPrice;
 var tickerPrice;
@@ -19,20 +23,20 @@ var container = document.querySelector("#response-container");
 var error404 = "Coin pair not found. Try again!"
 var error202 = "Please enter a valid coin abbreviation (Ex: 'BTC' for Bitcoin)."
 var listItemEl = document.querySelectorAll(".list-item");
+var baseLow;
 var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
-
-
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
+    localStorage.setItem('Symbols', historyArr);
+    console.log(historyArr);
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
-            pairName = coin.textContent;
+            pairName = historyArr[index];
             startPriceFetch();
-            console.log(coin.textContent);
         }
     })
 };
@@ -54,7 +58,6 @@ var formSubmitHandler = function (event) {
         document.getElementById("errorMsg").innerHTML = error202
     }
 
-  
 
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
@@ -72,15 +75,18 @@ var storeHistory = function () {
             return false;
         } else if (historyArr.length = 8) {
             historyArr.pop()
-        } 
-            historyArr.unshift(pairName);
-            localStorage.setItem('Symbols', historyArr);     
+        }
+        historyArr.unshift(pairName);
+        localStorage.setItem('Symbols', historyArr);
     }
 };
 
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function () {
+    var searchBox = document.getElementById("searchHx");
+    var deleteBtn = document.getElementById("deleteBtn");
     if (localStorage.getItem('Symbols') === null) {
+        searchBox.setAttribute("class", "hide black searchList collection col s7 flow-text");
         return false;
 
     } else {
@@ -90,17 +96,60 @@ var getHistory = function () {
 
         // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
-            var hxItemEl = document.querySelector("#hxItem" + i);
+            var hxItemEl = document.querySelector("#hxItem" + i)
+            ;
+            var collectionItem = document.getElementById("liEl" + i);
             hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
-                hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
+                
+                collectionItem.setAttribute("class", "hide slot black collection-item valign-wrapper");
+                hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
-                hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
+                
+                searchBox.setAttribute("class", "searchHx");
+                deleteBtn.setAttribute("class", "delete-btn center");
+                collectionItem.setAttribute("class", "slot black collection-item valign-wrapper");
+                hxItemEl.setAttribute("class", "searchTerm list-item");
+                hxIconEl = document.getElementById("hxIcon" + i);
+                hxIconEl2 = document.getElementById("hxSubIcon" + i);
+                historyIconFetch(historyArr[i]);
+                hxItemEl.textContent = " ";
             }
-        }
+        } 
     }
 };
+
+var historyIconFetch = function (pair) {
+    console.log(pair.length);
+    console.log(pair);
+    var baseArr = [];
+    var quote;
+
+    if (pair.includes("USDT")) {
+        baseArr = pair.split("USDT");
+        quote = "usdt";
+
+    } else if (pair.length === 7) {
+        var cut = pair.charAt(4);
+        baseArr = pair.split(cut, 1);
+        quote = pair.slice(4, 7);
+
+    } else if (pair.length === 6) {
+        var cut = pair.charAt(3);
+        baseArr = pair.split(cut, 1);
+        quote = pair.slice(3, 6);
+    }
+
+    var base = baseArr[0];
+    quote = quote.toLowerCase();
+    base = base.toLowerCase();
+
+    hxIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
+    hxIconEl2.setAttribute("src", `https://cryptoicons.org/api/icon/${quote}/50`)
+
+}
+
 
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
@@ -159,8 +208,8 @@ var symbolFetch = function () {
                         pairDisplayName.textContent = base + '/' + quote;
                         var baseLow = base.toLowerCase();
                         var quoteLow = quote.toLowerCase();
-                        iconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${baseLow}/50`);
-                        priceIcon.setAttribute("src", `https://cryptoicons.org/api/icon/${quoteLow}/25`);
+                        iconEl.setAttribute("src", `https://static.coincap.io/assets/icons/${baseLow}@2x.png`);
+                        priceIcon.setAttribute("src", `https://static.coincap.io/assets/icons/${quoteLow}@2x.png`);
                     }
                 }
             })
@@ -169,25 +218,6 @@ var symbolFetch = function () {
         // priceChangeDataFetch();
     })
 };
-// FETCH PRICE CHANGE DATA
-// var priceChangeDataFetch = function () {
-//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
-//     fetch(dataUrl).then(function (response) {
-//         response.json().then(function (data) {
-//             var priceChange = document.getElementById("priceChange");
-//             console.log(data)
-//             priceChange.textContent = "24h Price Change: " + data.priceChange;
-//             var priceChangePercent = document.getElementById("priceChangePercent");
-//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
-//             priceTickerFetch(pairName);
-
-
-//             clearInterval(myTicker);
-//             myTicker = setInterval(priceTickerFetch, 10000);
-
-//         })
-//     })
-// };
 
 var myTicker;
 // FETCH PRICE TICKER 
@@ -220,7 +250,7 @@ var comparePrices = function () {
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     var percentChangeEl = document.getElementById("percentChange");
     percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
-    
+
     console.log(percentInput);
 
     if (percentChange >= percentInput) {
@@ -233,6 +263,7 @@ var comparePrices = function () {
                 container.textContent = "";
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
+                gifImg.setAttribute("class", "responsive-img");
                 container.appendChild(gifImg);
             })
     } else if (percentChange <= -percentInput) {
@@ -280,3 +311,44 @@ window.onclick = function (event) {
         }
     }
 }
+
+// DELETE SEARCH HISTORY
+$("#remove-coins").on("click", function () {
+    localStorage.clear('Symbols');
+    historyArr = [];
+    var deleteButton = document.getElementById("deleteBtn");
+    deleteButton.setAttribute("class", "hide");
+    var searchContainer = document.getElementById("searchHx")
+    ;
+    searchContainer.setAttribute("class", "hide searchHx");
+
+        for (var i = 0; i < 8; i++) {
+            var sideBar = document.getElementById("liEl" + i);
+            
+            hxIconEl = document.getElementById("hxIcon" + i);
+            hxIconEl2 = document.getElementById("hxSubIcon" + i);
+            sideBar.setAttribute("class", "hide slot black collection-item valign-wrapper");
+            hxIconEl.setAttribute("src", ``);
+            hxIconEl2.setAttribute("src", ``);
+    };
+});
+
+// FETCH PRICE CHANGE DATA
+// var priceChangeDataFetch = function () {
+//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
+//     fetch(dataUrl).then(function (response) {
+//         response.json().then(function (data) {
+//             var priceChange = document.getElementById("priceChange");
+//             console.log(data)
+//             priceChange.textContent = "24h Price Change: " + data.priceChange;
+//             var priceChangePercent = document.getElementById("priceChangePercent");
+//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
+//             priceTickerFetch(pairName);
+
+
+//             clearInterval(myTicker);
+//             myTicker = setInterval(priceTickerFetch, 10000);
+
+//         })
+//     })
+// };
