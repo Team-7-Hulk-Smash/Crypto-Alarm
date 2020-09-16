@@ -250,9 +250,9 @@ a {
 
 
 /* label color */
-.input-field label {
+/* .input-field label {
   color: #000;
-} */
+}  */
 
 /* label focus color */
  /* .input-field input[type=text]:focus+label {
@@ -280,4 +280,4 @@ a {
 /* icon prefix focus color */
 /* .input-field .prefix.active {
   color: #000;
-} */
+}

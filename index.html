@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +17,10 @@
     </div>
 </header>
 <br></br>
+
 <body>
-    <audio id="bear" src="/assets/sounds/bear.mp3">ROAR!</audio>
-    <audio id="bull" src="/assets/sounds/bull.mp3">MOO!</audio>
+
+
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -36,10 +38,10 @@
                             <label for="base" class="form-label white-text">Enter Coin Abbreviation (ex: BTC):</label>
                             <input id="base" name="base" class="input white center" type="text" autofocus="true">
                         </div>
-                        
+
                         <label class="unit form-label white-text">Choose Exchange Unit:</label>
                         <div class="input-field col s12 black-text">
-                
+
                             <select id="quote" name="quote" class="black-text">
                                 <option value="USDT">USDT</option>
                                 <option value="BTC">BTC</option>
@@ -66,42 +68,59 @@
                 <div id="searchHx" class="searchHx">
                     <ul id="searchList" class="black searchList collection col s12 m7 flow-text">
                         <h6 class="center">Search History</h6>
-                        
-                        <li id="liEl0" onclick="hxListSearch(0)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon0" class= "responsive-img center"><img id="hxSubIcon0" class= "responsive-img center">
-                            <span id="hxItem0"  class="searchTerm list-item"></span>
+
+                        <li id="liEl0" onclick="hxListSearch(0)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon0" class="responsive-img center"><img id="hxSubIcon0"
+                                class="responsive-img center">
+                            <span id="hxItem0" class="searchTerm list-item"></span>
                         </li>
 
-                        <li id="liEl1" onclick="hxListSearch(1)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon1" class= "responsive-img center"><img id="hxSubIcon1" class= "responsive-img center">
-                            <span id="hxItem1"  class="searchTerm list-item text-align:center;"></span>
+                        <li id="liEl1" onclick="hxListSearch(1)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon1" class="responsive-img center"><img id="hxSubIcon1"
+                                class="responsive-img center">
+                            <span id="hxItem1" class="searchTerm list-item text-align:center;"></span>
                         </li>
 
-                        <li id="liEl2" onclick="hxListSearch(2)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon2" class= "responsive-img center"><img id="hxSubIcon2" class= "responsive-img center">
-                            <span id="hxItem2"  class="searchTerm list-item"></span>
+                        <li id="liEl2" onclick="hxListSearch(2)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon2" class="responsive-img center"><img id="hxSubIcon2"
+                                class="responsive-img center">
+                            <span id="hxItem2" class="searchTerm list-item"></span>
                         </li>
 
-                        <li id="liEl3" onclick="hxListSearch(3)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon3" class= "responsive-img center"><img id="hxSubIcon3" class= "responsive-img center">
-                            <span id="hxItem3"  class="searchTerm list-item"></span>
+                        <li id="liEl3" onclick="hxListSearch(3)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon3" class="responsive-img center"><img id="hxSubIcon3"
+                                class="responsive-img center">
+                            <span id="hxItem3" class="searchTerm list-item"></span>
                         </li>
 
-                        <li id="liEl4" onclick="hxListSearch(4)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon4" class= "responsive-img center"><img id="hxSubIcon4" class= "responsive-img center">
-                            <span id="hxItem4"  class="searchTerm list-item"></span>
+                        <li id="liEl4" onclick="hxListSearch(4)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon4" class="responsive-img center"><img id="hxSubIcon4"
+                                class="responsive-img center">
+                            <span id="hxItem4" class="searchTerm list-item"></span>
                         </li>
 
-                        <li id="liEl5" onclick="hxListSearch(5)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon5" class= "responsive-img center"><img id="hxSubIcon5" class= "responsive-img center">
-                            <span id="hxItem5"  class="searchTerm list-item"></span>
+                        <li id="liEl5" onclick="hxListSearch(5)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon5" class="responsive-img center"><img id="hxSubIcon5"
+                                class="responsive-img center">
+                            <span id="hxItem5" class="searchTerm list-item"></span>
                         </li>
 
-                        <li id="liEl6" onclick="hxListSearch(6)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon6" class= "responsive-img center"><img id="hxSubIcon6" class= "responsive-img center">
-                            <span id="hxItem6"  class="searchTerm list-item"></span>
+                        <li id="liEl6" onclick="hxListSearch(6)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon6" class="responsive-img center"><img id="hxSubIcon6"
+                                class="responsive-img center">
+                            <span id="hxItem6" class="searchTerm list-item"></span>
                         </li>
 
-                        <li id="liEl7" onclick="hxListSearch(7)" class="hide slot black collection-item valign-wrapper"><img id="hxIcon7" class= "responsive-img center"><img id="hxSubIcon7" class= "responsive-img center">
-                            <span id="hxItem7"  class="searchTerm list-item"></span>
+                        <li id="liEl7" onclick="hxListSearch(7)" class="hide slot black collection-item valign-wrapper">
+                            <img id="hxIcon7" class="responsive-img center"><img id="hxSubIcon7"
+                                class="responsive-img center">
+                            <span id="hxItem7" class="searchTerm list-item"></span>
                         </li>
                         <div id="deleteBtn" class="hide delete-btn center">
-                            <button id="remove-coins" class="btn waves-effect waves-light">Delete<i class="material-icons right">delete</i>
+                            <button id="remove-coins" class="btn waves-effect waves-light">Delete<i
+                                    class="material-icons right">delete</i>
                             </button>
-                             </div>
+                        </div>
                     </ul>
                 </div>
             </section>
@@ -130,15 +149,25 @@
                                     <div id="time-stamp" class="col s12 offset-m1 price-data"></div>
                                     <div id="percentChange" class="col s12 offset-m1 price-data"></div>
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
                 </div>
                 <a class="col s4 m4 offset-s2 flow-text"></a>
-                    <section id="response-container" class="imgContainer materialboxed responsive-img col s7 m4 l4 right"><img class="responsive-img center"></section>
+                <section id="response-container" class="imgContainer materialboxed responsive-img col s7 m4 l4 right">
+                    <img class="responsive-img center"></section>
             </section>
-            </div>
-        </main>
+            <!-- <audio controls>
+                <source id="bear" src="/assets/sounds/bear.mp3" type="audio/mp3">ROAR!</source>
+                <source id="bull" src="/assets/sounds/bull.mp3" type="audio/mp3">MOO!</source>
+            </audio> -->
+            <audio id="bear" src="/assets/sounds/bear.mp3" type="audio/mpeg">ROAR></audio>
+            <audio id="bull" src="/assets/sounds/bull.mp3" type="audio/mpeg">MOO!></audio>
+        </div>
+    </main>
     <script>
         // DELETE SEARCH HISTORY BUTTON
         document.addEventListener('DOMContentLoaded', function () {
@@ -154,4 +183,5 @@
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/js/script.js"></script>
+
 </html>
