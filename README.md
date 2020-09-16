@@ -15,7 +15,7 @@ A web application that displays current cryptocurrency values in relation to oth
 ![Screenshot](assets/images/screenshot.png)
 
 ## Website
-https://team-7-hulk-smash.github.io/The-A-Project/
+ https://team-7-hulk-smash.github.io/Crypto-Alarm/
 
 ## Contribution
 Made with heroic resolve by Team Hulk
