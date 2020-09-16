@@ -27,8 +27,7 @@ var baseLow;
 var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
-var bear = document.getElementById("bear");
-var bull = document.getElementById("bull");
+
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
@@ -267,7 +266,7 @@ var comparePrices = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 gifImg.setAttribute("class", "responsive-img");
                 container.appendChild(gifImg);
-                // document.getElementById("bull").play();
+                var bull = document.getElementById("bull");
                 bull.play();
             })
     } else if (percentChange <= -percentInput) {
@@ -282,7 +281,7 @@ var comparePrices = function () {
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
-                // document.getElementById("bear").play(); 
+                var bear = document.getElementById("bear");
                 bear.play();
             })
     } else {
