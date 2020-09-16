@@ -27,6 +27,8 @@ var baseLow;
 var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
+var bear = document.getElementById("bear");
+var bull = document.getElementById("bull");
 
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
@@ -165,7 +167,7 @@ var startPriceFetch = function () {
                 startPriceEl.textContent = "Start Price: $" + startPrice;
                 priceTickerFetch();
                 clearInterval(myTicker);
-                myTicker = setInterval(priceTickerFetch, 10000);
+                myTicker = setInterval(priceTickerFetch, 5000);
                 symbolFetch()
             })
         }
@@ -265,6 +267,8 @@ var comparePrices = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 gifImg.setAttribute("class", "responsive-img");
                 container.appendChild(gifImg);
+                // document.getElementById("bull").play();
+                bull.play();
             })
     } else if (percentChange <= -percentInput) {
         console.log("THE PRICE IS FALLING!")
@@ -278,6 +282,8 @@ var comparePrices = function () {
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
+                // document.getElementById("bear").play(); 
+                bear.play();
             })
     } else {
         container.innerHTML = "";

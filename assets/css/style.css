@@ -80,52 +80,7 @@ body {
     margin-top: 28px;
 }
 
-@media only screen and (max-width: 375px) {
-  .imgContainer{
-    width: 100%;
-    margin-top: -25px !important;
-    left: -50px !important;
-    position: relative;
-    flex-wrap: wrap;
-    top: 175px;
-    height: auto;
-  }
-  #pair{
-    font-size: 35px !important;
-  }
-  #priceTicker{
-    font-size: 35px !important;
-  }
-}
 
-@media only screen and (max-width: 540px) {
-    header {
-        text-align: center;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-  .imgContainer {
-      width: 100%;
-      margin-top: -25px !important;
-      left: -50px !important;
-      position: relative;
-      flex-wrap: wrap;
-      top: 175px;
-      height: auto;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-    .imgContainer {
-        width: 100%;
-        /* left: -75px !important; */
-        position: relative;
-        flex-wrap: wrap;
-        top: 175px;
-        height: auto;
-    }
-}
 
 /* The Modal (background) */
 .modal {
@@ -246,15 +201,61 @@ a {
     font-size: 25px;
 }
 
+@media only screen and (max-width: 375px) {
+    .imgContainer{
+      width: 100%;
+      margin-top: -25px !important;
+      left: -50px !important;
+      position: relative;
+      flex-wrap: wrap;
+      top: 175px;
+      height: auto;
+    }
+    #pair{
+      font-size: 35px !important;
+    }
+    #priceTicker{
+      font-size: 35px !important;
+    }
+  }
+  
+  @media only screen and (max-width: 540px) {
+      header {
+          text-align: center;
+      }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .imgContainer {
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
+  }
+  
+  @media only screen and (max-width: 1024px) {
+      .imgContainer {
+          width: 100%;
+          /* left: -75px !important; */
+          position: relative;
+          flex-wrap: wrap;
+          top: 175px;
+          height: auto;
+      }
+  }
 
 
 /* label color */
-/* .input-field label {
+.input-field label {
   color: #000;
 } */
 
 /* label focus color */
-/* .input-field input[type=text]:focus+label {
+ /* .input-field input[type=text]:focus+label {
   color: #000;
 } */
 
