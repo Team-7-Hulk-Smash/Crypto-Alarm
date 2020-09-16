@@ -12,6 +12,10 @@ header {
     width: 100%;
 }
 
+h1 {
+    font-size: 5rem;
+}
+
 .row {
     margin: 0%;
 }
@@ -92,6 +96,12 @@ body {
   #priceTicker{
     font-size: 35px !important;
   }
+}
+
+@media only screen and (max-width: 540px) {
+    header {
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width: 768px) {
