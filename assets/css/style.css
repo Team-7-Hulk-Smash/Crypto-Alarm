@@ -176,7 +176,7 @@ body {
 }
 
 #pair-wrapper {
-    height: 35.4vh;
+    height: 38.4vh;
     border: 1px solid #e0e0e0;
     color: white;
 }
@@ -232,6 +232,7 @@ a {
 }
 
 .unmute {
+   align-content: flex-start;
     background-image: url(http://franriavilla.in/images/unmute.png);
     background-size: cover;
     width: 35px;
@@ -322,7 +323,7 @@ a {
       left: -75px !important;
       position: relative;
       flex-wrap: wrap;
-      top: 175px;
+      top: 35px;
       height: auto;
   }
 
