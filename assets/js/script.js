@@ -194,7 +194,7 @@ var symbolFetch = function () {
                 };
                 var timeStamp = dateObject.toLocaleDateString('en-US', options);
                 document.getElementById("time-stamp").innerHTML = `<span style='color:yellow'>Start Time: </span> ${timeStamp}`;
-                
+
                 // startTime.textContent = "Start Time: " + timeStamp;
 
                 // MAKE MAIN DISPLAY MORE LEGIBLE
@@ -277,16 +277,18 @@ var comparePrices = function () {
         container.innerHTML = "";
     }
 
-    if (percentChange < 0){
+    console.log(percentChange);
+
+    if (percentChange < 0) {
         document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span><span style='color:red'>${percentChange}%</span>`;
+    } else if (percentChange > 0) {
+        document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span><span style='color:green'>+${percentChange}%</span>`;
+    } else {
+        document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span>${percentChange}%</span>`;
     }
-    
-    if (percentChange < 0){
-        if (percentChange < 0){
-            document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span><span style='color:green'>${percentChange}%</span>`;
-        }
-    }
+
 };
+
 
 // Get the modal
 var modal = document.getElementById("myModal");
