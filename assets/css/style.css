@@ -209,6 +209,7 @@ a {
     justify-content: space-between;
     height: 50px;
     align-items: center;
+    margin-top: 10px;
 }
 
 .timeWrap {
@@ -242,6 +243,7 @@ a {
 
   #pair-wrapper{
     height: 55vh !important;
+    margin-top: 10px;
   }
 
   #pair {
