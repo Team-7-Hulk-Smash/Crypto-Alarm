@@ -6,25 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
 <header class="header black flow-text text-left row">
     <div>
-    <img class="logo col s9 m6 l3" src="./assets/images/logo.png">
+        <img class="logo col s10 m6 l3" src="./assets/images/logo.png">
     </div>
     <!-- <h1 class="header text-left col s12">Crypto Alarm</h1> -->
-    
-    <div class="col s12">
-        <span id="currentDate" class="text-left"></span>
-        <span id="time" class="text-left"></span>
-    </div>
-    
 </header>
 <br></br>
 
 <body>
-    
+
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -127,6 +121,14 @@
                         </div>
                     </ul>
                 </div>
+
+                <div class="clock black col s12 m7">
+                    <div class="timeWrap">
+                        <span id="currentDate" class=""></span>
+                        <span id="time" class=""></span>
+                    </div>
+                </div>
+
             </section>
             <section id="pair-wrapper" class="row black col s12 m6 l7 xl7">
                 <div class="left col s12 m5 l5">
@@ -149,7 +151,7 @@
                             <div class="row">
                                 <div class="col s3"></div>
                                 <div class="data col s12">
-                                    
+
                                     <div id="startPrice" class="col s12 offset-m1 price-data"></div>
                                     <div id="time-stamp" class="col s12 offset-m1 price-data"></div>
                                     <div id="percentChange" class="col s12 offset-m1 price-data"></div>
