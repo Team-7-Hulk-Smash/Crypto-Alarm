@@ -201,28 +201,6 @@ a {
  margin-top: 6px
 }
 
-
-
-@media only screen and (max-width: 375px) {
-    .imgContainer {
-        width: 100%;
-        margin-top: -25px !important;
-        left: -50px !important;
-        position: relative;
-        flex-wrap: wrap;
-        top: 175px;
-        height: auto;
-    }
-
-    #pair {
-        font-size: 35px !important;
-    }
-
-    #priceTicker {
-        font-size: 35px !important;
-    }
-}
-
 .clock {
     display: flex;
     border: 1px solid #e0e0e0;
@@ -251,6 +229,30 @@ a {
     height: auto;
 }
 
+@media only screen and (max-width: 375px) {
+  .imgContainer {
+      width: 100%;
+      margin-top: -25px !important;
+      left: -50px !important;
+      position: relative;
+      flex-wrap: wrap;
+      top: 40px !important;
+      height: auto;
+  }
+
+  #pair-wrapper{
+    height: 55vh;
+  }
+
+  #pair {
+      font-size: 35px !important;
+  }
+
+  #priceTicker {
+      font-size: 35px !important;
+  }
+}
+
 @media only screen and (max-width: 540px) {
     header {
         text-align: center;
@@ -269,6 +271,15 @@ a {
     }
 }
 
+@media only screen and (min-width: 993px) {
+  .row, .col {
+      width: 65%;
+      margin-left: auto;
+      left: auto;
+      right: auto;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
     .imgContainer {
         width: 100%;
@@ -277,15 +288,6 @@ a {
         flex-wrap: wrap;
         top: 175px;
         height: auto;
-    }
-}
-
-@media only screen and (min-width: 993px) {
-    .row, .col. .l3 {
-        width: 65%;
-        margin-left: auto;
-        left: auto;
-        right: auto;
     }
 }
     
