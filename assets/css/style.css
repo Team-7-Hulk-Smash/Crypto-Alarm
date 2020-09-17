@@ -9,7 +9,7 @@ header {
 }
 
 .logo {
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 .row {
@@ -75,8 +75,6 @@ body {
     width: 100%;
     margin-top: 28px;
 }
-
-
 
 /* The Modal (background) */
 .modal {
@@ -198,7 +196,7 @@ a {
 }
 
 .header-icon {
- margin-top: 6px
+    margin-top: 6px
 }
 
 .clock {
@@ -216,7 +214,6 @@ a {
     justify-content: space-around;
     text-align: center;
     width: 100%
-   
 }
 
 #currentDate {
@@ -230,35 +227,54 @@ a {
     height: auto;
 }
 
-@media only screen and (max-width: 375px) {
-  .imgContainer {
-      width: 100%;
-      margin-top: -25px !important;
-      left: -50px !important;
-      position: relative;
-      flex-wrap: wrap;
-      top: 40px !important;
-      height: auto;
-  }
-
-  #pair-wrapper{
-    height: 65vh !important;
-    
-  }
-
-  #pair {
-      font-size: 35px !important;
-  }
-
-  #priceTicker {
-      font-size: 35px !important;
-  }
+#muteEl {
+    height: 100px;
 }
 
-@media only screen and (max-width: 414px) {
+.unmute {
+    background-image: url(http://franriavilla.in/images/unmute.png);
+    background-size: cover;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.mute {
+    background-image: url(http://franriavilla.in/images/mute.png);
+
+}
+
+/* MEDIA QUERIES */
+/* iphone 6/7/8 & x */
+@media only screen and (max-width: 375px) {
     .imgContainer {
-      margin-right: -50px !important;
-      top: 40px !important;
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 40px !important;
+        height: auto;
+    }
+
+    #pair-wrapper {
+        height: 65vh !important;
+    }
+
+    #pair {
+        font-size: 35px !important;
+    }
+
+    #priceTicker {
+        font-size: 35px !important;
+    }
+}
+
+/* iPhone 6/7/8 plus */
+@media only screen and (max-width: 414px) {
+  .imgContainer {
+    margin-right: -50px !important;
+    top: 40px !important;
   }
 
   #pair-wrapper{
@@ -273,6 +289,7 @@ a {
     }
 }
 
+/* iPad */
 @media only screen and (max-width: 768px) {
     .imgContainer {
         width: 100%;
@@ -285,14 +302,24 @@ a {
     }
 }
 
+/* iPad pro */
 @media only screen and (max-width: 1024px) {
-    .imgContainer {
-        width: 100%;
-        /* left: -75px !important; */
-        position: relative;
-        flex-wrap: wrap;
-        top: 175px;
-        height: auto;
-    }
+  .imgContainer {
+      width: 100%;
+      left: -75px !important;
+      position: relative;
+      flex-wrap: wrap;
+      top: 175px;
+      height: auto;
+  }
+
+
+  #pair {
+      font-size: 35px !important;
+  }
+
+  #priceTicker {
+      font-size: 35px !important;
+  }
+
 }
-    
