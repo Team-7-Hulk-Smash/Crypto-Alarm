@@ -158,9 +158,10 @@ var startPriceFetch = function () {
             storeHistory(pairName);
             getHistory();
             response.json().then(function (data) {
+                document.getElementById("startPrice").innerHTML = `<span style='color:yellow'>Start Price: </span> $${startPrice}`;
                 startPrice = data.price;
                 startPrice = parseFloat(startPrice);
-                startPriceEl.textContent = "Start Price: $" + startPrice;
+                // startPriceEl.textContent = startPrice;
                 priceTickerFetch();
                 clearInterval(myTicker);
                 myTicker = setInterval(priceTickerFetch, 5000);
@@ -244,7 +245,7 @@ var comparePrices = function () {
     percentInput = document.getElementById("change").value;
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     var percentChangeEl = document.getElementById("percentChange");
-    percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
+    percentChangeEl.textContent = percentChange + "%";
 
     console.log(percentInput);
 
