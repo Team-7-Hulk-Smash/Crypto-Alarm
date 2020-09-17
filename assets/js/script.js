@@ -195,8 +195,9 @@ var symbolFetch = function () {
                     minute: 'numeric'
                 };
                 var timeStamp = dateObject.toLocaleDateString('en-US', options);
-                var startTime = document.getElementById("time-stamp");
-                startTime.textContent = "Start Time: " + timeStamp;
+                document.getElementById("time-stamp").innerHTML = `<span style='color:yellow'>Start Time: </span> ${timeStamp}`;
+                
+                // startTime.textContent = "Start Time: " + timeStamp;
 
                 // MAKE MAIN DISPLAY MORE LEGIBLE
                 for (var i = 0; i < data.symbols.length; i++) {
@@ -245,7 +246,7 @@ var comparePrices = function () {
     percentInput = document.getElementById("change").value;
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     var percentChangeEl = document.getElementById("percentChange");
-    percentChangeEl.textContent = percentChange + "%";
+    percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
 
     console.log(percentInput);
 
