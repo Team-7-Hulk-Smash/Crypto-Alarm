@@ -241,7 +241,7 @@ a {
   }
 
   #pair-wrapper{
-    height: 55vh;
+    height: 55vh !important;
   }
 
   #pair {
