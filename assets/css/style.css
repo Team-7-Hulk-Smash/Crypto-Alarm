@@ -244,6 +244,7 @@ a {
 #currentDate {
     width: 100%;
     height: auto;
+    color: yellow;
 }
 
 #time {
