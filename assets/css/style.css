@@ -5,15 +5,11 @@
 header {
     border: 2px solid #e0e0e0;
     width: 100%;
+    height: 9%;
 }
 
-.header {
-    margin-top: 0%;
-    width: 100%;
-}
-
-h1 {
-    font-size: 5rem;
+.logo {
+    margin-top: 10px;
 }
 
 .row {
@@ -31,9 +27,9 @@ p {
     font-size: 0.8rem;
 }
 
-/* .searchHx, .searchList, .list {
-  background-color: black;
-} */
+.searchList {
+    margin-bottom: 7px;
+}
 
 .slot:hover,
 .btn:hover {
@@ -79,8 +75,6 @@ body {
     width: 100%;
     margin-top: 28px;
 }
-
-
 
 /* The Modal (background) */
 .modal {
@@ -201,7 +195,84 @@ a {
     font-size: 25px;
 }
 
+.header-icon {
+    margin-top: 6px
+}
+
+.clock {
+    display: flex;
+    border: 1px solid #e0e0e0;
+    font-size: 1.1rem;
+    text-align: center;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+}
+
+.timeWrap {
+    justify-content: space-around;
+    text-align: center;
+    width: 100%
+}
+
+#currentDate {
+    width: 100%;
+    height: auto;
+    color: yellow;
+}
+
+#time {
+    width: 100%;
+    height: auto;
+    
+    /* margin-right: -50px !important;
+    top: 40px !important; */
+}
+
+#muteEl {
+    height: 100px;
+}
+
+.unmute {
+    background-image: url(http://franriavilla.in/images/unmute.png);
+    background-size: cover;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.mute {
+    background-image: url(http://franriavilla.in/images/mute.png);
+
+}
+
+
 @media only screen and (max-width: 375px) {
+    .imgContainer {
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 40px !important;
+        height: auto;
+    }
+
+    #pair-wrapper {
+        height: 55vh !important;
+        margin-top: 10px;
+    }
+
+    #pair {
+        font-size: 35px !important;
+    }
+
+    #priceTicker {
+        font-size: 35px !important;
+    }
+}
+
+@media only screen and (max-width: 414px) {
     .imgContainer {
         width: 100%;
         margin-top: -25px !important;
@@ -211,6 +282,18 @@ a {
         top: 175px;
         height: auto;
     }
+}
+
+@media only screen and (max-width: 1024px) {
+    .imgContainer {
+        width: 100%;
+        /* left: -75px !important; */
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
+
 
     #pair {
         font-size: 35px !important;
@@ -218,6 +301,10 @@ a {
 
     #priceTicker {
         font-size: 35px !important;
+    }
+
+    #pair-wrapper {
+        height: 62vh;
     }
 }
 
