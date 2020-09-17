@@ -282,11 +282,9 @@ var comparePrices = function () {
         document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span><span style='color:red'>${percentChange}%</span>`;
     }
     
-    if (percentChange < 0){
-        if (percentChange < 0){
-            document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span><span style='color:green'>${percentChange}%</span>`;
-        }
-    }
+    if (percentChange > 0){
+        document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span><span style='color:green'>${percentChange}%</span>`;
+     }
 };
 
 
