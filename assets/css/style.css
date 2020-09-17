@@ -242,7 +242,7 @@ a {
   }
 
   #pair-wrapper{
-    height: 55vh !important;
+    height: 65vh !important;
     margin-top: 10px;
   }
 
@@ -263,6 +263,7 @@ a {
 
   #pair-wrapper{
     height: 62vh;
+    margin-top: 10px;
   }
 }
 
