@@ -9,8 +9,7 @@ header {
 }
 
 .logo {
-    margin-top: 12px;
-    
+    margin-top: 10px;
 }
 
 .row {
@@ -76,8 +75,6 @@ body {
     width: 100%;
     margin-top: 28px;
 }
-
-
 
 /* The Modal (background) */
 .modal {
@@ -199,70 +196,8 @@ a {
 }
 
 .header-icon {
- margin-top: 6px
+    margin-top: 6px
 }
-
-
-
-@media only screen and (max-width: 375px) {
-    .imgContainer {
-        width: 100%;
-        margin-top: -25px !important;
-        left: -50px !important;
-        position: relative;
-        flex-wrap: wrap;
-        top: 175px;
-        height: auto;
-    }
-  }
-  
-  @media only screen and (max-width: 1024px) {
-      .imgContainer {
-          width: 100%;
-          /* left: -75px !important; */
-          position: relative;
-          flex-wrap: wrap;
-          top: 175px;
-          height: auto;
-      }
-  }
-
-  #muteEl {
-    height: 100px;
-  }
-
-  .unmute {
-    background-image: url(http://franriavilla.in/images/unmute.png);
-    background-size: cover;
-    width: 35px;
-    height: 30px;
-    cursor: pointer;
-  }
-  
-  .mute {
-    background-image: url(http://franriavilla.in/images/mute.png);
-    
-  }
-
-
-/* label color */
-/* .input-field label {
-  color: #000;
-}  */
-
-/* label focus color */
- /* .input-field input[type=text]:focus+label {
-  color: #000;
-} */
-
-    #pair {
-        font-size: 35px !important;
-    }
-
-    #priceTicker {
-        font-size: 35px !important;
-    }
-
 
 .clock {
     display: flex;
@@ -278,7 +213,6 @@ a {
     justify-content: space-around;
     text-align: center;
     width: 100%
-   
 }
 
 #currentDate {
@@ -290,6 +224,88 @@ a {
 #time {
     width: 100%;
     height: auto;
+    
+    /* margin-right: -50px !important;
+    top: 40px !important; */
+}
+
+#muteEl {
+    height: 100px;
+}
+
+.unmute {
+    background-image: url(http://franriavilla.in/images/unmute.png);
+    background-size: cover;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.mute {
+    background-image: url(http://franriavilla.in/images/mute.png);
+
+}
+
+
+@media only screen and (max-width: 375px) {
+    .imgContainer {
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 40px !important;
+        height: auto;
+    }
+
+    #pair-wrapper {
+        height: 55vh !important;
+        margin-top: 10px;
+    }
+
+    #pair {
+        font-size: 35px !important;
+    }
+
+    #priceTicker {
+        font-size: 35px !important;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .imgContainer {
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .imgContainer {
+        width: 100%;
+        /* left: -75px !important; */
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
+
+
+    #pair {
+        font-size: 35px !important;
+    }
+
+    #priceTicker {
+        font-size: 35px !important;
+    }
+
+    #pair-wrapper {
+        height: 62vh;
+    }
 }
 
 @media only screen and (max-width: 540px) {
