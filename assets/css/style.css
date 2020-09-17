@@ -11,6 +11,10 @@ header {
     margin-top: 6px;
 }
 
+h1 {
+    font-size: 5rem;
+}
+
 .row {
     margin: 0%;
 }
@@ -75,46 +79,7 @@ body {
     margin-top: 28px;
 }
 
-@media only screen and (max-width: 375px) {
-  .imgContainer{
-    width: 100%;
-    margin-top: -25px !important;
-    left: -50px !important;
-    position: relative;
-    flex-wrap: wrap;
-    top: 175px;
-    height: auto;
-  }
-  #pair{
-    font-size: 35px !important;
-  }
-  #priceTicker{
-    font-size: 35px !important;
-  }
-}
 
-@media only screen and (max-width: 768px) {
-  .imgContainer {
-      width: 100%;
-      margin-top: -25px !important;
-      left: -50px !important;
-      position: relative;
-      flex-wrap: wrap;
-      top: 175px;
-      height: auto;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-    .imgContainer {
-        width: 100%;
-        /* left: -75px !important; */
-        position: relative;
-        flex-wrap: wrap;
-        top: 175px;
-        height: auto;
-    }
-}
 
 /* The Modal (background) */
 .modal {
@@ -239,37 +204,51 @@ a {
  margin-top: 6px
 }
 
+@media only screen and (max-width: 375px) {
+    .imgContainer {
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
 
+    #pair {
+        font-size: 35px !important;
+    }
 
-/* label color */
-/* .input-field label {
-  color: #000;
-} */
+    #priceTicker {
+        font-size: 35px !important;
+    }
+}
 
-/* label focus color */
-/* .input-field input[type=text]:focus+label {
-  color: #000;
-} */
+@media only screen and (max-width: 540px) {
+    header {
+        text-align: center;
+    }
+}
 
-/* label underline focus color */
-/* .input-field input[type=text]:focus {
-  border-bottom: 1px solid #E73C7E;
-  box-shadow: 0 1px 0 0 #000;
-} */
+@media only screen and (max-width: 768px) {
+    .imgContainer {
+        width: 100%;
+        margin-top: -25px !important;
+        left: -50px !important;
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
+}
 
-/* valid color */
-/* .input-field input[type=text].valid {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-} */
-
-/* invalid color */
-/* .input-field input[type=text].invalid {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-} */
-
-/* icon prefix focus color */
-/* .input-field .prefix.active {
-  color: #000;
-} */
+@media only screen and (max-width: 1024px) {
+    .imgContainer {
+        width: 100%;
+        /* left: -75px !important; */
+        position: relative;
+        flex-wrap: wrap;
+        top: 175px;
+        height: auto;
+    }
+}

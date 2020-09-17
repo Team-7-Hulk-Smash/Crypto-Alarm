@@ -30,10 +30,10 @@ var pairName;
 var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
+
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     localStorage.setItem('Symbols', historyArr);
-    console.log(historyArr);
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
@@ -59,7 +59,6 @@ var formSubmitHandler = function (event) {
         modal.style.display = "block";
         document.getElementById("errorMsg").innerHTML = error202
     }
-
 
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
@@ -98,17 +97,16 @@ var getHistory = function () {
 
         // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
-            var hxItemEl = document.querySelector("#hxItem" + i)
-            ;
+            var hxItemEl = document.querySelector("#hxItem" + i);
             var collectionItem = document.getElementById("liEl" + i);
             hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
-                
+
                 collectionItem.setAttribute("class", "hide slot black collection-item valign-wrapper");
                 hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
-                
+
                 searchBox.setAttribute("class", "searchHx");
                 deleteBtn.setAttribute("class", "delete-btn center");
                 collectionItem.setAttribute("class", "slot black collection-item valign-wrapper");
@@ -118,12 +116,11 @@ var getHistory = function () {
                 historyIconFetch(historyArr[i]);
                 hxItemEl.textContent = " ";
             }
-        } 
+        }
     }
 };
 
 var historyIconFetch = function (pair) {
-    console.log(pair.length);
     console.log(pair);
     var baseArr = [];
     var quote;
@@ -147,11 +144,10 @@ var historyIconFetch = function (pair) {
     quote = quote.toLowerCase();
     base = base.toLowerCase();
 
-    hxIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
-    hxIconEl2.setAttribute("src", `https://cryptoicons.org/api/icon/${quote}/50`)
+    hxIconEl.setAttribute("src", `https://static.coincap.io/assets/icons/${base}@2x.png`);
+    hxIconEl2.setAttribute("src", `https://static.coincap.io/assets/icons/${quote}@2x.png`);
 
 }
-
 
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
@@ -164,21 +160,19 @@ var startPriceFetch = function () {
             response.json().then(function (data) {
                 startPrice = data.price;
                 startPrice = parseFloat(startPrice);
-                startPriceEl.textContent = "Start Price: $" + startPrice;
+                document.getElementById("startPrice").innerHTML = `<span style='color:yellow'>Start Price: </span> $${startPrice}`;
                 priceTickerFetch();
                 clearInterval(myTicker);
-                myTicker = setInterval(priceTickerFetch, 10000);
+                myTicker = setInterval(priceTickerFetch, 5000);
                 symbolFetch()
             })
         }
     }).catch(function (error) {
         {
-            console.log(error);
             modal.style.display = "block";
             document.getElementById("errorMsg").innerHTML = error404;
         }
     })
-
 };
 
 // FETCH SYMBOL PAIR NAME DATA
@@ -199,8 +193,9 @@ var symbolFetch = function () {
                     minute: 'numeric'
                 };
                 var timeStamp = dateObject.toLocaleDateString('en-US', options);
-                var startTime = document.getElementById("time-stamp");
-                startTime.textContent = "Start Time: " + timeStamp;
+                document.getElementById("time-stamp").innerHTML = `<span style='color:yellow'>Start Time: </span> ${timeStamp}`;
+                
+                // startTime.textContent = "Start Time: " + timeStamp;
 
                 // MAKE MAIN DISPLAY MORE LEGIBLE
                 for (var i = 0; i < data.symbols.length; i++) {
@@ -216,8 +211,6 @@ var symbolFetch = function () {
                 }
             })
         }
-
-        // priceChangeDataFetch();
     })
 };
 
@@ -247,16 +240,13 @@ var priceTickerFetch = function () {
 
 var comparePrices = function () {
     console.log(startPrice);
-    console.log(tickerPrice);
     percentInput = document.getElementById("change").value;
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
-    var percentChangeEl = document.getElementById("percentChange");
-    percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
-
-    console.log(percentInput);
+    // var percentChangeEl = document.getElementById("percentChange");
+    document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span> ${percentChange}%`;
+    // percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
 
     if (percentChange >= percentInput) {
-        console.log("THE PRICE IS RISING!");
         fetch(bullUrl)
             .then(function (response) {
                 return response.json();
@@ -267,29 +257,26 @@ var comparePrices = function () {
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 gifImg.setAttribute("class", "responsive-img");
                 container.appendChild(gifImg);
+                var bull = document.getElementById("bull");
+                bull.play();
             })
     } else if (percentChange <= -percentInput) {
-        console.log("THE PRICE IS FALLING!")
         fetch(bearUrl)
             .then(function (response) {
                 return response.json();
             })
             .then(function (response) {
-                console.log(response.data[0]);
                 container.textContent = "";
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
                 container.appendChild(gifImg);
+                var bear = document.getElementById("bear");
+                bear.play();
             })
     } else {
         container.innerHTML = "";
     }
 };
-
-getHistory();
-showTime();
-
-searchFormEl.addEventListener("submit", formSubmitHandler);
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -320,37 +307,21 @@ $("#remove-coins").on("click", function () {
     historyArr = [];
     var deleteButton = document.getElementById("deleteBtn");
     deleteButton.setAttribute("class", "hide");
-    var searchContainer = document.getElementById("searchHx")
-    ;
+    var searchContainer = document.getElementById("searchHx");
     searchContainer.setAttribute("class", "hide searchHx");
 
-        for (var i = 0; i < 8; i++) {
-            var sideBar = document.getElementById("liEl" + i);
-            
-            hxIconEl = document.getElementById("hxIcon" + i);
-            hxIconEl2 = document.getElementById("hxSubIcon" + i);
-            sideBar.setAttribute("class", "hide slot black collection-item valign-wrapper");
-            hxIconEl.setAttribute("src", ``);
-            hxIconEl2.setAttribute("src", ``);
+    for (var i = 0; i < 8; i++) {
+        var sideBar = document.getElementById("liEl" + i);
+
+        hxIconEl = document.getElementById("hxIcon" + i);
+        hxIconEl2 = document.getElementById("hxSubIcon" + i);
+        sideBar.setAttribute("class", "hide slot black collection-item valign-wrapper");
+        hxIconEl.setAttribute("src", ``);
+        hxIconEl2.setAttribute("src", ``);
     };
 });
 
-// FETCH PRICE CHANGE DATA
-// var priceChangeDataFetch = function () {
-//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
-//     fetch(dataUrl).then(function (response) {
-//         response.json().then(function (data) {
-//             var priceChange = document.getElementById("priceChange");
-//             console.log(data)
-//             priceChange.textContent = "24h Price Change: " + data.priceChange;
-//             var priceChangePercent = document.getElementById("priceChangePercent");
-//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
-//             priceTickerFetch(pairName);
+getHistory();
+showTime();
 
-
-//             clearInterval(myTicker);
-//             myTicker = setInterval(priceTickerFetch, 10000);
-
-//         })
-//     })
-// };
+searchFormEl.addEventListener("submit", formSubmitHandler);
