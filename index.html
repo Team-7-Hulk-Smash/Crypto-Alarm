@@ -9,22 +9,30 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Crypto Alarm</title>
 </head>
-<header class="header black flow-text text-left row">
+<header class="header black flow-text text-left row valign-wrapper">
 
-    <h1 class="header text-left col s9"><span style="color: yellow;">Crypto </span>Alarm!</h1>
-    <div class="col s3">
-        <img class="logo col s6 m5 l5 right responsive-img" src="assets/images/logo2.png"">
-        </div>
-    <div class="col s9">
-        <span id="currentDate" class="text-left"></span>
-        <span id="time" class="text-left"></span>
-    </div>
-   
+
+    <h1 class="header text-left col s12 left">
+        <span style="color: yellow;">Crypto </span>Alarm!
+        <span class="logoWrap col s3 right">
+            <img class="logo col s1 m9 l6 xl3 right" src="assets/images/logo2.png">
+        </span>
+    </h1>
+
+
 </header>
+
+
+<div class="timeWrap black col s12 ">
+    <span id="currentDate" class="text-left">09/17/2020</span>
+    <span id="time" class="text-left">10:21 am</span>
+</div>
+
+
 <br></br>
 
 <body>
-    
+
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -149,7 +157,7 @@
                             <div class="row">
                                 <div class="col s3"></div>
                                 <div class="data col s12">
-                                    
+
                                     <div id="startPrice" class="col s12 offset-m1 price-data"></div>
                                     <div id="time-stamp" class="col s12 offset-m1 price-data"></div>
                                     <div id="percentChange" class="col s12 offset-m1 price-data"></div>
