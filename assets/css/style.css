@@ -237,6 +237,7 @@ a {
     width: 35px;
     height: 30px;
     cursor: pointer;
+    /* margin-left: 27px; */
 }
 
 .mute {
@@ -268,6 +269,11 @@ a {
     #priceTicker {
         font-size: 35px !important;
     }
+
+    .unmute{
+      margin-left: 0px !important;
+    }
+
 }
 
 /* iPhone 6/7/8 plus */
@@ -280,6 +286,10 @@ a {
   #pair-wrapper{
     height: 62vh;
     margin-top: 7px;
+  }
+
+  .unmute{
+    margin-left: 0px !important;
   }
 }
 
@@ -300,6 +310,11 @@ a {
         top: 175px;
         height: auto;
     }
+
+    .unmute{
+      margin-left: 14px !important;
+    }
+
 }
 
 /* iPad pro */
@@ -320,6 +335,10 @@ a {
 
   #priceTicker {
       font-size: 35px !important;
+  }
+
+  .unmute{
+    margin-left: 20px;
   }
 
 }
