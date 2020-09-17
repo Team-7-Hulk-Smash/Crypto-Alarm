@@ -244,7 +244,6 @@ var comparePrices = function () {
     percentInput = document.getElementById("change").value;
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     // var percentChangeEl = document.getElementById("percentChange");
-    // document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span> ${percentChange}%`;
     // percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
 
     if (percentChange >= percentInput) {

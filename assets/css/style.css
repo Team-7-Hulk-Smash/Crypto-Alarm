@@ -225,9 +225,6 @@ a {
 #time {
     width: 100%;
     height: auto;
-    
-    /* margin-right: -50px !important;
-    top: 40px !important; */
 }
 
 #muteEl {
@@ -247,7 +244,8 @@ a {
 
 }
 
-
+/* MEDIA QUERIES */
+/* iphone 6/7/8 & x */
 @media only screen and (max-width: 375px) {
     .imgContainer {
         width: 100%;
@@ -272,6 +270,7 @@ a {
     }
 }
 
+/* iPhone 6/7/8 plus */
 @media only screen and (max-width: 414px) {
   .imgContainer {
     margin-right: -50px !important;
@@ -290,6 +289,7 @@ a {
     }
 }
 
+/* iPad */
 @media only screen and (max-width: 768px) {
     .imgContainer {
         width: 100%;
@@ -302,10 +302,11 @@ a {
     }
 }
 
+/* iPad pro */
 @media only screen and (max-width: 1024px) {
   .imgContainer {
       width: 100%;
-      /* left: -75px !important; */
+      left: -75px !important;
       position: relative;
       flex-wrap: wrap;
       top: 175px;
