@@ -32,7 +32,6 @@ var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQ
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     localStorage.setItem('Symbols', historyArr);
-    console.log(historyArr);
     listItemEl.forEach(function (coin) {
 
         if (coin.id == "hxItem" + index) {
@@ -120,7 +119,6 @@ var getHistory = function () {
 };
 
 var historyIconFetch = function (pair) {
-    console.log(pair.length);
     console.log(pair);
     var baseArr = [];
     var quote;
@@ -158,10 +156,9 @@ var startPriceFetch = function () {
             storeHistory(pairName);
             getHistory();
             response.json().then(function (data) {
-                document.getElementById("startPrice").innerHTML = `<span style='color:yellow'>Start Price: </span> $${startPrice}`;
                 startPrice = data.price;
                 startPrice = parseFloat(startPrice);
-                // startPriceEl.textContent = startPrice;
+                document.getElementById("startPrice").innerHTML = `<span style='color:yellow'>Start Price: </span> $${startPrice}`;
                 priceTickerFetch();
                 clearInterval(myTicker);
                 myTicker = setInterval(priceTickerFetch, 5000);
@@ -170,7 +167,6 @@ var startPriceFetch = function () {
         }
     }).catch(function (error) {
         {
-            console.log(error);
             modal.style.display = "block";
             document.getElementById("errorMsg").innerHTML = error404;
         }
@@ -242,17 +238,13 @@ var priceTickerFetch = function () {
 
 var comparePrices = function () {
     console.log(startPrice);
-    console.log(tickerPrice);
     percentInput = document.getElementById("change").value;
     var percentChange = ((tickerPrice - startPrice) / startPrice * 100).toFixed(percentInput.length - 1);
     // var percentChangeEl = document.getElementById("percentChange");
     document.getElementById("percentChange").innerHTML = `<span style='color:yellow'>Percent Change: </span> ${percentChange}%`;
     // percentChangeEl.textContent = "Percent Change: " + percentChange + "%";
 
-    console.log(percentInput);
-
     if (percentChange >= percentInput) {
-        console.log("THE PRICE IS RISING!");
         fetch(bullUrl)
             .then(function (response) {
                 return response.json();
@@ -267,13 +259,11 @@ var comparePrices = function () {
                 bull.play();
             })
     } else if (percentChange <= -percentInput) {
-        console.log("THE PRICE IS FALLING!")
         fetch(bearUrl)
             .then(function (response) {
                 return response.json();
             })
             .then(function (response) {
-                console.log(response.data[0]);
                 container.textContent = "";
                 var gifImg = document.createElement("img");
                 gifImg.setAttribute("src", response.data[0].images.fixed_height.url);
