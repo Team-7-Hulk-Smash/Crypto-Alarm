@@ -253,6 +253,17 @@ a {
   }
 }
 
+@media only screen and (max-width: 414px) {
+    .imgContainer {
+      margin-right: -75px !important;
+      top: 40px !important;
+  }
+
+  #pair-wrapper{
+    height: 55vh;
+  }
+}
+
 @media only screen and (max-width: 540px) {
     header {
         text-align: center;
@@ -269,15 +280,6 @@ a {
         top: 175px;
         height: auto;
     }
-}
-
-@media only screen and (min-width: 993px) {
-  .row, .col {
-      width: 65%;
-      margin-left: auto;
-      left: auto;
-      right: auto;
-  }
 }
 
 @media only screen and (max-width: 1024px) {
