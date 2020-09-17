@@ -7,9 +7,8 @@ header {
     width: 100%;
 }
 
-.header {
-    margin-top: 0%;
-    width: 100%;
+.logo {
+    margin-top: 6px;
 }
 
 .row {
@@ -216,6 +215,10 @@ body {
 a {
     color: white;
     font-size: 25px;
+}
+
+.header-icon {
+ margin-top: 6px
 }
 
 

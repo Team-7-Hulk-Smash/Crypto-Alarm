@@ -3,6 +3,8 @@ var showTime = function () {
     $("#currentDate").text(moment().format('MM/DD/YYYY'));
     $("#time").text(moment().format('hh:mm a'));
 }
+
+
 setInterval(showTime, 60000);
 var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
