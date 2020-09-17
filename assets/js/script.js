@@ -31,6 +31,7 @@ var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQ
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
 
+
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     localStorage.setItem('Symbols', historyArr);
@@ -288,6 +289,9 @@ var comparePrices = function () {
     }
 };
 
+
+
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -330,6 +334,37 @@ $("#remove-coins").on("click", function () {
         hxIconEl2.setAttribute("src", ``);
     };
 });
+
+var muteBtn = document.getElementById("mute");
+
+var audio1 = document.getElementById('bear');
+
+document.getElementById('mute').addEventListener('click', function (e) {
+    e = e || window.event;
+    audio1.muted = !audio1.muted;
+    e.preventDefault();
+}, false);
+
+var audio2 = document.getElementById('bull');
+
+document.getElementById('mute').addEventListener('click', function (e) {
+    e = e || window.event;
+    audio2.muted = !audio2.muted;
+    e.preventDefault();
+}, false);
+
+if (audio1.muted == false) {
+    muteBtn.setAttribute("class", "responsive-img unmute col");
+} else {
+    muteBtn.setAttribute("class", "responsive-img unmute mute col");
+
+}
+if (audio2.muted == false) {
+    muteBtn.setAttribute("class", "responsive-img unmute col");
+} else {
+    muteBtn.setAttribute("class", "responsive-img unmute mute col");
+}
+console.log(audio1.muted);
 
 getHistory();
 showTime();

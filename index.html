@@ -167,6 +167,13 @@
                 <section id="response-container" class="imgContainer materialboxed responsive-img col s7 m4 l4 right">
                     <img class="responsive-img center col s5 m6 l6 xl5"></section>
             </section>
+
+            <section id="muteEl" class="row col s12 m6 l7 xl7">
+                <div id="mute" class="responsive-img unmute col"></div>
+
+                <!-- <div id="mute" class="responsive-img unmute col" onclick="document.getElementById('bull').muted = !document.getElementById('bull').muted;$(this).toggleClass('mute')"></div> -->
+            </section>
+
             <!-- <audio controls>
                 <source id="bear" src="/assets/sounds/bear.mp3" type="audio/mp3">ROAR!</source>
                 <source id="bull" src="/assets/sounds/bull.mp3" type="audio/mp3">MOO!</source>
@@ -185,6 +192,24 @@
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems, );
         });
+
+        // var muteEl = document.getElementById("mute");
+        // muteEl.onclick = function () {
+
+        //     var bearSound = document.getElementById('bear');
+        //     var bullSound = document.getElementById('bull');
+
+        //     bearSound.muted = true;
+        //     bullSound.muted = true;
+
+        //     if (bearSound.muted) {
+        //         muteEl.setAttribute("class", "responsive-img mute col");
+        //     } else if (bullSound.muted) {
+        //         muteEl.setAttribute("class", "responsive-img mute col");
+        //     } else {
+        //         muteEl.setAttribute("class", "responsive-img unmute col");
+        //     }
+        // };
     </script>
 </body>
 
