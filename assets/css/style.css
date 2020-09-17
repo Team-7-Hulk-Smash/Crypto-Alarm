@@ -5,15 +5,12 @@
 header {
     border: 2px solid #e0e0e0;
     width: 100%;
+    height: 9%;
 }
 
-.header {
-    margin-top: 0%;
-    width: 100%;
-}
-
-h1 {
-    font-size: 5rem;
+.logo {
+    margin-top: 12px;
+    
 }
 
 .row {
@@ -31,9 +28,9 @@ p {
     font-size: 0.8rem;
 }
 
-/* .searchHx, .searchList, .list {
-  background-color: black;
-} */
+.searchList {
+    margin-bottom: 7px;
+}
 
 .slot:hover,
 .btn:hover {
@@ -201,6 +198,12 @@ a {
     font-size: 25px;
 }
 
+.header-icon {
+ margin-top: 6px
+}
+
+
+
 @media only screen and (max-width: 375px) {
     .imgContainer {
         width: 100%;
@@ -259,6 +262,34 @@ a {
     #priceTicker {
         font-size: 35px !important;
     }
+
+
+.clock {
+    display: flex;
+    border: 1px solid #e0e0e0;
+    font-size: 1.1rem;
+    text-align: center;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+}
+
+.timeWrap {
+    justify-content: space-around;
+    text-align: center;
+    width: 100%
+   
+}
+
+#currentDate {
+    width: 100%;
+    height: auto;
+    color: yellow;
+}
+
+#time {
+    width: 100%;
+    height: auto;
 }
 
 @media only screen and (max-width: 540px) {
