@@ -248,6 +248,23 @@ a {
       }
   }
 
+  #muteEl {
+    height: 100px;
+  }
+
+  .unmute {
+    background-image: url(http://franriavilla.in/images/unmute.png);
+    background-size: cover;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .mute {
+    background-image: url(http://franriavilla.in/images/mute.png);
+    
+  }
+
 
 /* label color */
 /* .input-field label {

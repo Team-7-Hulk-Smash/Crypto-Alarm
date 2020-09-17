@@ -29,6 +29,7 @@ var bearUrl = "https://api.giphy.com/v1/gifs/search?q=bear&api_key=HvaacROi9w5oQ
 var bullUrl = "https://api.giphy.com/v1/gifs/search?q=bull&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN";
 
 
+
 // MAKE SEARCH HISTORY CLICKABLE
 var hxListSearch = function (index) {
     localStorage.setItem('Symbols', historyArr);
@@ -293,6 +294,7 @@ getHistory();
 showTime();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
+// muteBtn.addEventListener("click", muteAudio);
 
 // Get the modal
 var modal = document.getElementById("myModal");

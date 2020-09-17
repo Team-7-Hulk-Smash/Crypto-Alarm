@@ -160,12 +160,17 @@
                 <section id="response-container" class="imgContainer materialboxed responsive-img col s7 m4 l4 right">
                     <img class="responsive-img center"></section>
             </section>
+            
+            <section id="muteEl" class="row col s12 m6 l7 xl7">
+                <div id="mute" class="responsive-img unmute col" onclick="document.getElementById('bear').muted = !document.getElementById('bear').muted;$(this).toggleClass('mute')"></div>
+            </section>
+         
             <!-- <audio controls>
                 <source id="bear" src="/assets/sounds/bear.mp3" type="audio/mp3">ROAR!</source>
                 <source id="bull" src="/assets/sounds/bull.mp3" type="audio/mp3">MOO!</source>
             </audio> -->
             <audio id="bear" src="https://raw.githubusercontent.com/Team-7-Hulk-Smash/Crypto-Alarm/development/assets/sounds/bear.mp3" type="audio/mpeg">ROAR></audio>
-            <audio id="bull" src="https://raw.githubusercontent.com/Team-7-Hulk-Smash/Crypto-Alarm/development/assets/sounds/bull.mp3" type="audio/mpeg">MOO!></audio>
+            <audio id="bull" src="https://raw.githubusercontent.com/Team-7-Hulk-Smash/Crypto-Alarm/development/assets/sounds/bull.mp3" type="audio/mpeg">MOO!></audio>        
         </div>
     </main>
     <script>
