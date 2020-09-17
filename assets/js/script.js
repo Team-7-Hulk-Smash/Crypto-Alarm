@@ -314,26 +314,6 @@ window.onclick = function (event) {
     }
 }
 
-// drag and drop
-$(".searchHx .list-group").sortable({
-    connectWith: $(".searchHx .list-group"),
-    scroll: false,
-    tolerance: "pointer",
-    helper: "clone",
-    activate: function (event) {
-        console.log("activate", this);
-    },
-    deactivate: function (event) {
-        console.log("decativate", this);
-    },
-    over: function (event) {
-        console.log("over", this);
-    },
-    out: function (event) {
-        console.log("out", this);
-    },
-})
-
 // DELETE SEARCH HISTORY
 $("#remove-coins").on("click", function () {
     localStorage.clear('Symbols');
