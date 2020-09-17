@@ -274,7 +274,7 @@ a {
 @media only screen and (max-width: 414px) {
   .imgContainer {
     margin-right: -50px !important;
-    top: 40px !important;
+    top: -70px !important;
   }
 
   #pair-wrapper{
