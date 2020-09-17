@@ -255,12 +255,12 @@ a {
 
 @media only screen and (max-width: 414px) {
     .imgContainer {
-      margin-right: -75px !important;
+      margin-right: -50px !important;
       top: 40px !important;
   }
 
   #pair-wrapper{
-    height: 55vh;
+    height: 59vh;
   }
 }
 
