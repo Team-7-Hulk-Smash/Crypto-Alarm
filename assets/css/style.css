@@ -250,8 +250,6 @@ a {
 @media only screen and (max-width: 375px) {
     .imgContainer {
         width: 100%;
-        margin-top: -25px !important;
-        left: -50px !important;
         position: relative;
         flex-wrap: wrap;
         top: 40px !important;
@@ -279,8 +277,8 @@ a {
 /* iPhone 6/7/8 plus */
 @media only screen and (max-width: 414px) {
   .imgContainer {
-    margin-right: -50px !important;
-    top: -70px !important;
+    margin-right: 50px !important;
+    top: -110px !important;
   }
 
   #pair-wrapper{
@@ -300,7 +298,7 @@ a {
 }
 
 /* iPad */
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
     .imgContainer {
         width: 100%;
         margin-top: -25px !important;
@@ -312,13 +310,13 @@ a {
     }
 
     .unmute{
-      margin-left: 14px !important;
+      margin-left: 16px !important;
     }
 
 }
 
 /* iPad pro */
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 1024px) {
   .imgContainer {
       width: 100%;
       left: -75px !important;
@@ -341,4 +339,10 @@ a {
     margin-left: 20px;
   }
 
+}
+
+@media only screen and (min-width: 1440px) {
+  .unmute{
+  margin-left: 26px !important;
+  }
 }
