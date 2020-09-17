@@ -142,8 +142,8 @@ var historyIconFetch = function (pair) {
     quote = quote.toLowerCase();
     base = base.toLowerCase();
 
-    hxIconEl.setAttribute("src", `https://cryptoicons.org/api/icon/${base}/50`);
-    hxIconEl2.setAttribute("src", `https://cryptoicons.org/api/icon/${quote}/50`)
+    hxIconEl.setAttribute("src", `https://static.coincap.io/assets/icons/${base}@2x.png`);
+    hxIconEl2.setAttribute("src", `https://static.coincap.io/assets/icons/${quote}@2x.png`);
 
 }
 
