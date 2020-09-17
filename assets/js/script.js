@@ -59,7 +59,6 @@ var formSubmitHandler = function (event) {
         document.getElementById("errorMsg").innerHTML = error202
     }
 
-
 };
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function () {
@@ -97,17 +96,16 @@ var getHistory = function () {
 
         // LABEL SEARCH HISTORY TAGS WITH TEXT
         for (var i = 0; i < 8; i++) {
-            var hxItemEl = document.querySelector("#hxItem" + i)
-            ;
+            var hxItemEl = document.querySelector("#hxItem" + i);
             var collectionItem = document.getElementById("liEl" + i);
             hxItemEl.textContent = historyArr[i];
 
             if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
-                
+
                 collectionItem.setAttribute("class", "hide slot black collection-item valign-wrapper");
                 hxItemEl.setAttribute("class", "searchTerm list-item");
             } else {
-                
+
                 searchBox.setAttribute("class", "searchHx");
                 deleteBtn.setAttribute("class", "delete-btn center");
                 collectionItem.setAttribute("class", "slot black collection-item valign-wrapper");
@@ -117,7 +115,7 @@ var getHistory = function () {
                 historyIconFetch(historyArr[i]);
                 hxItemEl.textContent = " ";
             }
-        } 
+        }
     }
 };
 
@@ -151,7 +149,6 @@ var historyIconFetch = function (pair) {
 
 }
 
-
 // SEARCH API AND FETCH START PRICE DATA
 var startPriceFetch = function () {
     var apiUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pairName}`;
@@ -177,7 +174,6 @@ var startPriceFetch = function () {
             document.getElementById("errorMsg").innerHTML = error404;
         }
     })
-
 };
 
 // FETCH SYMBOL PAIR NAME DATA
@@ -215,8 +211,6 @@ var symbolFetch = function () {
                 }
             })
         }
-
-        // priceChangeDataFetch();
     })
 };
 
@@ -289,11 +283,6 @@ var comparePrices = function () {
     }
 };
 
-getHistory();
-showTime();
-
-searchFormEl.addEventListener("submit", formSubmitHandler);
-
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -323,37 +312,21 @@ $("#remove-coins").on("click", function () {
     historyArr = [];
     var deleteButton = document.getElementById("deleteBtn");
     deleteButton.setAttribute("class", "hide");
-    var searchContainer = document.getElementById("searchHx")
-    ;
+    var searchContainer = document.getElementById("searchHx");
     searchContainer.setAttribute("class", "hide searchHx");
 
-        for (var i = 0; i < 8; i++) {
-            var sideBar = document.getElementById("liEl" + i);
-            
-            hxIconEl = document.getElementById("hxIcon" + i);
-            hxIconEl2 = document.getElementById("hxSubIcon" + i);
-            sideBar.setAttribute("class", "hide slot black collection-item valign-wrapper");
-            hxIconEl.setAttribute("src", ``);
-            hxIconEl2.setAttribute("src", ``);
+    for (var i = 0; i < 8; i++) {
+        var sideBar = document.getElementById("liEl" + i);
+
+        hxIconEl = document.getElementById("hxIcon" + i);
+        hxIconEl2 = document.getElementById("hxSubIcon" + i);
+        sideBar.setAttribute("class", "hide slot black collection-item valign-wrapper");
+        hxIconEl.setAttribute("src", ``);
+        hxIconEl2.setAttribute("src", ``);
     };
 });
 
-// FETCH PRICE CHANGE DATA
-// var priceChangeDataFetch = function () {
-//     var dataUrl = `https://api.binance.com/api/v3/ticker/24hr?symbol=${pairName}`;
-//     fetch(dataUrl).then(function (response) {
-//         response.json().then(function (data) {
-//             var priceChange = document.getElementById("priceChange");
-//             console.log(data)
-//             priceChange.textContent = "24h Price Change: " + data.priceChange;
-//             var priceChangePercent = document.getElementById("priceChangePercent");
-//             priceChangePercent.textContent = "24h Percent Change " + data.priceChangePercent + "%";
-//             priceTickerFetch(pairName);
+getHistory();
+showTime();
 
-
-//             clearInterval(myTicker);
-//             myTicker = setInterval(priceTickerFetch, 10000);
-
-//         })
-//     })
-// };
+searchFormEl.addEventListener("submit", formSubmitHandler);
