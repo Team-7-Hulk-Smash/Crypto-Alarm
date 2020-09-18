@@ -176,7 +176,7 @@ body {
 }
 
 #pair-wrapper {
-    height: 35.4vh;
+    height: 38.4vh;
     border: 1px solid #e0e0e0;
     color: white;
 }
@@ -232,11 +232,13 @@ a {
 }
 
 .unmute {
+   align-content: flex-start;
     background-image: url(http://franriavilla.in/images/unmute.png);
     background-size: cover;
     width: 35px;
     height: 30px;
     cursor: pointer;
+    /* margin-left: 27px; */
 }
 
 .mute {
@@ -249,8 +251,6 @@ a {
 @media only screen and (max-width: 375px) {
     .imgContainer {
         width: 100%;
-        margin-top: -25px !important;
-        left: -50px !important;
         position: relative;
         flex-wrap: wrap;
         top: 40px !important;
@@ -268,18 +268,27 @@ a {
     #priceTicker {
         font-size: 35px !important;
     }
+
+    .unmute{
+      margin-left: 0px !important;
+    }
+
 }
 
 /* iPhone 6/7/8 plus */
 @media only screen and (max-width: 414px) {
   .imgContainer {
-    margin-right: -50px !important;
-    top: 40px !important;
+    margin-right: 50px !important;
+    top: -110px !important;
   }
 
   #pair-wrapper{
     height: 62vh;
     margin-top: 7px;
+  }
+
+  .unmute{
+    margin-left: 0px !important;
   }
 }
 
@@ -290,7 +299,7 @@ a {
 }
 
 /* iPad */
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
     .imgContainer {
         width: 100%;
         margin-top: -25px !important;
@@ -300,16 +309,21 @@ a {
         top: 175px;
         height: auto;
     }
+
+    .unmute{
+      margin-left: 16px !important;
+    }
+
 }
 
 /* iPad pro */
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 1024px) {
   .imgContainer {
       width: 100%;
       left: -75px !important;
       position: relative;
       flex-wrap: wrap;
-      top: 175px;
+      top: 35px;
       height: auto;
   }
 
@@ -322,4 +336,14 @@ a {
       font-size: 35px !important;
   }
 
+  .unmute{
+    margin-left: 20px;
+  }
+
+}
+
+@media only screen and (min-width: 1440px) {
+  .unmute{
+  margin-left: 26px !important;
+  }
 }
